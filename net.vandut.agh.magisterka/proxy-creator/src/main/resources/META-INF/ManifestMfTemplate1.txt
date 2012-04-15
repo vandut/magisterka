@@ -1,0 +1,27 @@
+Manifest-Version: 1.0
+Export-Package: %s;
+ uses:="javax.jws,javax.xml.bind.annotation,
+ javax.xml.ws,org.apache.log4j,javax.xml.namespace"
+Built-By: vandut
+Tool: PROXY-CREATOR
+Bundle-Name: net.vandut.agh.magisterka :: GENERATED PROXY for %s
+Created-By: PROXY-CREATOR
+Require-Bundle: org.apache.cxf.bundle
+Bundle-Vendor: FuseSource
+Build-Jdk: %s
+Bundle-Version: 1.0.0
+Bnd-LastModified: %s
+Bundle-ManifestVersion: 2
+Bundle-License: http://www.apache.org/licenses/LICENSE-2.0.txt
+Bundle-DocURL: %s
+Import-Package: META-INF.cxf,javax.jws;version="2.0",javax.wsdl,javax.
+ xml.bind,javax.xml.bind.annotation,javax.xml.namespace,javax.xml.soap
+ ,javax.xml.ws,org.apache.cxf.bus,org.apache.cxf.bus.resource,org.apac
+ he.cxf.bus.spring,org.apache.cxf.configuration.spring,org.apache.cxf.
+ resource,org.apache.log4j,org.apache.servicemix.common.osgi,org.apach
+ e.servicemix.cxfbc,org.apache.servicemix.cxfse,
+ %s,
+ org.osgi.framework;version="1.3",
+ org.springframework.beans.factory.config;version="2.5"
+Bundle-SymbolicName: %s
+

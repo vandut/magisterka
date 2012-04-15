@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=iso-8859-1"/>
+        <title>
+            WebService Proxy Creator from WSDL
+        </title>
+        
+        <script type="text/javascript" src="jquery-1.7.1.min.js"></script>
+        
+<script type="text/javascript">
+function toggleStatus() {
+    if ($('#wsdl_location_upload').is(':checked')) {
+        $('#wsdl_location_upload_input').removeAttr('disabled');
+        $('#wsdl_location_internet_input').attr('disabled', true);
+    } else {
+        $('#wsdl_location_internet_input').removeAttr('disabled');
+        $('#wsdl_location_upload_input').attr('disabled', true);
+    }
+}
+$(document).ready(function(){
+	toggleStatus();
+});
+</script>
+        
+    </head>
+    <body>
+        <h3>
+            WebService Proxy Creator from WSDL
+        </h3>
+
+        <form method="post" enctype="multipart/form-data" action="/servlet-proxy-creator/creator">
+            <p>
+                <input id="wsdl_location_upload" type="radio" name="wsdl_location" value="upload" onchange="toggleStatus()" checked />
+                <input id="wsdl_location_upload_input" type="file" name="file" size="45"/>
+            </p>
+            <p>
+            	<input id="wsdl_location_internet" type="radio" name="wsdl_location" value="internet" onchange="toggleStatus()" />
+                <input id="wsdl_location_internet_input" type="text" name="url" size="45" disabled />
+            </p>
+            <p>
+                <input type="submit" value="Upload WSDL file" name="push_button" />
+            </p>
+        </form>
+    </body>
+
+</html>

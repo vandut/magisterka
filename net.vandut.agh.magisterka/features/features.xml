@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<features>
+	<feature name='jaxb-imp-dep' version='2.2.1.1_1'>
+		<bundle dependency="true">mvn:org.apache.servicemix.specs/org.apache.servicemix.specs.activation-api-1.1/1.8.0</bundle>
+		<bundle dependency="true">mvn:org.apache.servicemix.specs/org.apache.servicemix.specs.jaxb-api-2.2/1.8.0</bundle>
+		<bundle dependency="true">mvn:org.apache.servicemix.specs/org.apache.servicemix.specs.stax-api-1.0/1.8.0</bundle>
+		<bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.jaxb-impl/2.2.1.1_1</bundle>
+	</feature>
+	<feature name='jaxb-xjc-dep' version='2.2.1.1_1'>
+		<bundle dependency="true">mvn:org.apache.geronimo.specs/geronimo-activation_1.1_spec/1.0.2</bundle>
+		<bundle dependency="true">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.jaxb-impl/2.2.1.1_1</bundle>
+		<bundle dependency="true">mvn:org.apache.servicemix.specs/org.apache.servicemix.specs.jaxb-api-2.2/1.6.0</bundle>
+		<bundle dependency="true">mvn:org.apache.servicemix.specs/org.apache.servicemix.specs.stax-api-1.0/1.0.0</bundle>
+		<bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.jaxb-xjc/2.2.1.1_1</bundle>
+	</feature>
+	
+	<feature name='webconsole' version='3.1.8'>
+		<bundle>mvn:org.apache.felix/org.apache.felix.webconsole/3.1.8</bundle>
+		<bundle>mvn:org.apache.felix/org.apache.felix.webconsole.plugins.event/1.0.2</bundle>
+		<bundle>mvn:org.apache.felix/org.apache.felix.webconsole.plugins.memoryusage/1.0.2</bundle>
+	</feature>
+	
+	<feature name='ecf' version='1.0'>
+		<!-- OSGi compendium services (e.g. .event, .log...) -->
+		<bundle>mvn:org.osgi/org.osgi.compendium/4.2.0</bundle>
+		<bundle>mvn:org.ops4j.pax.confman/pax-confman-propsloader/0.2.2</bundle>
+		<bundle>mvn:org.apache.felix/org.apache.felix.metatype/1.0.4</bundle>
+		<!-- https://bugs.eclipse.org/310114#c7 -->
+		<bundle>http://download.ecf-project.org/org.eclipse.ecf.saxparserfactory_1.0.0.201011121350.jar</bundle>
+		<!-- 3.7m3 due to https://bugs.eclipse.org/325634 -->
+		<!--<bundle>http://download.eclipse.org/equinox/drops/S-3.7M3-201010281441/org.eclipse.equinox.supplement_1.4.0.v20101022.jar</bundle>-->
+		<bundle>http://download.eclipse.org/equinox/drops/R-3.7-201106131736/org.eclipse.equinox.supplement_1.4.0.v20110502.jar</bundle>
+		<!-- Equinox Supplements -->
+		<bundle>http://download.eclipse.org/equinox/drops/R-3.6.1-201009090800/org.eclipse.equinox.common_3.6.0.v20100503.jar</bundle>
+		<bundle>http://download.eclipse.org/equinox/drops/R-3.6.1-201009090800/org.eclipse.equinox.registry_3.5.0.v20100503.jar</bundle>
+		<bundle>http://download.eclipse.org/equinox/drops/R-3.6.1-201009090800/org.eclipse.equinox.event_1.2.0.v20100503.jar</bundle>
+		<bundle>http://download.eclipse.org/equinox/drops/R-3.6.1-201009090800/org.eclipse.core.jobs_3.5.1.R36x_v20100824.jar</bundle>
+		<bundle>http://download.eclipse.org/equinox/drops/R-3.6.1-201009090800/org.eclipse.equinox.concurrent_1.0.100.v20100503.jar</bundle>
+		<!--Eclipse ECF base -->
+		<bundle>mvn:org.eclipse.ecf/org.eclipse.ecf.identity/3.1.100.v20101029-1626</bundle>
+		<bundle>mvn:org.eclipse.ecf/org.eclipse.ecf.sharedobject/2.2.100.v20101029-1626</bundle>
+		<bundle>mvn:org.eclipse.ecf/org.eclipse.ecf/3.1.200.v20101029-1626</bundle>
+		<!-- ECF remote/discovery API -->
+		<bundle>mvn:org.eclipse.ecf/org.eclipse.ecf.remoteservice/6.0.200.v20120319-0616</bundle>
+		<bundle>mvn:org.eclipse.ecf/org.eclipse.ecf.discovery/4.0.0.v20101029-1626</bundle>
+		<!-- dosgi impl -->
+		<bundle>mvn:org.eclipse.osgi/org.eclipse.osgi.services.remoteserviceadmin/1.0.0.v20120318-2203</bundle>
+		<bundle>mvn:org.eclipse.ecf/org.eclipse.ecf.osgi.services.discovery/1.2.0.v20101029-1626</bundle>
+		<bundle>mvn:org.eclipse.ecf/org.eclipse.ecf.osgi.services.distribution/2.0.100.v20120319-0616</bundle>
+		<bundle>mvn:org.eclipse.ecf/org.eclipse.ecf.osgi.services.remoteserviceadmin/2.0.100.v20120319-0616</bundle>
+		<bundle>mvn:org.eclipse.ecf/org.eclipse.ecf.osgi.services.remoteserviceadmin.proxy/1.0.0.v20120319-0616</bundle>
+		<!-- ECF remoteservice provider -->
+		<bundle>mvn:org.eclipse.ecf/org.eclipse.ecf.provider/4.2.100.v20120319-0616</bundle>
+		<bundle>mvn:org.eclipse.ecf/org.eclipse.ecf.provider.remoteservice/4.0.0.v20120319-0616</bundle>
+		<!-- ECF discovery provider -->
+		<bundle>mvn:org.eclipse.ecf/org.eclipse.ecf.provider.jmdns/4.1.0.v20120319-0616</bundle>
+		<!-- OSGi compendium services DS -->
+		<bundle>mvn:org.apache.felix/org.apache.felix.scr/1.4.0</bundle>
+	</feature>
+	
+	<feature name='ecf.hello.host' version='1.0'>
+		<bundle>mvn:org.eclipse.ecf.examples.remoteservices/hello/3.0.100.qualifier</bundle>
+		<bundle>mvn:org.eclipse.ecf.examples.remoteservices/hello.host/3.0.0.qualifier</bundle>
+	</feature>
+	<feature name='ecf.hello.consumer' version='1.0'>
+		<bundle>mvn:org.eclipse.ecf.examples.remoteservices/hello/3.0.100.qualifier</bundle>
+		<bundle>mvn:org.eclipse.ecf.examples.remoteservices/hello.consumer/3.0.0.qualifier</bundle>
+	</feature>
+	
+	<feature name='magisterka-creator' version='1.0'>
+		<bundle>mvn:net.vandut.agh.magisterka/proxy-creator/1.0</bundle>
+		<bundle>mvn:net.vandut.agh.magisterka/servlet-proxy-creator/1.0/war</bundle>
+	</feature>
+	<feature name='magisterka-test' version='1.0'>
+		<bundle>mvn:net.vandut.agh.magisterka/servlet-caller/1.0/war</bundle>
+	</feature>
+	<feature name='magisterka-sampleproxy' version='1.0'>
+		<bundle>mvn:net.vandut.agh.magisterka/service-proxy/1.0</bundle>
+	</feature>
+	
+</features>

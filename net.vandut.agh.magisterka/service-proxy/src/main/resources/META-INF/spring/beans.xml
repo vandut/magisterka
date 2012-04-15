@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:osgi="http://www.springframework.org/schema/osgi"
+       xmlns:cxfbc="http://servicemix.apache.org/cxfbc/1.0"
+       xmlns:cxfse="http://servicemix.apache.org/cxfse/1.0"
+       xmlns:person="http://servicemix.apache.org/samples/wsdl-first"
+       xsi:schemaLocation="
+                http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+                http://www.springframework.org/schema/osgi http://www.springframework.org/schema/osgi/spring-osgi.xsd
+                http://servicemix.apache.org/cxfbc/1.0 http://servicemix.apache.org/cxfbc/1.0/servicemix-cxf-bc.xsd
+                http://servicemix.apache.org/cxfse/1.0 http://servicemix.apache.org/cxfse/1.0/servicemix-cxf-se.xsd">
+
+
+	<cxfbc:consumer wsdl="classpath:person.wsdl"
+		locationURI="http://localhost:8092/PersonService/"
+		endpoint="PersonServiceConsumer"
+		service="person:PersonService"
+		targetEndpoint="PersonServiceProxy"
+		targetService="person:PersonService"
+		/>
+
+
+	<bean id="proxy" class="org.apache.servicemix.samples.wsdl_first.PersonProxy">
+		<property name="person">
+			<cxfse:proxy
+				service="person:PersonService"
+				endpoint="PersonServiceProvider"
+				type="org.apache.servicemix.samples.wsdl_first.Person"
+				/>
+		</property>
+	</bean>
+	<!--<cxfse:proxy id="proxy"
+		service="person:PersonService"
+		endpoint="PersonServiceProvider"
+		type="org.apache.servicemix.samples.wsdl_first.Person"
+		/>-->
+	
+    <cxfse:endpoint
+    	endpoint="PersonServiceProxy"
+    	service="person:PersonService"
+    	>
+        <cxfse:pojo>
+        	<ref bean="proxy" />
+        </cxfse:pojo>
+    </cxfse:endpoint>
+	
+	<cxfbc:provider wsdl="classpath:person.wsdl"
+		locationURI="http://192.168.1.3:8092/PersonService/"
+		endpoint="PersonServiceProvider"
+		service="person:PersonService"
+		/>
+	
+	<!--
+	<osgi:service ref="proxy" interface="org.apache.servicemix.samples.wsdl_first.Person"/>
+	-->
+	
+	<bean class="org.apache.servicemix.samples.wsdl_first.internal.Activator"
+			factory-method="setProxy" scope="singleton">
+	 	<constructor-arg ref="proxy" />
+	</bean>
+
+    <bean class="org.apache.servicemix.common.osgi.EndpointExporter" />
+
+</beans>

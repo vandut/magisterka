@@ -1,0 +1,5 @@
+	<cxfbc:provider wsdl="classpath:%s"
+		locationURI="%s"
+		endpoint="%s"
+		service="namespace:%s"
+		/>

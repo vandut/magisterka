@@ -1,0 +1,7 @@
+	<cxfbc:consumer wsdl="classpath:%s"
+		locationURI="%s"
+		endpoint="%s"
+		service="namespace:%s"
+		targetEndpoint="%s"
+		targetService="namespace:%s"
+		/>

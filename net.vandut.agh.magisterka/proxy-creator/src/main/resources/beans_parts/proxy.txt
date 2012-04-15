@@ -1,0 +1,13 @@
+	<cxfse:proxy id="%s"
+		service="namespace:%s"
+		endpoint="%s"
+		type="%s"
+		/>
+    <cxfse:endpoint
+    	endpoint="%s"
+    	service="namespace:%s"
+    	>
+        <cxfse:pojo>
+        	<ref bean="%s" />
+        </cxfse:pojo>
+    </cxfse:endpoint>

@@ -1,0 +1,19 @@
+// ------------------------------------------------------------------
+// Transitive dependencies of this project determined from the
+// maven pom organized by organization.
+// ------------------------------------------------------------------
+
+Apache ServiceMix
+
+
+From: 'The Apache Software Foundation' (http://www.apache.org)
+  - Web Services Metadata 2.0 (http://geronimo.apache.org/maven/specs/geronimo-ws-metadata_2.0_spec/1.1.3) org.apache.geronimo.specs:geronimo-ws-metadata_2.0_spec:bundle:1.1.3
+    License: The Apache Software License, Version 2.0  (http://www.apache.org/licenses/LICENSE-2.0.txt)
+
+From: 'The Apache Software Foundation' (http://www.apache.org/)
+  - Log4j (http://logging.apache.org/log4j/1.2/log4j) log4j:log4j:jar:1.2.16:compile
+    License: The Apache Software License, Version 2.0  (http://www.apache.org/licenses/LICENSE-2.0.txt)
+
+
+
+

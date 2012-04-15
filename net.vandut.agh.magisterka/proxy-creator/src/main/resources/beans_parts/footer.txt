@@ -1,0 +1,4 @@
+
+    <bean class="org.apache.servicemix.common.osgi.EndpointExporter" />
+
+</beans>

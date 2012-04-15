@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project
+	xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+		http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<artifactId>package-group</artifactId>
+		<groupId>net.vandut.agh.magisterka</groupId>
+		<version>1.0</version>
+	</parent>
+
+	<groupId>net.vandut.agh.magisterka</groupId>
+	<artifactId>proxy-creator</artifactId>
+	<version>1.0</version>
+	<packaging>bundle</packaging>
+	
+    <name>net.vandut.agh.magisterka :: PROXY-CREATOR</name>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.apache.felix</groupId>
+			<artifactId>org.osgi.core</artifactId>
+			<version>1.0.0</version>
+            <scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+            <scope>provided</scope>
+		</dependency>
+        
+		<dependency>
+			<groupId>org.apache.servicemix.bundles</groupId>
+			<artifactId>org.apache.servicemix.bundles.jaxb-xjc</artifactId>
+			<version>2.2.1.1_1</version>
+            <scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.cxf</groupId>
+			<artifactId>cxf-bundle</artifactId>
+			<version>2.4.3</version>
+            <scope>provided</scope>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<configuration>
+						<source>1.6</source>
+						<target>1.6</target>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.felix</groupId>
+                <artifactId>maven-bundle-plugin</artifactId>
+                <configuration>
+                    <instructions>
+                        <Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName>
+                        
+						<!--<_failok>true</_failok>-->
+                        <Embed-Dependency>*;scope=compile|runtime|!provided</Embed-Dependency>
+                        <Embed-Transitive>true</Embed-Transitive>
+						<Embed-Directory>lib</Embed-Directory>
+						
+						<Bundle-ClassPath>.,META-INF</Bundle-ClassPath>
+						
+                        <Import-Package>
+                            META-INF.cxf,
+                            javax.jws,
+                            javax.wsdl,
+                            javax.xml.bind,
+                            javax.xml.bind.annotation,
+                            javax.xml.namespace,
+                            javax.xml.soap,
+                            javax.xml.ws,
+                            org.apache.cxf.bus,
+                            org.apache.cxf.bus.spring,
+                            org.apache.cxf.bus.resource,
+                            org.apache.cxf.configuration.spring,
+                            org.apache.cxf.resource,
+                            org.apache.servicemix.cxfbc,
+                            org.apache.servicemix.cxfse,
+                            org.springframework.beans.factory.config,
+                            org.apache.servicemix.common.osgi,
+                            *
+                        </Import-Package>
+                        <Require-Bundle>
+                        	org.apache.cxf.bundle
+                        </Require-Bundle>
+                        <Export-Package>
+                            net.vandut.agh.magisterka.proxy_creator
+                        </Export-Package>
+                        <Private-Package>
+                        	net.vandut.agh.magisterka.proxy_creator.internal,
+                        	net.vandut.agh.magisterka.proxy_creator.internal.xml
+                        </Private-Package>
+                        <Bundle-Activator>
+                        	net.vandut.agh.magisterka.proxy_creator.Activator
+                        </Bundle-Activator>
+                    </instructions>
+                </configuration>
+            </plugin>
+        </plugins>
+	</build>
+
+</project>

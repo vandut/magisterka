@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project
+	xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>net.vandut.agh.magisterka</groupId>
+        <artifactId>package-group</artifactId>
+        <version>1.0</version>
+    </parent>
+	
+    <groupId>net.vandut.agh.magisterka</groupId>
+    <artifactId>service-proxy</artifactId>
+    <version>1.0</version>
+    <packaging>bundle</packaging>
+    <name>net.vandut.agh.magisterka :: SERVICE PROXY</name>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.apache.cxf</groupId>
+            <artifactId>cxf-rt-frontend-jaxws</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.geronimo.specs</groupId>
+            <artifactId>geronimo-ws-metadata_2.0_spec</artifactId>
+        </dependency>
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.felix</groupId>
+			<artifactId>org.osgi.core</artifactId>
+			<version>1.0.0</version>
+            <scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring</artifactId>
+			<version>2.5.6</version>
+            <scope>provided</scope>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.eclipse.ecf</groupId>
+			<artifactId>org.eclipse.ecf.remoteservice</artifactId>
+			<version>6.0.200.v20120319-0616</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.eclipse.ecf</groupId>
+			<artifactId>org.eclipse.ecf.osgi.services.distribution</artifactId>
+			<version>2.0.100.v20120319-0616</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.eclipse.maven</groupId>
+			<artifactId>org.eclipse.equinox.concurrent</artifactId>
+			<version>3.7.0</version>
+			<scope>provided</scope>
+		</dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.6</source>
+                    <target>1.6</target>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.cxf</groupId>
+                <artifactId>cxf-codegen-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <phase>generate-sources</phase>
+                        <configuration>
+                            <sourceRoot>${basedir}/target/jaxws</sourceRoot>
+                            <wsdlOptions>
+                                <wsdlOption>
+                                    <wsdl>${basedir}/src/main/resources/person.wsdl</wsdl>
+                                    <extraargs>
+                                        <extraarg>-verbose</extraarg>
+                                    </extraargs>
+                                </wsdlOption>
+                            </wsdlOptions>
+                        </configuration>
+                        <goals>
+                            <goal>wsdl2java</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.felix</groupId>
+                <artifactId>maven-bundle-plugin</artifactId>
+                <configuration>
+                    <instructions>
+                        <Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName>
+                        <Import-Package>
+                            META-INF.cxf,
+                            javax.jws,
+                            javax.wsdl,
+                            javax.xml.bind,
+                            javax.xml.bind.annotation,
+                            javax.xml.namespace,
+                            javax.xml.soap,
+                            javax.xml.ws,
+                            org.apache.cxf.bus,
+                            org.apache.cxf.bus.spring,
+                            org.apache.cxf.bus.resource,
+                            org.apache.cxf.configuration.spring,
+                            org.apache.cxf.resource,
+                            org.apache.servicemix.cxfbc,
+                            org.apache.servicemix.cxfse,
+                            org.springframework.beans.factory.config,
+                            org.apache.servicemix.common.osgi,
+							org.eclipse.ecf.osgi.services.distribution;version="1.0.0",
+							org.osgi.framework,
+							org.eclipse.ecf.remoteservice,
+							org.eclipse.equinox.concurrent.future;version="1.0.0",
+                            *
+                        </Import-Package>
+                        <Require-Bundle>org.apache.cxf.bundle, org.eclipse.equinox.common</Require-Bundle>
+						<Private-Package>
+							javax.xml.ws
+						</Private-Package>
+                        <Export-Package>
+                            org.apache.servicemix.samples.wsdl_first,
+                            org.apache.servicemix.samples.wsdl_first.types
+                        </Export-Package>
+                        <Private-Package>org.apache.servicemix.samples.wsdl_first.internal</Private-Package>
+                        <Bundle-Activator>org.apache.servicemix.samples.wsdl_first.internal.Activator</Bundle-Activator>
+                    </instructions>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+    
+</project>
