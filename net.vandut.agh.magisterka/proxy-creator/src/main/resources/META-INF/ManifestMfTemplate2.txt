@@ -8,7 +8,8 @@ Built-By: vandut
 Tool: PROXY-CREATOR
 Bundle-Name: net.vandut.agh.magisterka :: GENERATED PROXY for %s
 Created-By: PROXY-CREATOR
-Require-Bundle: org.apache.cxf.bundle
+Require-Bundle: org.apache.cxf.bundle, org.eclipse.equinox.common
+Private-Package: javax.xml.ws, %s.internal
 Bundle-Vendor: FuseSource
 Build-Jdk: %s
 Bundle-Version: 1.0.0
@@ -22,9 +23,12 @@ Import-Package: META-INF.cxf,javax.jws;version="2.0",javax.wsdl,javax.
  he.cxf.bus.spring,org.apache.cxf.configuration.spring,org.apache.cxf.
  resource,org.apache.log4j,org.apache.servicemix.common.osgi,org.apach
  e.servicemix.cxfbc,org.apache.servicemix.cxfse,
- %s,
- %s,
  org.osgi.framework;version="1.3",
- org.springframework.beans.factory.config;version="2.5"
+ org.springframework.beans.factory.config;version="2.5",
+ %s,
+ %s,
+ org.eclipse.ecf.osgi.services.distribution;version="1.0.0",
+ org.eclipse.ecf.remoteservice,
+ org.eclipse.equinox.concurrent.future;version="1.0.0"
 Bundle-SymbolicName: %s
-
+Bundle-Activator: %s.internal.Activator

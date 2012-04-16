@@ -1,6 +1,7 @@
 package net.vandut.agh.magisterka.proxy_creator.internal;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
@@ -21,6 +22,7 @@ public class CompilerWrapper {
 			.getLogger(CompilerWrapper.class);
 
 	private static final String JAVA_FILE_FILTER = ".*\\.java$";
+	private static final String JAR_FILE_FILTER = ".*\\.jar$";
 
 	private String sourcePath;
 
@@ -36,12 +38,13 @@ public class CompilerWrapper {
 		this.targetPath = targetPath;
 	}
 
-	private String getListFilesDebugString(List<File> files) {
-		String debugString = "";
+	private String joinFilePaths(List<File> files, char glue) {
+		StringBuffer debugString = new StringBuffer();
 		for (File f : files) {
-			debugString += " " + f.getAbsolutePath();
+			debugString.append(glue);
+			debugString.append(f.getAbsolutePath());
 		}
-		return debugString;
+		return debugString.toString();
 	}
 
 	private boolean assertTargetDirExists() {
@@ -70,23 +73,42 @@ public class CompilerWrapper {
 					+ System.getProperty("java.home"));
 			return false;
 		}
-
-		StandardJavaFileManager fileManager = compiler.getStandardFileManager(
-				null, Locale.getDefault(), null);
+		
 		DiagnosticCollector<JavaFileObject> diagnostics = new DiagnosticCollector<JavaFileObject>();
 
+		StandardJavaFileManager fileManager = compiler.getStandardFileManager(
+				diagnostics, Locale.getDefault(), null);
+		
+		
+		/*StandardJavaFileManager standardJavaFileManager = compiler.getStandardFileManager(diagnostics,
+				Locale.getDefault(), null);
+		ClassLoader loader = Thread.currentThread().getContextClassLoader();
+		JavaFileManager fileManager = new CustomClassloaderJavaFileManager(loader, standardJavaFileManager);
+		
+		logger.info("ClassLoader: "+loader);*/
+		
 		logger.debug("Preparing Java files");
 		List<File> files = FileLister.listFiles(sourcePath, JAVA_FILE_FILTER);
-		logger.debug("Selected files: " + getListFilesDebugString(files));
+		logger.debug("Selected files: " + joinFilePaths(files, ' '));
 		Iterable<? extends JavaFileObject> compilationUnits = fileManager
 				.getJavaFileObjectsFromFiles(files);
 
 		assertTargetDirExists();
+		
+		String classpath = System.getProperty("java.class.path");
+		String compileClasspathRoot = System.getProperty("compile.classpath.root");
+		if (compileClasspathRoot != null) {
+			List<File> jarFiles = FileLister.listFiles(compileClasspathRoot, JAR_FILE_FILTER);
+			logger.debug("Jar classpath files: " + joinFilePaths(jarFiles, ' '));
+			classpath += joinFilePaths(jarFiles, ';');
+		}
 
 		logger.debug("Preparing compiler task");
-		String[] compileOptions = new String[] { "-d", targetPath };
-		CompilationTask task = compiler.getTask(null, fileManager, diagnostics,
-				Arrays.asList(compileOptions), null, compilationUnits);
+		List<String> optionList = new ArrayList<String>();
+		optionList.addAll(Arrays.asList("-classpath", classpath));
+		optionList.addAll(Arrays.asList("-d", targetPath));
+		logger.debug("Compiler optons: " + optionList);
+		CompilationTask task = compiler.getTask(null, fileManager, diagnostics, optionList, null, compilationUnits);
 
 		logger.info("Compiling sources");
 		boolean compilationResult = task.call();

@@ -121,11 +121,11 @@
                             org.apache.servicemix.cxfse,
                             org.springframework.beans.factory.config,
                             org.apache.servicemix.common.osgi,
+                            org.apache.log4j,
 							org.eclipse.ecf.osgi.services.distribution;version="1.0.0",
 							org.osgi.framework,
 							org.eclipse.ecf.remoteservice,
-							org.eclipse.equinox.concurrent.future;version="1.0.0",
-                            *
+							org.eclipse.equinox.concurrent.future;version="1.0.0"
                         </Import-Package>
                         <Require-Bundle>org.apache.cxf.bundle, org.eclipse.equinox.common</Require-Bundle>
 						<Private-Package>

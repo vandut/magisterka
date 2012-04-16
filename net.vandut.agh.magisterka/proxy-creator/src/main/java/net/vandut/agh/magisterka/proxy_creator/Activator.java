@@ -6,8 +6,7 @@ import org.osgi.framework.BundleContext;
 
 public class Activator implements BundleActivator {
 
-	private static final Logger logger = Logger
-			.getLogger(Activator.class);
+	private static final Logger logger = Logger.getLogger(Activator.class);
 
 	public void start(BundleContext bundleContext) throws Exception {
 		logger.info("ProxyCreator Bundle STARTED");

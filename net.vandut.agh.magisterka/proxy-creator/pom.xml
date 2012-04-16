@@ -45,6 +45,25 @@
 			<version>2.4.3</version>
             <scope>provided</scope>
 		</dependency>
+		
+		<dependency>
+			<groupId>org.eclipse.ecf</groupId>
+			<artifactId>org.eclipse.ecf.remoteservice</artifactId>
+			<version>6.0.200.v20120319-0616</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.eclipse.ecf</groupId>
+			<artifactId>org.eclipse.ecf.osgi.services.distribution</artifactId>
+			<version>2.0.100.v20120319-0616</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.eclipse.maven</groupId>
+			<artifactId>org.eclipse.equinox.concurrent</artifactId>
+			<version>3.7.0</version>
+			<scope>provided</scope>
+		</dependency>
 	</dependencies>
 
 	<build>
@@ -92,6 +111,10 @@
                             org.apache.servicemix.cxfse,
                             org.springframework.beans.factory.config,
                             org.apache.servicemix.common.osgi,
+							org.eclipse.ecf.osgi.services.distribution;version="1.0.0",
+							org.eclipse.ecf.remoteservice,
+							org.eclipse.equinox.concurrent.future;version="1.0.0",
+							org.apache.log4j,
                             *
                         </Import-Package>
                         <Require-Bundle>

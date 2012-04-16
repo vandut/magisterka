@@ -1,5 +1,8 @@
 package net.vandut.agh.magisterka.proxy_creator;
 
+import org.eclipse.ecf.osgi.services.distribution.IDistributionConstants;
+
+import net.vandut.agh.magisterka.proxy_creator.internal.ActivatorCreator;
 import net.vandut.agh.magisterka.proxy_creator.internal.CompilerWrapper;
 import net.vandut.agh.magisterka.proxy_creator.internal.CxfConfCreator;
 import net.vandut.agh.magisterka.proxy_creator.internal.FileUtils;
@@ -7,17 +10,17 @@ import net.vandut.agh.magisterka.proxy_creator.internal.JarPacker;
 import net.vandut.agh.magisterka.proxy_creator.internal.ManifestMfCreator;
 import net.vandut.agh.magisterka.proxy_creator.internal.Wsdl2JavaWrapper;
 
-public class ProxyCreator {
+public class ProxyCreator implements IDistributionConstants {
 
 	private static final String MANIFEST_MF_NAME = "MANIFEST.MF";
 
 	private String wsdlLocation;
 	private String outputLocation;
-	
+
 	private WSDLAnalyzer analyzer;
 
 	public WSDLAnalyzer getAnalyzer() {
-		if(analyzer == null) {
+		if (analyzer == null) {
 			throw new IllegalStateException("Analyzer not ready");
 		}
 		return analyzer;
@@ -39,16 +42,26 @@ public class ProxyCreator {
 		String manifestMfLocation = outputLocation + "/" + MANIFEST_MF_NAME;
 		String beansLocation = springDir + "/beans.xml";
 
+		analyzer = new WSDLAnalyzer();
+		analyzer.analyze(wsdlLocation);
+		creationProgress.wsdlAnalyzed();
+
 		Wsdl2JavaWrapper wrapper = new Wsdl2JavaWrapper();
 		wrapper.setwsdlURI(wsdlLocation);
 		wrapper.setOutputDir(sourceLocation);
 		wrapper.generateSources();
 		creationProgress.sourcesGenerated();
 
+		FileUtils.createDirIfNotExists(sourceLocation + "/javax/xml/ws");
+		FileUtils.copyFromClasspath("/java_files/Holder.java", sourceLocation + "/javax/xml/ws");
+		ActivatorCreator.createActivator(analyzer, "/java_files/Activator.java", sourceLocation);
+
 		CompilerWrapper compiler = new CompilerWrapper();
 		compiler.setSourcePath(sourceLocation);
 		compiler.setTargetPath(targetLocation);
-		compiler.compileSources();
+		if(!compiler.compileSources()) {
+			throw new Exception("Compilation error");
+		}
 		creationProgress.sourcesCompiled();
 
 		FileUtils.createDirIfNotExists(metaInfDir);
@@ -58,12 +71,8 @@ public class ProxyCreator {
 		FileUtils.copyFromClasspath("/META-INF/DEPENDENCIES", metaInfDir);
 		FileUtils.copyFromClasspath("/META-INF/LICENSE", metaInfDir);
 		FileUtils.copyFromClasspath("/META-INF/NOTICE", metaInfDir);
-		
-		creationProgress.filesCopied();
 
-		analyzer = new WSDLAnalyzer();
-		analyzer.analyze(wsdlLocation);
-		creationProgress.wsdlAnalyzed();
+		creationProgress.filesCopied();
 
 		CxfConfCreator.configureFile(analyzer, wsdlLocation, beansLocation);
 		creationProgress.cxfConfCreated();
@@ -72,11 +81,11 @@ public class ProxyCreator {
 
 		return JarPacker.createJar(targetLocation, manifestMfLocation, outputLocation);
 	}
-	
+
 	public String generateProxyBundle() throws Exception {
 		return generateProxyBundle(new EmptyCreationProgress());
 	}
-	
+
 	public static void run() throws Exception {
 		ProxyCreator creator = new ProxyCreator();
 		creator.setWsdlLocation("M:/WSDL/person.wsdl");
@@ -87,7 +96,7 @@ public class ProxyCreator {
 	public static void main(String[] args) throws Exception {
 		run();
 	}
-	
+
 	private static class EmptyCreationProgress implements CreationProgress {
 
 		@Override
@@ -113,7 +122,7 @@ public class ProxyCreator {
 		@Override
 		public void manifestCreated() {
 		}
-		
+
 	}
 
 }

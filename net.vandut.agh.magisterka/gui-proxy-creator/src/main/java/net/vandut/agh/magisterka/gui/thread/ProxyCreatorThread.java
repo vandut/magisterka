@@ -58,23 +58,23 @@ public abstract class ProxyCreatorThread extends Thread {
 	private class CreationProgressCallback implements CreationProgress {
 
 		@Override
-		public void sourcesGenerated() {
-			creatorPane.setProgress(15);
+		public void wsdlAnalyzed() {
+			creatorPane.setProgress(10);
 		}
 
 		@Override
-		public void sourcesCompiled() {
+		public void sourcesGenerated() {
 			creatorPane.setProgress(30);
 		}
 
 		@Override
-		public void filesCopied() {
-			creatorPane.setProgress(50);
+		public void sourcesCompiled() {
+			creatorPane.setProgress(45);
 		}
 
 		@Override
-		public void wsdlAnalyzed() {
-			creatorPane.setProgress(60);
+		public void filesCopied() {
+			creatorPane.setProgress(65);
 		}
 
 		@Override

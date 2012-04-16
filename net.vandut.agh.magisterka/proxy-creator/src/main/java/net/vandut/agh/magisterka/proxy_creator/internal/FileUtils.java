@@ -25,6 +25,11 @@ public class FileUtils {
 			}
 		}
 	}
+	
+	public static String stringFromClasspathFile(String path) throws IOException {
+		InputStream stream = FileUtils.getInputStreamFromClasspath(path);
+		return FileUtils.readFile(stream);
+	}
 
 	// public static File getFileFromClasspath(String path) throws IOException {
 	// URL url = FileUtils.class.getResource(path);

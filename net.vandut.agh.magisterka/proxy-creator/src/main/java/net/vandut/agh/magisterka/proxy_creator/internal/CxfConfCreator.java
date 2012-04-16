@@ -1,8 +1,6 @@
 package net.vandut.agh.magisterka.proxy_creator.internal;
 
 import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.List;
@@ -17,19 +15,14 @@ public class CxfConfCreator {
 	private static final Logger logger = Logger
 			.getLogger(CxfConfCreator.class);
 	
-	private static String stringFromClasspathFile(String path) throws IOException {
-		InputStream stream = FileUtils.getInputStreamFromClasspath(path);
-		return FileUtils.readFile(stream);
-	}
-	
 	public static void configureFile(WSDLAnalyzer analyzer, String wsdlFilePath, String outputPath) throws Exception {
-		String header = stringFromClasspathFile("/beans_parts/header.txt");
-		String footer = stringFromClasspathFile("/beans_parts/footer.txt");
+		String header = FileUtils.stringFromClasspathFile("/beans_parts/header.txt");
+		String footer = FileUtils.stringFromClasspathFile("/beans_parts/footer.txt");
 		
-		String consumer = stringFromClasspathFile("/beans_parts/consumer.txt");
-		String proxy = stringFromClasspathFile("/beans_parts/proxy.txt");
-		String provider = stringFromClasspathFile("/beans_parts/provider.txt");
-		String osgi_service = stringFromClasspathFile("/beans_parts/osgi_service.txt");
+		String consumer = FileUtils.stringFromClasspathFile("/beans_parts/consumer.txt");
+		String proxy = FileUtils.stringFromClasspathFile("/beans_parts/proxy.txt");
+		String provider = FileUtils.stringFromClasspathFile("/beans_parts/provider.txt");
+		String osgi_service = FileUtils.stringFromClasspathFile("/beans_parts/osgi_service.txt");
 		
 		String document = "";
 		document += String.format(header, analyzer.getTargetNamespace());
@@ -49,7 +42,10 @@ public class CxfConfCreator {
 			document += String.format(consumer, wsdlFileName, localAddress, consumerEndpoint, service.name, proxyEndpoint, service.name);
 			document += String.format(proxy, proxyBeanName, service.name, providerEndpoint, type, proxyEndpoint, service.name, proxyBeanName);
 			document += String.format(provider, wsdlFileName, service.httpAddress, providerEndpoint, service.name);
-			document += String.format(osgi_service, proxyBeanName, type);
+			if(serviceIdx == 0) {
+				// TODO: accept multiple services
+				document += String.format(osgi_service, proxyBeanName, type, analyzer.getTargetPackage(), proxyBeanName);
+			}
 		}
 		
 		document += footer;

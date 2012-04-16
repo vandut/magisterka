@@ -1,1 +1,8 @@
+	<!--
 	<osgi:service ref="%s" interface="%s"/>
+	-->
+
+	<bean class="%s.internal.Activator"
+			factory-method="setProxy" scope="singleton">
+	 	<constructor-arg ref="%s" />
+	</bean>
