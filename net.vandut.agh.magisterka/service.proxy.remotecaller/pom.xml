@@ -53,6 +53,12 @@
 			<version>2.0.100.v20120319-0616</version>
 			<scope>provided</scope>
 		</dependency>
+		<dependency>
+			<groupId>org.eclipse.ecf</groupId>
+			<artifactId>org.eclipse.ecf.discovery</artifactId>
+			<version>4.0.0.v20101029-1626</version>
+			<scope>provided</scope>
+		</dependency>
 	</dependencies>
 
     <build>
@@ -75,7 +81,8 @@
 						javax.jws,
 						javax.xml.bind.annotation,
 						javax.xml.namespace,
-						org.apache.log4j
+						org.apache.log4j,
+						*
 					</Import-Package>
 					<Private-Package>
 						javax.xml.ws,

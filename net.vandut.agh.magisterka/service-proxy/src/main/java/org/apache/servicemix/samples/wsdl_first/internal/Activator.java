@@ -14,7 +14,7 @@ public class Activator implements BundleActivator, IDistributionConstants {
 	private static final Logger logger = Logger.getLogger(Activator.class);
 
 	private static final String DEFAULT_CONTAINER_TYPE = "ecf.generic.server";
-	private static final String DEFAULT_CONTAINER_ID = "ecftcp://localhost:3787/server";
+	private static final String DEFAULT_CONTAINER_ID = "ecftcp://192.168.1.7:3787/server";
 
 	private static Person proxy;
 	private static Activator _INSTANCE;
@@ -40,7 +40,8 @@ public class Activator implements BundleActivator, IDistributionConstants {
 
 	private void registerRemoteService() {
 		Properties props = new Properties();
-		props.put(IDistributionConstants.SERVICE_EXPORTED_INTERFACES, IDistributionConstants.SERVICE_EXPORTED_INTERFACES_WILDCARD);
+		props.put(IDistributionConstants.SERVICE_EXPORTED_INTERFACES,
+				IDistributionConstants.SERVICE_EXPORTED_INTERFACES_WILDCARD);
 		props.put(IDistributionConstants.SERVICE_EXPORTED_CONFIGS, DEFAULT_CONTAINER_TYPE);
 		props.put(IDistributionConstants.SERVICE_EXPORTED_CONTAINER_FACTORY_ARGUMENTS, DEFAULT_CONTAINER_ID);
 		serviceRegistration = context.registerService(Person.class.getName(), proxy, props);

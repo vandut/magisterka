@@ -35,8 +35,8 @@
 		<dependency>
 			<groupId>org.apache.felix</groupId>
 			<artifactId>org.osgi.core</artifactId>
-			<version>1.0.0</version>
-            <scope>provided</scope>
+			<version>1.4.0</version>
+			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -47,20 +47,8 @@
 		
 		<dependency>
 			<groupId>org.eclipse.ecf</groupId>
-			<artifactId>org.eclipse.ecf.remoteservice</artifactId>
-			<version>6.0.200.v20120319-0616</version>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.eclipse.ecf</groupId>
 			<artifactId>org.eclipse.ecf.osgi.services.distribution</artifactId>
 			<version>2.0.100.v20120319-0616</version>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.eclipse.maven</groupId>
-			<artifactId>org.eclipse.equinox.concurrent</artifactId>
-			<version>3.7.0</version>
 			<scope>provided</scope>
 		</dependency>
     </dependencies>

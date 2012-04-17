@@ -5,8 +5,11 @@ import javax.xml.ws.Holder;
 import org.apache.log4j.Logger;
 import org.apache.servicemix.samples.wsdl_first.Person;
 import org.apache.servicemix.samples.wsdl_first.UnknownPersonFault;
+import org.eclipse.ecf.core.ContainerConnectException;
 import org.eclipse.ecf.core.ContainerCreateException;
+import org.eclipse.ecf.core.IContainer;
 import org.eclipse.ecf.core.IContainerFactory;
+import org.eclipse.ecf.core.identity.ID;
 import org.eclipse.ecf.osgi.services.distribution.IDistributionConstants;
 import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
@@ -20,20 +23,32 @@ public class Activator implements BundleActivator, ServiceTrackerCustomizer {
 
 	private static final Logger logger = Logger.getLogger(Activator.class);
 
-	private static final String DEFAULT_CONTAINER_TYPE = "ecf.generic.server";
+	private static final String DEFAULT_CONTAINER_TYPE = "ecf.generic.client";
 
 	private BundleContext context;
 
 	private ServiceTracker containerFactoryServiceTracker;
 	private ServiceTracker proxyServiceTracker;
+	
+	private IContainer d0;
+	private IContainer z0;
 
 	public void start(BundleContext bundleContext) throws Exception {
 		context = bundleContext;
 		register();
 	}
 
-	private void register() throws ContainerCreateException, InvalidSyntaxException {
-		getContainerFactory().createContainer(DEFAULT_CONTAINER_TYPE);
+	private void register() throws ContainerCreateException, InvalidSyntaxException, ContainerConnectException {
+		IContainerFactory containerFactory = getContainerFactory();
+		d0 = containerFactory.createContainer(DEFAULT_CONTAINER_TYPE);
+
+		// ////////////////////////////////////////////////////////////////// //
+		z0 = containerFactory.createContainer("ecf.discovery.zoodiscovery");
+		ID target = z0.getConnectNamespace().createInstance(
+				new String[] { "zoodiscovery.flavor.centralized=192.168.1.7" });
+		z0.connect(target, null);
+		// ////////////////////////////////////////////////////////////////// //
+
 		proxyServiceTracker = new ServiceTracker(context, createRemoteFilter(), this);
 		proxyServiceTracker.open();
 		logger.info("proxyServiceTracker opened");
@@ -49,8 +64,8 @@ public class Activator implements BundleActivator, ServiceTrackerCustomizer {
 	}
 
 	private Filter createRemoteFilter() throws InvalidSyntaxException {
-		return context.createFilter("(&(" + org.osgi.framework.Constants.OBJECTCLASS + "=" + Person.class.getName() + ")("
-				+ IDistributionConstants.SERVICE_IMPORTED + "=*))");
+		return context.createFilter("(&(" + org.osgi.framework.Constants.OBJECTCLASS + "=" + Person.class.getName()
+				+ ")(" + IDistributionConstants.SERVICE_IMPORTED + "=*))");
 	}
 
 	private void unregister() {
@@ -59,6 +74,8 @@ public class Activator implements BundleActivator, ServiceTrackerCustomizer {
 			proxyServiceTracker = null;
 			logger.info("proxyServiceTracker closed");
 		}
+		z0.disconnect();
+		d0.disconnect();
 		if (containerFactoryServiceTracker != null) {
 			containerFactoryServiceTracker.close();
 			containerFactoryServiceTracker = null;

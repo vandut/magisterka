@@ -1,4 +1,4 @@
 --platform=felix
 --vmargs="-Dorg.osgi.service.http.port=8080"
---profiles=log,confman,felix.obr,felix.metatype,eclipse.ecf.dosgi
+--profiles=log,confman,felix.obr,felix.metatype,eclipse.ecf.dosgi,eclipse.ecf.dosgi.zookeeper
 --profilesRepositories=https://raw.github.com/vandut/ECF4Felix/master/,https://scm.ops4j.org/repos/ops4j/projects/pax/runner-repository/,http://download.ecf-project.org/maven/,http://download.ecf-project.org/maven/snapshots/
