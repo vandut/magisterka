@@ -14,7 +14,7 @@ public class Activator implements BundleActivator, IDistributionConstants {
 	private static final Logger logger = Logger.getLogger(Activator.class);
 
 	private static final String DEFAULT_CONTAINER_TYPE = "ecf.generic.server";
-	private static final String DEFAULT_CONTAINER_ID = "ecftcp://localhost:3787/server";
+	private static final String DEFAULT_CONTAINER_ID = "ecftcp://192.168.1.7:3787/server";
 
 	private static %INTERFACE% proxy;
 	private static Activator _INSTANCE;

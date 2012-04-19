@@ -26,6 +26,8 @@
     <module>gui-proxy-creator</module>
 	<module>sample.remoteservice.host</module>
 	<module>service.proxy.remotecaller</module>
+	<module>door-status-dependency</module>
+	<module>door-status-caller</module>
   </modules>
 
   <repositories>

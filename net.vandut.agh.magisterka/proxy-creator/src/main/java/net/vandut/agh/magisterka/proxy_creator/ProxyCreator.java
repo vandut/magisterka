@@ -88,7 +88,7 @@ public class ProxyCreator implements IDistributionConstants {
 
 	public static void run() throws Exception {
 		ProxyCreator creator = new ProxyCreator();
-		creator.setWsdlLocation("M:/WSDL/person.wsdl");
+		creator.setWsdlLocation("M:/WSDL/DoorService_final.wsdl");
 		creator.setOutputLocation("M:/test");
 		creator.generateProxyBundle();
 	}

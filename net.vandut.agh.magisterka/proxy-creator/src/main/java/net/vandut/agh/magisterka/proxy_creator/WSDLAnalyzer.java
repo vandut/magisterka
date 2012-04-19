@@ -68,18 +68,20 @@ public class WSDLAnalyzer {
 		targetNamespace = xmlHelper.eval2string(wsdlDocument, "/" + NS_WSDL + ":definitions/@targetNamespace");
 		namespaceMap.put(namespaceMap.get(targetNamespace), targetNamespace);
 
-		typesNamespace = xmlHelper.eval2string(wsdlDocument, "/" + NS_WSDL + ":definitions/" + NS_WSDL + ":types/" + NS_XSD
-				+ ":schema/@targetNamespace");
+		typesNamespace = xmlHelper.eval2string(wsdlDocument, "/" + NS_WSDL + ":definitions/" + NS_WSDL + ":types/"
+				+ NS_XSD + ":schema/@targetNamespace");
 
 		targetPackage = convertNamespaceToPackage(targetNamespace);
 		typesPackage = convertNamespaceToPackage(typesNamespace);
 
-		IterableNodeList wsdlServiceNodeList = xmlHelper.eval2list(wsdlDocument, "/" + NS_WSDL + ":definitions/" + NS_WSDL + ":service");
+		IterableNodeList wsdlServiceNodeList = xmlHelper.eval2list(wsdlDocument, "/" + NS_WSDL + ":definitions/"
+				+ NS_WSDL + ":service");
 
 		for (Node serviceNode : wsdlServiceNodeList) {
 			Service service = new Service();
 			service.name = xmlHelper.getAttribute(serviceNode, "name");
-			service.httpAddress = xmlHelper.eval2string(serviceNode, NS_WSDL + ":port/" + NS_SOAP + ":address/@location");
+			service.httpAddress = xmlHelper.eval2string(serviceNode, NS_WSDL + ":port/" + NS_SOAP
+					+ ":address/@location");
 			String binding = xmlHelper.eval2string(serviceNode, NS_WSDL + ":port/@binding").split(":")[1];
 			service.type = xmlHelper.eval2string(serviceNode,
 					"/" + NS_WSDL + ":definitions/" + NS_WSDL + ":binding[@name=\"" + binding + "\"]/@type").split(":")[1];
@@ -144,7 +146,12 @@ public class WSDLAnalyzer {
 		} else if (namespace.substring(0, 3).equals("urn")) {
 			return convertUrnNamespaceToPackage(namespace);
 		} else {
-			throw new MalformedURLException("unknown protocol: " + namespace);
+			if (namespace.contains("://")) {
+				throw new MalformedURLException("unknown protocol: " + namespace);
+			} else {
+				logger.warn("Unknown namespace signature, trying to parse as standard one: " + namespace);
+				return convertHttpNamespaceToPackage("http://" + namespace);
+			}
 		}
 	}
 
@@ -171,8 +178,8 @@ public class WSDLAnalyzer {
 		}
 
 		pckg = pckg.replace("-", "_");
-		
-		if(pckg.charAt(0) == '.') {
+
+		if (pckg.charAt(0) == '.') {
 			pckg = pckg.substring(1);
 		}
 
