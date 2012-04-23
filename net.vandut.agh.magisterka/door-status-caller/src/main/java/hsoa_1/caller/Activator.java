@@ -16,7 +16,10 @@ public class Activator implements BundleActivator {
 
 		ServiceReference reference = bundleContext.getServiceReference(ServiceSoap.class.getName());
 		ServiceSoap serviceSoap = (ServiceSoap) bundleContext.getService(reference);
-		ProxyCaller.setServiceSoap(serviceSoap);
+		
+		StatusServlet.setServiceSoap(serviceSoap);
+		OpenServlet.setServiceSoap(serviceSoap);
+		CloseServlet.setServiceSoap(serviceSoap);
 	}
 
 	public void stop(BundleContext context) throws Exception {

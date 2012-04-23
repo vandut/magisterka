@@ -4,12 +4,31 @@
 
 <web-app>
 	<display-name>Archetype Created Web Application</display-name>
+	
     <servlet>
-        <servlet-name>ProxyCaller</servlet-name>
-        <servlet-class>hsoa_1.caller.ProxyCaller</servlet-class>
+        <servlet-name>StatusServlet</servlet-name>
+        <servlet-class>hsoa_1.caller.StatusServlet</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>ProxyCaller</servlet-name>
+        <servlet-name>StatusServlet</servlet-name>
         <url-pattern>/status</url-pattern>
+    </servlet-mapping>
+	
+    <servlet>
+        <servlet-name>OpenServlet</servlet-name>
+        <servlet-class>hsoa_1.caller.OpenServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>OpenServlet</servlet-name>
+        <url-pattern>/open</url-pattern>
+    </servlet-mapping>
+	
+    <servlet>
+        <servlet-name>CloseServlet</servlet-name>
+        <servlet-class>hsoa_1.caller.CloseServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CloseServlet</servlet-name>
+        <url-pattern>/close</url-pattern>
     </servlet-mapping>
 </web-app>
