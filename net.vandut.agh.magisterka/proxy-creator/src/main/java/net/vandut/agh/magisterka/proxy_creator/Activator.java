@@ -10,10 +10,12 @@ public class Activator implements BundleActivator {
 
 	public void start(BundleContext bundleContext) throws Exception {
 		logger.info("ProxyCreator Bundle STARTED");
+		System.out.println("ProxyCreator Bundle STARTED");
 	}
 
 	public void stop(BundleContext context) throws Exception {
 		logger.info("ProxyCreator Bundle STOPPED");
+		System.out.println("ProxyCreator Bundle STOPPED");
 	}
 
 }

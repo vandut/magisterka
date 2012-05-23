@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import net.vandut.agh.magisterka.proxy_creator.ConnectionUtils;
 import net.vandut.agh.magisterka.proxy_creator.ProxyCreator;
 
 import org.apache.commons.io.FileUtils;
@@ -68,6 +69,8 @@ public class ProxyCreatorServlet extends HttpServlet {
 		
 		PrintWriter out = response.getWriter();
 		out.println("Deployed generated bundle: "+bundleFile.getName());
+		out.println("Use this IP address: "+ConnectionUtils.getRegisteredIPAddress());
+		out.println("Use this port for ECF connection: "+ConnectionUtils.getGeneratedECFPort());
 	}
 
 	private File getFileFromInternet(String urlString, File tempDir) throws IOException {

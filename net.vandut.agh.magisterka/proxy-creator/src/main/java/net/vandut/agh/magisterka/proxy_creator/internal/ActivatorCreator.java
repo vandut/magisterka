@@ -2,6 +2,7 @@ package net.vandut.agh.magisterka.proxy_creator.internal;
 
 import java.io.IOException;
 
+import net.vandut.agh.magisterka.proxy_creator.ConnectionUtils;
 import net.vandut.agh.magisterka.proxy_creator.WSDLAnalyzer;
 import net.vandut.agh.magisterka.proxy_creator.WSDLAnalyzer.Service;
 
@@ -17,9 +18,13 @@ public class ActivatorCreator {
 
 		// TODO: accept multiple services
 		Service service = analyzer.getServiceList().get(0);
+		
+		ConnectionUtils.generateECFPort();
 
 		activatorContents = activatorContents.replaceAll("%PACKAGE%", analyzer.getTargetPackage());
 		activatorContents = activatorContents.replaceAll("%INTERFACE%", service.type);
+		activatorContents = activatorContents.replaceAll("%IP_ADDRESS%", ConnectionUtils.getRegisteredIPAddress());
+		activatorContents = activatorContents.replaceAll("%ECF_PORT%", String.valueOf(ConnectionUtils.getGeneratedECFPort()));
 
 		String outputPath = sourceLocation + "/" + analyzer.getTargetPackage().replace('.', '/') + "/internal";
 		String outputFile = outputPath + "/Activator.java";

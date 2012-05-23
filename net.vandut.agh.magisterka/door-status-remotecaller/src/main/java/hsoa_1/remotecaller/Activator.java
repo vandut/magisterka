@@ -22,6 +22,8 @@ public class Activator implements BundleActivator, ServiceTrackerCustomizer {
 	private static final Logger logger = Logger.getLogger(Activator.class);
 
 	private static final String DEFAULT_CONTAINER_TYPE = "ecf.generic.client";
+	
+	private String zoodiscoveryServerIp = "localhost";
 
 	private BundleContext context;
 
@@ -33,6 +35,8 @@ public class Activator implements BundleActivator, ServiceTrackerCustomizer {
 
 	public void start(BundleContext bundleContext) throws Exception {
 		context = bundleContext;
+		zoodiscoveryServerIp = System.getProperty("net.vandut.ecf.zooip", "localhost");
+		System.out.println("zoodiscoveryServerIp="+zoodiscoveryServerIp);
 		register();
 	}
 
@@ -43,7 +47,7 @@ public class Activator implements BundleActivator, ServiceTrackerCustomizer {
 		// ////////////////////////////////////////////////////////////////// //
 		z0 = containerFactory.createContainer("ecf.discovery.zoodiscovery");
 		ID target = z0.getConnectNamespace().createInstance(
-				new String[] { "zoodiscovery.flavor.centralized=192.168.1.7" });
+				new String[] { "zoodiscovery.flavor.centralized="+zoodiscoveryServerIp });
 		z0.connect(target, null);
 		// ////////////////////////////////////////////////////////////////// //
 
