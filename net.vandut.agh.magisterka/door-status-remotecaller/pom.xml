@@ -72,7 +72,7 @@
 				<instructions>
 					<Bundle-SymbolicName>${project.groupId}.${project.artifactId}</Bundle-SymbolicName>
 					
-					<Bundle-Activator>hsoa_1.remotecaller.Activator</Bundle-Activator>
+					<Bundle-Activator>hsoa_2.remotecaller.Activator</Bundle-Activator>
 					
 					<Import-Package>
 						org.eclipse.ecf.core;version="3.0.0",
@@ -86,10 +86,10 @@
 					</Import-Package>
 					<Private-Package>
 						javax.xml.ws,
-						hsoa_1.remotecaller
+						hsoa_2.remotecaller
 					</Private-Package>
                     <Export-Package>
-                        hsoa_1
+                        hsoa_2
                     </Export-Package>
 					<Require-Bundle>org.eclipse.equinox.common</Require-Bundle>
 				</instructions>

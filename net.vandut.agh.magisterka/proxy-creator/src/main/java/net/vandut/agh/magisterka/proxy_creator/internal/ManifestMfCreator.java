@@ -3,6 +3,7 @@ package net.vandut.agh.magisterka.proxy_creator.internal;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Calendar;
+import java.util.UUID;
 
 import net.vandut.agh.magisterka.proxy_creator.WSDLAnalyzer;
 
@@ -33,7 +34,7 @@ public class ManifestMfCreator {
 		String javaVersion = System.getProperty("java.version");
 		String lastModified = Long.toString(Calendar.getInstance().getTimeInMillis());
 
-		String symbolicName = analyzer.getServiceList().get(0).name + "-Proxy";
+		String symbolicName = analyzer.getServiceList().get(0).name + "-Proxy-" + namespace;
 		// symbolicName += "-" + UUID.randomUUID();
 
 		String document;
@@ -47,6 +48,10 @@ public class ManifestMfCreator {
 
 		logger.info("Created MANIFEST.MF configuration file");
 		FileUtils.writeFile(outputPath, document);
+	}
+	
+	public static String getUniqueId() {
+		return UUID.randomUUID().toString();
 	}
 
 }

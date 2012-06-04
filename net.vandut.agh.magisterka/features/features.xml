@@ -61,18 +61,13 @@
 		<bundle>mvn:org.eclipse.ecf/org.eclipse.ecf.provider.zookeeper/1.0.100.v20101029-1626</bundle>
 	</feature>
 	
-	<feature name='ecf.hello.host' version='1.0'>
-		<bundle>mvn:org.eclipse.ecf.examples.remoteservices/hello/3.0.100.qualifier</bundle>
-		<bundle>mvn:org.eclipse.ecf.examples.remoteservices/hello.host/3.0.0.qualifier</bundle>
-	</feature>
-	<feature name='ecf.hello.consumer' version='1.0'>
-		<bundle>mvn:org.eclipse.ecf.examples.remoteservices/hello/3.0.100.qualifier</bundle>
-		<bundle>mvn:org.eclipse.ecf.examples.remoteservices/hello.consumer/3.0.0.qualifier</bundle>
-	</feature>
-	
 	<feature name='magisterka-creator' version='1.0'>
 		<bundle>mvn:net.vandut.agh.magisterka/proxy-creator/1.0</bundle>
 		<bundle>mvn:net.vandut.agh.magisterka/servlet-proxy-creator/1.0/war</bundle>
+		<bundle>mvn:net.vandut.agh.magisterka/bundles-loader/1.0</bundle>
+	</feature>
+	<feature name='magisterka-logic' version='1.0'>
+		<bundle>mvn:net.vandut.agh.magisterka/logic/1.0</bundle>
 	</feature>
 	<feature name='magisterka-test' version='1.0'>
 		<bundle>mvn:net.vandut.agh.magisterka/servlet-caller/1.0/war</bundle>

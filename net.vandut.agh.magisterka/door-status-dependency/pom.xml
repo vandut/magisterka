@@ -34,7 +34,6 @@
     <groupId>net.vandut.agh.magisterka</groupId>
     <artifactId>door-status-dependency</artifactId>
 	<version>1.0</version>
-    <name>net.vandut.agh.magisterka :: door-status-dependency</name>
 
     <dependencies>
     </dependencies>

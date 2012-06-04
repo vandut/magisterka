@@ -97,16 +97,16 @@
 						<Embed-Transitive>true</Embed-Transitive>
                         <Import-Package>
 							META-INF.cxf,
-							hsoa_1,
+							hsoa_2,
 							*
 						</Import-Package>
                         <Require-Bundle>
 							org.apache.cxf.bundle
 						</Require-Bundle>
                         <Private-Package>
-                            hsoa_1.caller
+                            hsoa_2.caller
                         </Private-Package>
-                        <Bundle-Activator>hsoa_1.caller.Activator</Bundle-Activator>
+                        <Bundle-Activator>hsoa_2.caller.Activator</Bundle-Activator>
                     </instructions>
                 </configuration>
             </plugin>

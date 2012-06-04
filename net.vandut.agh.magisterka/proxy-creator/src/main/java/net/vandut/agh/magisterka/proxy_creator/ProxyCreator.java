@@ -54,6 +54,7 @@ public class ProxyCreator implements IDistributionConstants {
 
 		FileUtils.createDirIfNotExists(sourceLocation + "/javax/xml/ws");
 		FileUtils.copyFromClasspath("/java_files/Holder.java", sourceLocation + "/javax/xml/ws");
+		FileUtils.copyFromClasspath("/java_files/WebServiceException.java", sourceLocation + "/javax/xml/ws");
 		ActivatorCreator.createActivator(analyzer, "/java_files/Activator.java", sourceLocation);
 
 		CompilerWrapper compiler = new CompilerWrapper();

@@ -1,65 +1,41 @@
 package org.apache.servicemix.samples.wsdl_first.internal;
 
-import java.util.Properties;
+import java.net.UnknownHostException;
 
 import org.apache.log4j.Logger;
 import org.apache.servicemix.samples.wsdl_first.Person;
 import org.eclipse.ecf.osgi.services.distribution.IDistributionConstants;
 import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
-import org.osgi.framework.ServiceRegistration;
 
 public class Activator implements BundleActivator, IDistributionConstants {
 
 	private static final Logger logger = Logger.getLogger(Activator.class);
 
-	private static final String DEFAULT_CONTAINER_TYPE = "ecf.generic.server";
-	private static final String DEFAULT_CONTAINER_ID = "ecftcp://192.168.1.7:3787/server";
-
 	private static Person proxy;
 	private static Activator _INSTANCE;
-
-	private BundleContext context;
-	private ServiceRegistration serviceRegistration;
+	
+	private EcfServer ecfServer;
 
 	@Override
-	public void start(BundleContext bundleContext) throws Exception {
+	public void start(BundleContext context) throws Exception {
 		_INSTANCE = this;
-		context = bundleContext;
+		ecfServer = new EcfServer(context);
 	}
 
-	public static Object setProxy(Person proxy) {
+	public static Object setProxy(Person proxy) throws UnknownHostException {
 		Activator.proxy = proxy;
 		logger.info("Activator.setProxy(): proxy=" + Activator.proxy);
 		if (_INSTANCE == null) {
 			throw new IllegalStateException("Excpected Activator instance to be not null");
 		}
-		_INSTANCE.registerRemoteService();
+		_INSTANCE.ecfServer.registerService(Person.class, proxy);
 		return proxy;
 	}
 
-	private void registerRemoteService() {
-		Properties props = new Properties();
-		props.put(IDistributionConstants.SERVICE_EXPORTED_INTERFACES,
-				IDistributionConstants.SERVICE_EXPORTED_INTERFACES_WILDCARD);
-		props.put(IDistributionConstants.SERVICE_EXPORTED_CONFIGS, DEFAULT_CONTAINER_TYPE);
-		props.put(IDistributionConstants.SERVICE_EXPORTED_CONTAINER_FACTORY_ARGUMENTS, DEFAULT_CONTAINER_ID);
-		serviceRegistration = context.registerService(Person.class.getName(), proxy, props);
-		logger.info("Host: Proxy Remote Service Registered");
-	}
-
-	private void unregisterRemoteService() {
-		if (serviceRegistration != null) {
-			serviceRegistration.unregister();
-			serviceRegistration = null;
-			logger.info("Host: Proxy Remote Service Unregistered");
-		}
-	}
-
 	@Override
-	public void stop(BundleContext bundleContext) throws Exception {
-		unregisterRemoteService();
-		context = null;
+	public void stop(BundleContext context) throws Exception {
+		ecfServer.unregisterAll();
 	}
 
 }

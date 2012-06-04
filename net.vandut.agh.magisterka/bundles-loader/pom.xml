@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project
+	xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+		http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+		<groupId>net.vandut.agh.magisterka</groupId>
+		<artifactId>package-group</artifactId>
+		<version>1.0</version>
+    </parent>
+
+    <groupId>net.vandut.agh.magisterka</groupId>
+    <artifactId>bundles-loader</artifactId>
+	<version>1.0</version>
+	<packaging>bundle</packaging>
+
+	<dependencies>
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>2.1</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.felix</groupId>
+			<artifactId>org.osgi.core</artifactId>
+			<version>1.4.0</version>
+			<scope>provided</scope>
+		</dependency>
+	</dependencies>
+
+    <build>
+	<plugins>
+		<plugin>
+			<groupId>org.apache.felix</groupId>
+			<artifactId>maven-bundle-plugin</artifactId>
+			<version>1.4.0</version>
+			<extensions>true</extensions>
+			<configuration>
+				<instructions>
+					<Bundle-SymbolicName>${project.groupId}.${project.artifactId}</Bundle-SymbolicName>
+					<Bundle-Activator>net.vandut.agh.magisterka.bundlesloader.Activator</Bundle-Activator>
+					<Import-Package>*</Import-Package>
+					<Private-Package>net.vandut.agh.magisterka.bundlesloader</Private-Package>
+					<Require-Bundle>proxy-creator</Require-Bundle>
+					<Embed-Directory>lib</Embed-Directory>
+					<Embed-Dependency>*;scope=compile|runtime|!provided</Embed-Dependency>
+					<Embed-Transitive>true</Embed-Transitive>
+				</instructions>
+			</configuration>
+		</plugin>
+	</plugins>
+    </build>
+    
+</project>

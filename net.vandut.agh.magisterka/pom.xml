@@ -29,6 +29,11 @@
 	<module>door-status-dependency</module>
 	<module>door-status-caller</module>
 	<module>door-status-remotecaller</module>
+	<module>bundles-loader</module>
+	<module>temperature-sensor-dependency</module>
+	<module>temperature-sensor-remotecaller</module>
+	<module>logic</module>
+	<module>missing-packages</module>
   </modules>
 
   <repositories>
