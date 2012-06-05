@@ -100,7 +100,8 @@
 						*
 					</Import-Package>
 					<Private-Package>
-						net.vandut.agh.magisterka.logicclient
+						net.vandut.agh.magisterka.logicclient,
+						net.vandut.agh.magisterka.logicclient.handlers
 					</Private-Package>
                     <Export-Package>
                         hsoa_1,

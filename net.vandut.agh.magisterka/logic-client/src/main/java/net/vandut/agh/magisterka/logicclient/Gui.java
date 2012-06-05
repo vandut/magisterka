@@ -1,19 +1,16 @@
 package net.vandut.agh.magisterka.logicclient;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.UIManager;
 
 import net.miginfocom.swing.MigLayout;
 import net.vandut.agh.magisterka.logic.service.LogicService;
+import net.vandut.agh.magisterka.logicclient.handlers.DoorServiceHandler;
+import net.vandut.agh.magisterka.logicclient.handlers.LogicServiceHandler;
+import net.vandut.agh.magisterka.logicclient.handlers.SensorsServiceHandler;
 
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.InvalidSyntaxException;
@@ -41,9 +38,9 @@ public class Gui extends JFrame {
 	private JButton actionBtnLogicStart;
 	private JButton actionBtnLogicStop;
 
-	ServiceHandler<hsoa_2.ServiceSoap> serviceHandlerDoor;
-	ServiceHandler<hsoa_1.ServiceSoap> serviceHandlerSensors;
-	ServiceHandler<LogicService> serviceHandlerLogic;
+	DoorServiceHandler serviceHandlerDoor;
+	SensorsServiceHandler serviceHandlerSensors;
+	LogicServiceHandler serviceHandlerLogic;
 
 	private Gui(BundleContext context, EcfClient ecfClient) throws Exception {
 		super(FRAME_TITLE);
@@ -56,40 +53,6 @@ public class Gui extends JFrame {
 		createServiceHandlers();
 
 		setVisible(true);
-		
-		actionBtnDoorOpen.addMouseListener(new MouseListener() {
-			public void mouseReleased(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
-			
-			public void mousePressed(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
-			
-			public void mouseExited(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
-			
-			public void mouseEntered(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
-			
-			public void mouseClicked(MouseEvent e) {
-				System.out.println("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
-				JOptionPane.showMessageDialog(Gui.this, "info", "info", JOptionPane.ERROR_MESSAGE);
-			}
-		});
-		
-		actionBtnDoorStatus.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				System.out.println("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
-				JOptionPane.showMessageDialog(Gui.this, "info", "info", JOptionPane.ERROR_MESSAGE);
-			}
-		});
 	}
 
 	private void setNativeLookAndFeel() {
@@ -147,12 +110,12 @@ public class Gui extends JFrame {
 	}
 
 	private void createServiceHandlers() throws InvalidSyntaxException {
-		serviceHandlerDoor = new ServiceHandler<hsoa_2.ServiceSoap>("Door Service", hsoa_2.ServiceSoap.class,
+		serviceHandlerDoor = new DoorServiceHandler("Door Service", hsoa_2.ServiceSoap.class,
 				statusLabelDoorService, actionBtnDoorStatus, actionBtnDoorOpen, actionBtnDoorClose);
-		serviceHandlerSensors = new ServiceHandler<hsoa_1.ServiceSoap>("Sensors Service", hsoa_1.ServiceSoap.class,
+		serviceHandlerSensors = new SensorsServiceHandler("Sensors Service", hsoa_1.ServiceSoap.class,
 				statusLabelSensorsService, actionBtnSensorsTemperature, actionBtnSensorsHumidity,
 				actionBtnSensorsPressure);
-		serviceHandlerLogic = new ServiceHandler<LogicService>("Logic Service", LogicService.class,
+		serviceHandlerLogic = new LogicServiceHandler("Logic Service", LogicService.class,
 				statusLabelLogicService, actionBtnLogicStart, actionBtnLogicStop);
 
 		serviceHandlerDoor.register(ecfClient);
