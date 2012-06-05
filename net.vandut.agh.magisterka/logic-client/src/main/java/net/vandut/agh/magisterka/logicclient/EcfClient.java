@@ -1,4 +1,4 @@
-package hsoa_1.remotecaller;
+package net.vandut.agh.magisterka.logicclient;
 
 import java.util.HashMap;
 import java.util.Map;

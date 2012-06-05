@@ -14,24 +14,16 @@
     </parent>
 
     <groupId>net.vandut.agh.magisterka</groupId>
-    <artifactId>logic</artifactId>
+    <artifactId>logic-client</artifactId>
 	<version>1.0</version>
 	<packaging>bundle</packaging>
 
 	<dependencies>
-		<dependency>
-			<groupId>net.vandut.agh.magisterka</groupId>
-			<artifactId>door-status-dependency</artifactId>
-			<version>1.0</version>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>net.vandut.agh.magisterka</groupId>
-			<artifactId>temperature-sensor-dependency</artifactId>
-			<version>1.0</version>
-			<scope>provided</scope>
-		</dependency>
-		
+        <dependency>
+            <groupId>com.miglayout</groupId>
+            <artifactId>miglayout-swing</artifactId>
+			<version>4.2</version>
+        </dependency>
 		<dependency>
 			<groupId>log4j</groupId>
 			<artifactId>log4j</artifactId>
@@ -85,9 +77,19 @@
 				<instructions>
 					<Bundle-SymbolicName>${project.groupId}.${project.artifactId}</Bundle-SymbolicName>
 					
-					<Bundle-Activator>net.vandut.agh.magisterka.logic.Activator</Bundle-Activator>
+					<Bundle-Activator>net.vandut.agh.magisterka.logicclient.Activator</Bundle-Activator>
 					
 					<Import-Package>
+						!com.ibm.uvm.tools,
+						!com.sun.jdmk.comm,
+						!javax.jmdns,
+						!javax.jms,
+						!javax.jws,
+						!javax.mail,
+						!javax.mail.internet,
+						!javax.management,
+						!javax.naming,
+						
 						org.eclipse.ecf.core;version="3.0.0",
 						org.osgi.framework,
 						org.osgi.util.tracker;version="1.4.0",
@@ -96,14 +98,20 @@
 						javax.xml.namespace,
 						org.apache.log4j,
 						*
-					</Import-Package>net.vandut.agh.magisterka.logic.service
+					</Import-Package>
 					<Private-Package>
-						net.vandut.agh.magisterka.logic
+						net.vandut.agh.magisterka.logicclient
 					</Private-Package>
                     <Export-Package>
+                        hsoa_1,
+                        hsoa_2,
                         net.vandut.agh.magisterka.logic.service
                     </Export-Package>
 					<Require-Bundle>org.eclipse.equinox.common</Require-Bundle>
+					
+					<Embed-Directory>lib</Embed-Directory>
+					<Embed-Dependency>*;scope=compile|runtime|!provided</Embed-Dependency>
+					<Embed-Transitive>true</Embed-Transitive>
 				</instructions>
 			</configuration>
 		</plugin>

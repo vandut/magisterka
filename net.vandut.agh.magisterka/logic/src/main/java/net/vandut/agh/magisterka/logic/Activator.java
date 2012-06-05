@@ -3,6 +3,8 @@ package net.vandut.agh.magisterka.logic;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import net.vandut.agh.magisterka.logic.service.LogicService;
+
 import org.apache.log4j.Logger;
 import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;

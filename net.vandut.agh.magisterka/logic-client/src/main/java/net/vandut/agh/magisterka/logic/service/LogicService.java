@@ -1,4 +1,4 @@
-package net.vandut.agh.magisterka.logic;
+package net.vandut.agh.magisterka.logic.service;
 
 public interface LogicService {
 
