@@ -41,7 +41,7 @@ public class EcfClient {
 
 		zooContainer = containerFactory.createContainer("ecf.discovery.zoodiscovery");
 
-		if (zooContainer.getConnectedID() == null) {
+		if (!isRegistered()) {
 			ID target = zooContainer.getConnectNamespace().createInstance(
 					new String[] { "zoodiscovery.flavor.centralized=" + zoodiscoveryServerIp });
 			zooContainer.connect(target, null);
@@ -57,6 +57,11 @@ public class EcfClient {
 			entry.getValue().close();
 		}
 		serviceTrackerMap.clear();
+		zooContainer.disconnect();
+	}
+	
+	public boolean isRegistered() {
+		return zooContainer != null && zooContainer.getConnectedID() != null;
 	}
 
 	public <T> void addServiceTracker(Class<T> clazz, ServiceTrackerCustomizer serviceTracker)

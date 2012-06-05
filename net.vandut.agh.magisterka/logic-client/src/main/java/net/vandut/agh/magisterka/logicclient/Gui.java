@@ -1,9 +1,14 @@
 package net.vandut.agh.magisterka.logicclient;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 import javax.swing.UIManager;
 
 import net.miginfocom.swing.MigLayout;
@@ -22,6 +27,9 @@ public class Gui extends JFrame {
 	private static Gui _INSTANCE = null;
 
 	private final EcfClient ecfClient;
+
+	private JTextField textFieldIpAddress;
+	private JButton btnConnection;
 
 	private JLabel statusLabelDoorService;
 	private JLabel statusLabelSensorsService;
@@ -42,15 +50,37 @@ public class Gui extends JFrame {
 	SensorsServiceHandler serviceHandlerSensors;
 	LogicServiceHandler serviceHandlerLogic;
 
-	private Gui(BundleContext context, EcfClient ecfClient) throws Exception {
+	private final ActionListener actionListenerBtnConnection = new ActionListener() {
+		public void actionPerformed(ActionEvent action) {
+			if (ecfClient.isRegistered()) {
+				ecfClient.unregister();
+				btnConnection.setText("Connect");
+			} else {
+				try {
+					String zoodiscoveryServerIp = textFieldIpAddress.getText().trim();
+					if(zoodiscoveryServerIp.isEmpty()) {
+						throw new IllegalArgumentException("Empty address");
+					}
+					ecfClient.register(zoodiscoveryServerIp);
+					btnConnection.setText("Disconnect");
+				} catch (Exception e) {
+					JOptionPane.showMessageDialog(null,
+							"Connection failed, details: " + e.getMessage(),
+							"Error", JOptionPane.ERROR_MESSAGE);
+				}
+			}
+		}
+	};
+
+	private Gui(BundleContext context) throws Exception {
 		super(FRAME_TITLE);
 		_INSTANCE = this;
-		this.ecfClient = ecfClient;
+		this.ecfClient = new EcfClient(context);
 
 		setNativeLookAndFeel();
 		createControls();
 		createGUI();
-		createServiceHandlers();
+		 createServiceHandlers();
 
 		setVisible(true);
 	}
@@ -64,20 +94,25 @@ public class Gui extends JFrame {
 	}
 
 	private void createControls() {
-		statusLabelDoorService = new JLabel("pending");
-		statusLabelSensorsService = new JLabel("pending");
-		statusLabelLogicService = new JLabel("pending");
+		textFieldIpAddress = new JTextField("127.0.0.1");
+		btnConnection = new JButton("Connect");
 
-		actionBtnDoorStatus = new JButton("status");
-		actionBtnDoorOpen = new JButton("open");
-		actionBtnDoorClose = new JButton("close");
+		statusLabelDoorService = new JLabel("Pending...");
+		statusLabelSensorsService = new JLabel("Pending...");
+		statusLabelLogicService = new JLabel("Pending...");
 
-		actionBtnSensorsTemperature = new JButton("temperature");
-		actionBtnSensorsHumidity = new JButton("humidity");
-		actionBtnSensorsPressure = new JButton("pressure");
+		actionBtnDoorStatus = new JButton("Status");
+		actionBtnDoorOpen = new JButton("Open");
+		actionBtnDoorClose = new JButton("Close");
 
-		actionBtnLogicStart = new JButton("start");
-		actionBtnLogicStop = new JButton("stop");
+		actionBtnSensorsTemperature = new JButton("Temperature");
+		actionBtnSensorsHumidity = new JButton("Humidity");
+		actionBtnSensorsPressure = new JButton("Pressure");
+
+		actionBtnLogicStart = new JButton("Start");
+		actionBtnLogicStop = new JButton("Stop");
+
+		btnConnection.addActionListener(actionListenerBtnConnection);
 	}
 
 	private void createGUI() {
@@ -86,6 +121,10 @@ public class Gui extends JFrame {
 		JPanel panel = new JPanel();
 		getContentPane().add(panel);
 		panel.setLayout(new MigLayout("fill"));
+
+		GuiUtils.addSeparator(panel, "ZooKeeper server");
+		panel.add(textFieldIpAddress, "split 2, growx");
+		panel.add(btnConnection, "wrap");
 
 		GuiUtils.addSeparator(panel, "Status");
 		panel.add(statusLabelDoorService, "growx, wrap");
@@ -110,13 +149,16 @@ public class Gui extends JFrame {
 	}
 
 	private void createServiceHandlers() throws InvalidSyntaxException {
-		serviceHandlerDoor = new DoorServiceHandler("Door Service", hsoa_2.ServiceSoap.class,
-				statusLabelDoorService, actionBtnDoorStatus, actionBtnDoorOpen, actionBtnDoorClose);
-		serviceHandlerSensors = new SensorsServiceHandler("Sensors Service", hsoa_1.ServiceSoap.class,
-				statusLabelSensorsService, actionBtnSensorsTemperature, actionBtnSensorsHumidity,
+		serviceHandlerDoor = new DoorServiceHandler("Door Service",
+				hsoa_2.ServiceSoap.class, statusLabelDoorService,
+				actionBtnDoorStatus, actionBtnDoorOpen, actionBtnDoorClose);
+		serviceHandlerSensors = new SensorsServiceHandler("Sensors Service",
+				hsoa_1.ServiceSoap.class, statusLabelSensorsService,
+				actionBtnSensorsTemperature, actionBtnSensorsHumidity,
 				actionBtnSensorsPressure);
-		serviceHandlerLogic = new LogicServiceHandler("Logic Service", LogicService.class,
-				statusLabelLogicService, actionBtnLogicStart, actionBtnLogicStop);
+		serviceHandlerLogic = new LogicServiceHandler("Logic Service",
+				LogicService.class, statusLabelLogicService,
+				actionBtnLogicStart, actionBtnLogicStop);
 
 		serviceHandlerDoor.register(ecfClient);
 		serviceHandlerSensors.register(ecfClient);
@@ -132,11 +174,11 @@ public class Gui extends JFrame {
 		return _INSTANCE;
 	}
 
-	public static void start(final BundleContext context, final EcfClient ecfClient) {
+	public static void start(final BundleContext context) {
 		javax.swing.SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					new Gui(context, ecfClient);
+					new Gui(context);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -145,7 +187,7 @@ public class Gui extends JFrame {
 	}
 
 	public static void main(String[] args) {
-		start(null, null);
+		start(null);
 	}
 
 }
