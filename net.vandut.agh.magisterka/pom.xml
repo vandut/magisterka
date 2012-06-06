@@ -35,6 +35,7 @@
 	<module>logic</module>
 	<module>logic-client</module>
 	<module>missing-packages</module>
+	<module>sensors-java-client</module>
   </modules>
 
   <repositories>
