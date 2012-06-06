@@ -27,7 +27,7 @@ import org.apache.servicemix.util.FileUtil;
 public class Client {
 	public static void main(String[] args) {
 		try {
-			new Client().sendRequest("http://149.156.97.216/SensorsService");
+			new Client().sendRequest("http://149.156.97.217:80/SensorsService");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

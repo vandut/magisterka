@@ -56,8 +56,8 @@ public class Activator implements BundleActivator, LogicService {
 	public class LogicTask extends TimerTask {
 		@Override
 		public void run() {
-			hsoa_2.ServiceSoap doorService = getService(hsoa_2.ServiceSoap.class);
 			hsoa_1.ServiceSoap temperatureService = getService(hsoa_1.ServiceSoap.class);
+			hsoa_2.ServiceSoap doorService = getService(hsoa_2.ServiceSoap.class);
 
 			logger.info("Checking temperature");
 			float temperature = parseTemperature(temperatureService.getTemperature());
@@ -74,8 +74,9 @@ public class Activator implements BundleActivator, LogicService {
 		}
 
 		private float parseTemperature(String temp) {
+			temp = temp.trim();
 			logger.info("Parsin temperature: " + temp);
-			return Float.parseFloat(temp.split(" ")[0]);
+			return Float.parseFloat(temp.split("\\ ")[0]);
 		}
 	}
 
