@@ -21,12 +21,21 @@ public class LogicServiceHandler extends ServiceHandler<LogicService> {
 			new ServiceActionThread() {
 				@Override
 				public void performAction() {
+					boolean result = service.statusLogic();
+					displayInfoMessage("Logic status: " + result);
+				}
+			}.start();
+			break;
+		case 1:
+			new ServiceActionThread() {
+				@Override
+				public void performAction() {
 					service.startLogic();
 					displayInfoMessage("Logic service started");
 				}
 			}.start();
 			break;
-		case 1:
+		case 2:
 			new ServiceActionThread() {
 				@Override
 				public void performAction() {

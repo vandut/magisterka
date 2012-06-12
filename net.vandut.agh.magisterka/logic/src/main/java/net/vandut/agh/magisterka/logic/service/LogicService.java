@@ -6,4 +6,6 @@ public interface LogicService {
 
 	public void stopLogic();
 
+	public boolean statusLogic();
+
 }

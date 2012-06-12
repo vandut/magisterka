@@ -43,6 +43,7 @@ public class Gui extends JFrame {
 	private JButton actionBtnSensorsHumidity;
 	private JButton actionBtnSensorsPressure;
 
+	private JButton actionBtnLogicStatus;
 	private JButton actionBtnLogicStart;
 	private JButton actionBtnLogicStop;
 
@@ -109,6 +110,7 @@ public class Gui extends JFrame {
 		actionBtnSensorsHumidity = new JButton("Humidity");
 		actionBtnSensorsPressure = new JButton("Pressure");
 
+		actionBtnLogicStatus = new JButton("Status");
 		actionBtnLogicStart = new JButton("Start");
 		actionBtnLogicStop = new JButton("Stop");
 
@@ -140,7 +142,8 @@ public class Gui extends JFrame {
 		panel.add(actionBtnSensorsHumidity, "");
 		panel.add(actionBtnSensorsPressure, "wrap");
 		GuiUtils.addSeparator(panel, "Logic Service");
-		panel.add(actionBtnLogicStart, "split 2");
+		panel.add(actionBtnLogicStatus, "split 3");
+		panel.add(actionBtnLogicStart, "");
 		panel.add(actionBtnLogicStop, "wrap");
 
 		pack();
@@ -158,7 +161,7 @@ public class Gui extends JFrame {
 				actionBtnSensorsPressure);
 		serviceHandlerLogic = new LogicServiceHandler("Logic Service",
 				LogicService.class, statusLabelLogicService,
-				actionBtnLogicStart, actionBtnLogicStop);
+				actionBtnLogicStatus, actionBtnLogicStart, actionBtnLogicStop);
 
 		serviceHandlerDoor.register(ecfClient);
 		serviceHandlerSensors.register(ecfClient);
