@@ -32,11 +32,11 @@
 		<!--<bundle>http://download.eclipse.org/equinox/drops/S-3.7M3-201010281441/org.eclipse.equinox.supplement_1.4.0.v20101022.jar</bundle>-->
 		<bundle>http://download.eclipse.org/equinox/drops/R-3.7-201106131736/org.eclipse.equinox.supplement_1.4.0.v20110502.jar</bundle>
 		<!-- Equinox Supplements -->
-		<bundle>http://download.eclipse.org/equinox/drops/R-3.6.1-201009090800/org.eclipse.equinox.common_3.6.0.v20100503.jar</bundle>
-		<bundle>http://download.eclipse.org/equinox/drops/R-3.6.1-201009090800/org.eclipse.equinox.registry_3.5.0.v20100503.jar</bundle>
-		<bundle>http://download.eclipse.org/equinox/drops/R-3.6.1-201009090800/org.eclipse.equinox.event_1.2.0.v20100503.jar</bundle>
-		<bundle>http://download.eclipse.org/equinox/drops/R-3.6.1-201009090800/org.eclipse.core.jobs_3.5.1.R36x_v20100824.jar</bundle>
-		<bundle>http://download.eclipse.org/equinox/drops/R-3.6.1-201009090800/org.eclipse.equinox.concurrent_1.0.100.v20100503.jar</bundle>
+		<bundle>http://mirror-fpt-telecom.fpt.net/eclipse/equinox/drops/R-3.6.1-201009090800/org.eclipse.equinox.common_3.6.0.v20100503.jar</bundle>
+		<bundle>http://mirror-fpt-telecom.fpt.net/eclipse/equinox/drops/R-3.6.1-201009090800/org.eclipse.equinox.registry_3.5.0.v20100503.jar</bundle>
+		<bundle>http://mirror-fpt-telecom.fpt.net/eclipse/equinox/drops/R-3.6.1-201009090800/org.eclipse.equinox.event_1.2.0.v20100503.jar</bundle>
+		<bundle>http://mirror-fpt-telecom.fpt.net/eclipse/equinox/drops/R-3.6.1-201009090800/org.eclipse.core.jobs_3.5.1.R36x_v20100824.jar</bundle>
+		<bundle>http://mirror-fpt-telecom.fpt.net/eclipse/equinox/drops/R-3.6.1-201009090800/org.eclipse.equinox.concurrent_1.0.100.v20100503.jar</bundle>
 		<!--Eclipse ECF base -->
 		<bundle>mvn:org.eclipse.ecf/org.eclipse.ecf/3.1.200.v20101029-1626</bundle>
 		<bundle>mvn:org.eclipse.ecf/org.eclipse.ecf.identity/3.1.100.v20101029-1626</bundle>
