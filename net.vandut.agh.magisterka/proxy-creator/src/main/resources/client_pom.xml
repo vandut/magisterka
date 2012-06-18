@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project
+	xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+		http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>group_id_to_change_ecf_client</groupId>
+    <artifactId>artifact_id_to_change_ecf_client</artifactId>
+	<version>1.0</version>
+	<packaging>bundle</packaging>
+
+	<dependencies>
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>1.2.16</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.felix</groupId>
+			<artifactId>org.osgi.core</artifactId>
+			<version>1.4.0</version>
+			<scope>provided</scope>
+		</dependency>
+	    <dependency>
+		    <groupId>org.eclipse.equinox</groupId>
+		    <artifactId>org.eclipse.equinox.common</artifactId>
+		    <version>3.6.0.v20100503</version>
+			<scope>provided</scope>
+    	</dependency>
+		<dependency>
+			<groupId>org.eclipse.ecf</groupId>
+			<artifactId>org.eclipse.ecf</artifactId>
+			<version>3.1.200.v20101029-1626</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.eclipse.ecf</groupId>
+			<artifactId>org.eclipse.ecf.identity</artifactId>
+			<version>3.1.100.v20101029-1626</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.eclipse.ecf</groupId>
+			<artifactId>org.eclipse.ecf.osgi.services.distribution</artifactId>
+			<version>2.0.100.v20120319-0616</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.eclipse.ecf</groupId>
+			<artifactId>org.eclipse.ecf.discovery</artifactId>
+			<version>4.0.0.v20101029-1626</version>
+			<scope>provided</scope>
+		</dependency>
+	</dependencies>
+
+    <build>
+	<plugins>
+        <plugin>
+            <artifactId>maven-compiler-plugin</artifactId>
+            <configuration>
+                <source>1.5</source>
+                <target>1.5</target>
+            </configuration>
+        </plugin>
+		<plugin>
+			<groupId>org.apache.felix</groupId>
+			<artifactId>maven-bundle-plugin</artifactId>
+			<version>1.4.0</version>
+			<extensions>true</extensions>
+			<configuration>
+				<instructions>
+					<Bundle-SymbolicName>${project.groupId}.${project.artifactId}</Bundle-SymbolicName>
+					
+					<Bundle-Activator>%PACKAGE%.internal.ClientActivator</Bundle-Activator>
+					
+					<Import-Package>
+						org.eclipse.ecf.core;version="3.0.0",
+						org.osgi.framework,
+						org.osgi.util.tracker;version="1.4.0",
+						javax.jws,
+						javax.xml.bind.annotation,
+						javax.xml.namespace,
+						org.apache.log4j,
+						*
+					</Import-Package>
+					<Private-Package>
+						javax.xml.ws,
+						%PACKAGE%.internal
+					</Private-Package>
+                    <Export-Package>
+                        %PACKAGE%
+                    </Export-Package>
+					<Require-Bundle>org.eclipse.equinox.common</Require-Bundle>
+				</instructions>
+			</configuration>
+		</plugin>
+	</plugins>
+    </build>
+    
+</project>

@@ -26,13 +26,21 @@ public class ActivatorCreator {
 		activatorContents = activatorContents.replaceAll("%IP_ADDRESS%", ConnectionUtils.getRegisteredIPAddress());
 		activatorContents = activatorContents.replaceAll("%ECF_PORT%", String.valueOf(ConnectionUtils.getGeneratedECFPort()));
 
-		String outputPath = sourceLocation + "/" + analyzer.getTargetPackage().replace('.', '/') + "/internal";
+		String outputPath = getPackageInternalPath(analyzer, sourceLocation);
 		String outputFile = outputPath + "/Activator.java";
 
 		logger.info("Created Activator Java class");
 		logger.debug("Output file: " + outputFile);
 		FileUtils.createDirIfNotExists(outputPath);
 		FileUtils.writeFile(outputFile, activatorContents);
+	}
+	
+	public static String getPackagePath(WSDLAnalyzer analyzer, String sourceLocation) {
+		return sourceLocation + "/" + analyzer.getTargetPackage().replace('.', '/') + "/internal";
+	}
+	
+	public static String getPackageInternalPath(WSDLAnalyzer analyzer, String sourceLocation) {
+		return sourceLocation + "/" + analyzer.getTargetPackage().replace('.', '/') + "/internal";
 	}
 
 }

@@ -1,18 +1,27 @@
 package net.vandut.agh.magisterka.proxy_creator;
 
-import org.eclipse.ecf.osgi.services.distribution.IDistributionConstants;
+import java.io.File;
 
 import net.vandut.agh.magisterka.proxy_creator.internal.ActivatorCreator;
+import net.vandut.agh.magisterka.proxy_creator.internal.ClientCodeCreator;
 import net.vandut.agh.magisterka.proxy_creator.internal.CompilerWrapper;
 import net.vandut.agh.magisterka.proxy_creator.internal.CxfConfCreator;
 import net.vandut.agh.magisterka.proxy_creator.internal.FileUtils;
 import net.vandut.agh.magisterka.proxy_creator.internal.JarPacker;
 import net.vandut.agh.magisterka.proxy_creator.internal.ManifestMfCreator;
 import net.vandut.agh.magisterka.proxy_creator.internal.Wsdl2JavaWrapper;
+import net.vandut.agh.magisterka.proxy_creator.internal.ZipCreator;
+
+import org.eclipse.ecf.osgi.services.distribution.IDistributionConstants;
 
 public class ProxyCreator implements IDistributionConstants {
 
 	private static final String MANIFEST_MF_NAME = "MANIFEST.MF";
+
+	private static final String SRC_DIR = "/src";
+	private static final String TARGET_DIR = "/target";
+	private static final String METAINF_DIR = "/META-INF";
+	private static final String CLIENT_FILE = "/client.zip";
 
 	private String wsdlLocation;
 	private String outputLocation;
@@ -33,11 +42,23 @@ public class ProxyCreator implements IDistributionConstants {
 	public void setOutputLocation(String outputLocation) {
 		this.outputLocation = outputLocation;
 	}
+	
+	public String getSourceLocation() {
+		return outputLocation + SRC_DIR;
+	}
+	
+	public String getTargetLocation() {
+		return outputLocation + TARGET_DIR;
+	}
+	
+	public String getClientZipFile() {
+		return outputLocation + CLIENT_FILE;
+	}
 
 	public String generateProxyBundle(CreationProgress creationProgress) throws Exception {
-		String sourceLocation = outputLocation + "/src";
-		String targetLocation = outputLocation + "/target";
-		String metaInfDir = targetLocation + "/META-INF";
+		String sourceLocation = getSourceLocation();
+		String targetLocation = getTargetLocation();
+		String metaInfDir = targetLocation + METAINF_DIR;
 		String springDir = metaInfDir + "/spring";
 		String manifestMfLocation = outputLocation + "/" + MANIFEST_MF_NAME;
 		String beansLocation = springDir + "/beans.xml";
@@ -79,8 +100,29 @@ public class ProxyCreator implements IDistributionConstants {
 		creationProgress.cxfConfCreated();
 		ManifestMfCreator.configureFile(analyzer, manifestMfLocation);
 		creationProgress.manifestCreated();
+		
+		String clientLocation = outputLocation + "/client";
+		String clientSrcLocation = outputLocation + "/client/src/main/java";
+		File clientFile = new File(clientLocation);
+		File clientSrcFile = new File(clientSrcLocation);
+		clientFile.mkdirs();
+		clientSrcFile.mkdirs();
 
-		return JarPacker.createJar(targetLocation, manifestMfLocation, outputLocation);
+		FileUtils.copy(wsdlLocation, clientLocation);
+		org.apache.commons.io.FileUtils.copyDirectory(new File(sourceLocation), clientSrcFile);
+		String internalSrcLocation = ActivatorCreator.getPackageInternalPath(analyzer, clientSrcLocation);
+		File internalSrcFile = new File(internalSrcLocation);
+		org.apache.commons.io.FileUtils.deleteDirectory(internalSrcFile);
+		internalSrcFile.mkdirs();
+		
+		ClientCodeCreator.createClientCode(analyzer, clientLocation, internalSrcLocation);
+		
+		String jarBundleLocation = JarPacker.createJar(targetLocation, manifestMfLocation, outputLocation);
+		FileUtils.copy(jarBundleLocation, clientLocation);
+		
+		ZipCreator.omtZip(clientLocation + "/", getClientZipFile());
+
+		return jarBundleLocation;
 	}
 
 	public String generateProxyBundle() throws Exception {

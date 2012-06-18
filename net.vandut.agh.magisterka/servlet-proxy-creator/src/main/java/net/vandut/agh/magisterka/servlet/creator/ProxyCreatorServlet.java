@@ -2,7 +2,6 @@ package net.vandut.agh.magisterka.servlet.creator;
 
 import java.io.File;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.net.URL;
 import java.util.Enumeration;
 import java.util.UUID;
@@ -13,7 +12,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import net.vandut.agh.magisterka.proxy_creator.ConnectionUtils;
 import net.vandut.agh.magisterka.proxy_creator.ProxyCreator;
 
 import org.apache.commons.io.FileUtils;
@@ -30,7 +28,7 @@ public class ProxyCreatorServlet extends HttpServlet {
 	// private static final Logger logger =
 	// Logger.getLogger(ProxyCreator.class);
 
-	// http://localhost:8181/servlet-proxy-creator/creator
+	// http://localhost:8181/servlet-proxy-creator/upload.html
 
 	@Override
 	public void init() throws ServletException {
@@ -55,9 +53,8 @@ public class ProxyCreatorServlet extends HttpServlet {
 			wsdlFile = getFileFromInternet(mR.getParameter("url"), tempDir);
 		}
 
-		String bundleJarLocation = createProxyBundleFromForm(uniqueDir, wsdlFile);
-		// returnFileToUser(response, bundleJarLocation,
-		// "application/java-archive");
+		ProxyCreator proxyCreator = new ProxyCreator();
+		String bundleJarLocation = createProxyBundleFromForm(proxyCreator, uniqueDir, wsdlFile);
 		
 		File bundleFile = new File(bundleJarLocation);
 		File deployDir = new File(Activator.getKarafBase() + "/deploy");
@@ -67,10 +64,14 @@ public class ProxyCreatorServlet extends HttpServlet {
 
 		FileUtils.copyFileToDirectory(bundleFile, deployDir);
 		
-		PrintWriter out = response.getWriter();
-		out.println("Deployed generated bundle: "+bundleFile.getName());
-		out.println("Use this IP address: "+ConnectionUtils.getRegisteredIPAddress());
-		out.println("Use this port for ECF connection: "+ConnectionUtils.getGeneratedECFPort());
+//		PrintWriter out = response.getWriter();
+//		out.println("Deployed generated bundle: "+bundleFile.getName());
+//		out.println("Use this IP address: "+ConnectionUtils.getRegisteredIPAddress());
+//		out.println("Use this port for ECF connection: "+ConnectionUtils.getGeneratedECFPort());
+//		out.println("Source location: "+proxyCreator.getSourceLocation());
+		
+		returnFileToUser(response, proxyCreator.getClientZipFile(),
+				"application/zip, application/octet-stream");
 	}
 
 	private File getFileFromInternet(String urlString, File tempDir) throws IOException {
@@ -80,8 +81,7 @@ public class ProxyCreatorServlet extends HttpServlet {
 		return file;
 	}
 
-	private String createProxyBundleFromForm(File uniqueDir, File wsdlFile) throws IOException, ServletException {
-		ProxyCreator proxyCreator = new ProxyCreator();
+	private String createProxyBundleFromForm(ProxyCreator proxyCreator, File uniqueDir, File wsdlFile) throws IOException, ServletException {
 		proxyCreator.setWsdlLocation(wsdlFile.getAbsolutePath());
 		proxyCreator.setOutputLocation(uniqueDir.getAbsolutePath());
 
