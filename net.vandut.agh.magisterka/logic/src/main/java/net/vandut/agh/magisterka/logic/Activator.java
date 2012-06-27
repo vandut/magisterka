@@ -101,9 +101,9 @@ public class Activator implements BundleActivator, LogicService {
 				
 				
 			} catch (RuntimeException e) {
-				status.set(false);
+//				status.set(false);
 				logger.error("ERROR while executing scheduled task", e);
-				throw e;
+//				throw e;
 			}
 		}
 
