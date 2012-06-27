@@ -185,6 +185,7 @@ public class Gui extends JFrame {
 
 		serviceHandlerDoor.register(ecfClient);
 		serviceHandlerSensors.register(ecfClient);
+		serviceHandlerCam.register(ecfClient);
 		serviceHandlerLogic.register(ecfClient);
 	}
 
