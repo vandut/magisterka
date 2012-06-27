@@ -31,6 +31,12 @@
 			<version>1.0</version>
 			<scope>provided</scope>
 		</dependency>
+		<dependency>
+			<groupId>net.vandut.agh.magisterka</groupId>
+			<artifactId>cam-dependency</artifactId>
+			<version>1.0</version>
+			<scope>provided</scope>
+		</dependency>
 		
 		<dependency>
 			<groupId>log4j</groupId>
@@ -96,7 +102,7 @@
 						javax.xml.namespace,
 						org.apache.log4j,
 						*
-					</Import-Package>net.vandut.agh.magisterka.logic.service
+					</Import-Package>
 					<Private-Package>
 						net.vandut.agh.magisterka.logic
 					</Private-Package>

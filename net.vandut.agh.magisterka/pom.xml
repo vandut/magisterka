@@ -36,6 +36,7 @@
 	<module>logic-client</module>
 	<module>missing-packages</module>
 	<module>sensors-java-client</module>
+	<module>cam-dependency</module>
   </modules>
 
   <repositories>

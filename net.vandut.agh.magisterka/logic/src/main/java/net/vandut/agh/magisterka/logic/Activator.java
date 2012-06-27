@@ -11,6 +11,8 @@ import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.ServiceReference;
 
+import cam.SmartCameraPortType;
+
 public class Activator implements BundleActivator, LogicService {
 
 	private static final int NO_DELAY = 0;
@@ -69,20 +71,35 @@ public class Activator implements BundleActivator, LogicService {
 			try {
 				hsoa_1.ServiceSoap temperatureService = getService(hsoa_1.ServiceSoap.class);
 				hsoa_2.ServiceSoap doorService = getService(hsoa_2.ServiceSoap.class);
+				SmartCameraPortType camService = getService(SmartCameraPortType.class);
 
 				logger.info("Checking temperature");
 				float temperature = parseTemperature(temperatureService
 						.getTemperature());
 
-				if (temperature < 10.0f) {
+				/*if (temperature < 10.0f) {
 					logger.info("Temperature too low, closing door");
 					doorService.doorClose();
-				} else if (temperature > 15.0f) {
+				} else*/
+				if (temperature > 25.0f) {
 					logger.info("Temperature too high, opening door");
 					doorService.doorOpen();
 				} else {
 					logger.info("Temperature ok, no action required");
 				}
+				
+				logger.info("Checking camera");
+				String classifier = camService.startClassifier();
+
+				
+				if ("s1".equalsIgnoreCase(classifier)) {
+					logger.info("Camera classifier accepted, opening door");
+					doorService.doorOpen();
+				} else {
+					logger.info("Invalid camera classifier");
+				}
+				
+				
 			} catch (RuntimeException e) {
 				status.set(false);
 				logger.error("ERROR while executing scheduled task", e);

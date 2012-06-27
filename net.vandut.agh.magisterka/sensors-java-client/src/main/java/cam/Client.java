@@ -14,7 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package hsoa_1;
+package cam;
 
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
@@ -27,7 +27,7 @@ import org.apache.servicemix.util.FileUtil;
 public class Client {
 	public static void main(String[] args) {
 		try {
-			new Client().sendRequest("http://149.156.97.217:80/SensorsService");
+			new Client().sendRequest("http://149.156.97.135");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -41,7 +41,7 @@ public class Client {
 		connection.setDoOutput(true);
 		OutputStream os = connection.getOutputStream();
 		// Post the request file.
-		InputStream fis = getClass().getClassLoader().getResourceAsStream("hsoa_1/request.xml");
+		InputStream fis = getClass().getClassLoader().getResourceAsStream("cam/request.xml");
 		FileUtil.copyInputStream(fis, os);
 		// Read the response.
 		InputStream is = connection.getInputStream();

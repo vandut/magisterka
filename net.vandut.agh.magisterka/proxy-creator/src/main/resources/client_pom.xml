@@ -99,5 +99,79 @@
 		</plugin>
 	</plugins>
     </build>
+
+  <repositories>
+    <!-- FuseSource maven repositories -->
+    <repository>
+      <id>fusesource.releases</id>
+      <name>FuseSoure releases repository</name>
+      <url>http://repo.fusesource.com/maven2/</url>
+      <releases>
+        <enabled>true</enabled>
+      </releases>
+      <snapshots>
+        <enabled>false</enabled>
+      </snapshots>
+    </repository>
+    <repository>
+      <id>fusesource.snapshots</id>
+      <name>FuseSource Snapshot Repository</name>
+      <url>http://repo.fusesource.com/maven2-snapshot</url>
+      <snapshots>
+        <enabled>true</enabled>
+      </snapshots>
+      <releases>
+        <enabled>false</enabled>
+      </releases>
+    </repository>
+    <repository>
+      <id>ecf.repository</id>
+      <name>ECF project repository</name>
+      <url>http://download.ecf-project.org/maven/</url>
+      <releases>
+        <enabled>true</enabled>
+      </releases>
+      <snapshots>
+        <enabled>false</enabled>
+      </snapshots>
+    </repository>
+    <repository>
+      <id>thingml.repository</id>
+      <name>thingml repository</name>
+      <url>http://maven.thingml.org/thirdparty/</url>
+      <releases>
+        <enabled>true</enabled>
+      </releases>
+      <snapshots>
+        <enabled>false</enabled>
+      </snapshots>
+    </repository>
+  </repositories>
+
+  <pluginRepositories>
+    <!-- FuseSource maven repositories -->
+    <pluginRepository>
+      <id>fusesource.releases</id>
+      <name>FuseSoure releases repository</name>
+      <url>http://repo.fusesource.com/maven2/</url>
+      <releases>
+        <enabled>true</enabled>
+      </releases>
+      <snapshots>
+        <enabled>false</enabled>
+      </snapshots>
+    </pluginRepository>
+    <pluginRepository>
+      <id>fusesource.snapshots</id>
+      <name>FuseSource Snapshot Repository</name>
+      <url>http://repo.fusesource.com/maven2-snapshot</url>
+      <snapshots>
+        <enabled>true</enabled>
+      </snapshots>
+      <releases>
+        <enabled>false</enabled>
+      </releases>
+    </pluginRepository>
+  </pluginRepositories>
     
 </project>

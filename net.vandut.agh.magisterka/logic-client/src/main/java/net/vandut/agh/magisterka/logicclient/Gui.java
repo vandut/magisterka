@@ -13,12 +13,15 @@ import javax.swing.UIManager;
 
 import net.miginfocom.swing.MigLayout;
 import net.vandut.agh.magisterka.logic.service.LogicService;
+import net.vandut.agh.magisterka.logicclient.handlers.CamServiceHandler;
 import net.vandut.agh.magisterka.logicclient.handlers.DoorServiceHandler;
 import net.vandut.agh.magisterka.logicclient.handlers.LogicServiceHandler;
 import net.vandut.agh.magisterka.logicclient.handlers.SensorsServiceHandler;
 
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.InvalidSyntaxException;
+
+import cam.SmartCameraPortType;
 
 public class Gui extends JFrame {
 
@@ -33,6 +36,7 @@ public class Gui extends JFrame {
 
 	private JLabel statusLabelDoorService;
 	private JLabel statusLabelSensorsService;
+	private JLabel statusLabelCamService;
 	private JLabel statusLabelLogicService;
 
 	private JButton actionBtnDoorStatus;
@@ -42,6 +46,9 @@ public class Gui extends JFrame {
 	private JButton actionBtnSensorsTemperature;
 	private JButton actionBtnSensorsHumidity;
 	private JButton actionBtnSensorsPressure;
+	
+	private JButton actionBtnCamStartClassifier;
+	private JButton actionBtnCamGetLast;
 
 	private JButton actionBtnLogicStatus;
 	private JButton actionBtnLogicStart;
@@ -49,6 +56,7 @@ public class Gui extends JFrame {
 
 	DoorServiceHandler serviceHandlerDoor;
 	SensorsServiceHandler serviceHandlerSensors;
+	CamServiceHandler serviceHandlerCam;
 	LogicServiceHandler serviceHandlerLogic;
 
 	private final ActionListener actionListenerBtnConnection = new ActionListener() {
@@ -81,7 +89,7 @@ public class Gui extends JFrame {
 		setNativeLookAndFeel();
 		createControls();
 		createGUI();
-		 createServiceHandlers();
+		createServiceHandlers();
 
 		setVisible(true);
 	}
@@ -100,6 +108,7 @@ public class Gui extends JFrame {
 
 		statusLabelDoorService = new JLabel("Pending...");
 		statusLabelSensorsService = new JLabel("Pending...");
+		statusLabelCamService = new JLabel("Pending...");
 		statusLabelLogicService = new JLabel("Pending...");
 
 		actionBtnDoorStatus = new JButton("Status");
@@ -109,6 +118,9 @@ public class Gui extends JFrame {
 		actionBtnSensorsTemperature = new JButton("Temperature");
 		actionBtnSensorsHumidity = new JButton("Humidity");
 		actionBtnSensorsPressure = new JButton("Pressure");
+		
+		actionBtnCamStartClassifier = new JButton("Start Classifier");
+		actionBtnCamGetLast = new JButton("Get Last");
 
 		actionBtnLogicStatus = new JButton("Status");
 		actionBtnLogicStart = new JButton("Start");
@@ -131,6 +143,7 @@ public class Gui extends JFrame {
 		GuiUtils.addSeparator(panel, "Status");
 		panel.add(statusLabelDoorService, "growx, wrap");
 		panel.add(statusLabelSensorsService, "growx, wrap");
+		panel.add(statusLabelCamService, "growx, wrap");
 		panel.add(statusLabelLogicService, "growx, wrap");
 
 		GuiUtils.addSeparator(panel, "Door Service");
@@ -141,6 +154,10 @@ public class Gui extends JFrame {
 		panel.add(actionBtnSensorsTemperature, "split 3");
 		panel.add(actionBtnSensorsHumidity, "");
 		panel.add(actionBtnSensorsPressure, "wrap");
+		GuiUtils.addSeparator(panel, "Camera Service");
+		panel.add(actionBtnCamStartClassifier, "split 2");
+		panel.add(actionBtnCamGetLast, "wrap");
+		
 		GuiUtils.addSeparator(panel, "Logic Service");
 		panel.add(actionBtnLogicStatus, "split 3");
 		panel.add(actionBtnLogicStart, "");
@@ -159,6 +176,9 @@ public class Gui extends JFrame {
 				hsoa_1.ServiceSoap.class, statusLabelSensorsService,
 				actionBtnSensorsTemperature, actionBtnSensorsHumidity,
 				actionBtnSensorsPressure);
+		serviceHandlerCam = new CamServiceHandler("Camera Service",
+				SmartCameraPortType.class, statusLabelCamService,
+				actionBtnCamStartClassifier, actionBtnCamGetLast);
 		serviceHandlerLogic = new LogicServiceHandler("Logic Service",
 				LogicService.class, statusLabelLogicService,
 				actionBtnLogicStatus, actionBtnLogicStart, actionBtnLogicStop);

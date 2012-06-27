@@ -141,9 +141,9 @@ public class WSDLAnalyzer {
 	}
 
 	private String convertNamespaceToPackage(String namespace) throws MalformedURLException {
-		if (namespace.substring(0, 4).equals("http")) {
+		if (namespace.startsWith("http")) {
 			return convertHttpNamespaceToPackage(namespace);
-		} else if (namespace.substring(0, 3).equals("urn")) {
+		} else if (namespace.startsWith("urn")) {
 			return convertUrnNamespaceToPackage(namespace);
 		} else {
 			if (namespace.contains("://")) {

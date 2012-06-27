@@ -14,6 +14,7 @@ public class ClientActivator implements BundleActivator {
 	private EcfClient ecfClient;
 	
 	// !!!!!!!!!! CHANGE ME !!!!!!!!!! //
+	// Optional. Change only if proxy bundle is on host with other ip address
 	private String ipAddress = "%IP_ADDRESS%";
 	// !!!!!!!!!! CHANGE ME !!!!!!!!!! //
 	
@@ -36,7 +37,7 @@ public class ClientActivator implements BundleActivator {
 		ecfClient = new EcfClient(bundleContext);
 		ecfClient.register(ipAddress);
 		serviceWatcher.setContext(bundleContext);
-		ecfClient.addServiceTracker(ServiceSoap.class, serviceWatcher);
+		ecfClient.addServiceTracker(%INTERFACE%.class, serviceWatcher);
 	}
 
 	public void stop(BundleContext bundleContext) throws Exception {

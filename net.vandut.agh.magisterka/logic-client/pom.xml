@@ -106,6 +106,7 @@
                     <Export-Package>
                         hsoa_1,
                         hsoa_2,
+                        cam,
                         net.vandut.agh.magisterka.logic.service
                     </Export-Package>
 					<Require-Bundle>org.eclipse.equinox.common</Require-Bundle>
