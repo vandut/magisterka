@@ -37,6 +37,7 @@
 	<module>missing-packages</module>
 	<module>sensors-java-client</module>
 	<module>cam-dependency</module>
+	<module>power-switch-dependency</module>
   </modules>
 
   <repositories>

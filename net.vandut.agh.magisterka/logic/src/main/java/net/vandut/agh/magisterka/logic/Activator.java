@@ -71,7 +71,10 @@ public class Activator implements BundleActivator, LogicService {
 			try {
 				hsoa_1.ServiceSoap temperatureService = getService(hsoa_1.ServiceSoap.class);
 				hsoa_2.ServiceSoap doorService = getService(hsoa_2.ServiceSoap.class);
+				hsoa_3.ServiceSoap powerSwitchService = getService(hsoa_3.ServiceSoap.class);
 				SmartCameraPortType camService = getService(SmartCameraPortType.class);
+				
+				// powerSwitchService not yet used, but package is in OSGi manifest file
 
 				logger.info("Checking temperature");
 				float temperature = parseTemperature(temperatureService

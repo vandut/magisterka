@@ -37,6 +37,12 @@
 			<version>1.0</version>
 			<scope>provided</scope>
 		</dependency>
+		<dependency>
+			<groupId>net.vandut.agh.magisterka</groupId>
+			<artifactId>power-switch-dependency</artifactId>
+			<version>1.0</version>
+			<scope>provided</scope>
+		</dependency>
 		
 		<dependency>
 			<groupId>log4j</groupId>

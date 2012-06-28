@@ -16,6 +16,7 @@ import net.vandut.agh.magisterka.logic.service.LogicService;
 import net.vandut.agh.magisterka.logicclient.handlers.CamServiceHandler;
 import net.vandut.agh.magisterka.logicclient.handlers.DoorServiceHandler;
 import net.vandut.agh.magisterka.logicclient.handlers.LogicServiceHandler;
+import net.vandut.agh.magisterka.logicclient.handlers.PowerSwitchServiceHandler;
 import net.vandut.agh.magisterka.logicclient.handlers.SensorsServiceHandler;
 
 import org.osgi.framework.BundleContext;
@@ -37,6 +38,7 @@ public class Gui extends JFrame {
 	private JLabel statusLabelDoorService;
 	private JLabel statusLabelSensorsService;
 	private JLabel statusLabelCamService;
+	private JLabel statusLabelPowerSwitchService;
 	private JLabel statusLabelLogicService;
 
 	private JButton actionBtnDoorStatus;
@@ -50,6 +52,8 @@ public class Gui extends JFrame {
 	private JButton actionBtnCamStartClassifier;
 	private JButton actionBtnCamGetLast;
 
+	private JButton actionBtnPowerSwitchOn1;
+
 	private JButton actionBtnLogicStatus;
 	private JButton actionBtnLogicStart;
 	private JButton actionBtnLogicStop;
@@ -57,6 +61,7 @@ public class Gui extends JFrame {
 	DoorServiceHandler serviceHandlerDoor;
 	SensorsServiceHandler serviceHandlerSensors;
 	CamServiceHandler serviceHandlerCam;
+	PowerSwitchServiceHandler serviceHandlerPowerSwitch;
 	LogicServiceHandler serviceHandlerLogic;
 
 	private final ActionListener actionListenerBtnConnection = new ActionListener() {
@@ -109,6 +114,7 @@ public class Gui extends JFrame {
 		statusLabelDoorService = new JLabel("Pending...");
 		statusLabelSensorsService = new JLabel("Pending...");
 		statusLabelCamService = new JLabel("Pending...");
+		statusLabelPowerSwitchService = new JLabel("Pending...");
 		statusLabelLogicService = new JLabel("Pending...");
 
 		actionBtnDoorStatus = new JButton("Status");
@@ -121,6 +127,8 @@ public class Gui extends JFrame {
 		
 		actionBtnCamStartClassifier = new JButton("Start Classifier");
 		actionBtnCamGetLast = new JButton("Get Last");
+		
+		actionBtnPowerSwitchOn1 = new JButton("On 1");
 
 		actionBtnLogicStatus = new JButton("Status");
 		actionBtnLogicStart = new JButton("Start");
@@ -144,6 +152,7 @@ public class Gui extends JFrame {
 		panel.add(statusLabelDoorService, "growx, wrap");
 		panel.add(statusLabelSensorsService, "growx, wrap");
 		panel.add(statusLabelCamService, "growx, wrap");
+		panel.add(statusLabelPowerSwitchService, "growx, wrap");
 		panel.add(statusLabelLogicService, "growx, wrap");
 
 		GuiUtils.addSeparator(panel, "Door Service");
@@ -157,6 +166,9 @@ public class Gui extends JFrame {
 		GuiUtils.addSeparator(panel, "Camera Service");
 		panel.add(actionBtnCamStartClassifier, "split 2");
 		panel.add(actionBtnCamGetLast, "wrap");
+
+		GuiUtils.addSeparator(panel, "Power Switch Service");
+		panel.add(actionBtnPowerSwitchOn1, "wrap");
 		
 		GuiUtils.addSeparator(panel, "Logic Service");
 		panel.add(actionBtnLogicStatus, "split 3");
@@ -179,6 +191,9 @@ public class Gui extends JFrame {
 		serviceHandlerCam = new CamServiceHandler("Camera Service",
 				SmartCameraPortType.class, statusLabelCamService,
 				actionBtnCamStartClassifier, actionBtnCamGetLast);
+		serviceHandlerPowerSwitch = new PowerSwitchServiceHandler("Power Switch Service",
+				hsoa_3.ServiceSoap.class, statusLabelPowerSwitchService,
+				actionBtnPowerSwitchOn1);
 		serviceHandlerLogic = new LogicServiceHandler("Logic Service",
 				LogicService.class, statusLabelLogicService,
 				actionBtnLogicStatus, actionBtnLogicStart, actionBtnLogicStop);
@@ -186,6 +201,7 @@ public class Gui extends JFrame {
 		serviceHandlerDoor.register(ecfClient);
 		serviceHandlerSensors.register(ecfClient);
 		serviceHandlerCam.register(ecfClient);
+		serviceHandlerPowerSwitch.register(ecfClient);
 		serviceHandlerLogic.register(ecfClient);
 	}
 
