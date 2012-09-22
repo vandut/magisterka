@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module org.jetbrains.idea.maven.project.MavenProjectsManager.isMavenModule="true" type="JAVA_MODULE" version="4">
+  <component name="FacetManager">
+    <facet type="Osmorc" name="OSGi">
+      <configuration manifestGenerationMode="OsmorcControlled" manifestLocation="" jarfileLocation="logic-client-1.0.jar" outputPathType="CompilerOutputPath" bndFileLocation="" bundlorFileLocation="" bundleActivator="net.vandut.agh.magisterka.logicclient.Activator" bundleSymbolicName="net.vandut.agh.magisterka.logic-client" bundleVersion="1.0.0" ignoreFilePattern="" useProjectDefaultManifestFileLocation="true" alwaysRebuildBundleJAR="false" doNotSynchronizeWithMaven="false">
+        <additionalProperties>
+          <property key="Bundle-Description" value="Bill-of-materials of the core components and versions used for building the features project(This POM contains the dependencies and versions that are useful to both users and our own development)" />
+          <property key="Bundle-Vendor" value="FuseSource" />
+          <property key="Bundle-DocURL" value="http://fusesource.com/" />
+          <property key="Import-Package" value="!com.ibm.uvm.tools,!com.sun.jdmk.comm,!javax.jmdns,!javax.jms,!javax.jws,!javax.mail,!javax.mail.internet,!javax.management,!javax.naming,org.eclipse.ecf.core;version=&quot;3.0.0&quot;,org.osgi.framework,org.osgi.util.tracker;version=&quot;1.4.0&quot;,javax.jws,javax.xml.bind.annotation,javax.xml.namespace,org.apache.log4j,*" />
+          <property key="Private-Package" value="net.vandut.agh.magisterka.logicclient,net.vandut.agh.magisterka.logicclient.handlers" />
+          <property key="Export-Package" value="hsoa_1,hsoa_2,hsoa_3,cam,net.vandut.agh.magisterka.logic.service" />
+          <property key="Require-Bundle" value="org.eclipse.equinox.common" />
+          <property key="Embed-Directory" value="lib" />
+          <property key="Embed-Dependency" value="*;scope=compile|runtime|!provided" />
+          <property key="Embed-Transitive" value="true" />
+          <property key="Bundle-Name" value="net.vandut.agh.magisterka.logic-client" />
+          <property key="Bundle-ClassPath" value=".,lib/miglayout-swing-4.2.jar,lib/miglayout-core-4.2.jar,lib/log4j-1.2.16.jar" />
+          <property key="Include-Resource" value="lib/miglayout-swing-4.2.jar=$MAVEN_REPOSITORY$/com/miglayout/miglayout-swing/4.2/miglayout-swing-4.2.jar,lib/miglayout-core-4.2.jar=$MAVEN_REPOSITORY$/com/miglayout/miglayout-core/4.2/miglayout-core-4.2.jar,lib/log4j-1.2.16.jar=$MAVEN_REPOSITORY$/log4j/log4j/1.2.16/log4j-1.2.16.jar" />
+          <property key="Embedded-Artifacts" value="lib/miglayout-swing-4.2.jar;g=&quot;com.miglayout&quot;;a=&quot;miglayout-swing&quot;;v=&quot;4.2&quot;,lib/miglayout-core-4.2.jar;g=&quot;com.miglayout&quot;;a=&quot;miglayout-core&quot;;v=&quot;4.2&quot;,lib/log4j-1.2.16.jar;g=&quot;log4j&quot;;a=&quot;log4j&quot;;v=&quot;1.2.16&quot;" />
+        </additionalProperties>
+        <additionalJARContents />
+      </configuration>
+    </facet>
+  </component>
+  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_5" inherit-compiler-output="false">
+    <output url="file://$MODULE_DIR$/target/classes" />
+    <output-test url="file://$MODULE_DIR$/target/test-classes" />
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/src/main/java" isTestSource="false" />
+      <excludeFolder url="file://$MODULE_DIR$/target" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="Maven: com.miglayout:miglayout-swing:4.2" level="project" />
+    <orderEntry type="library" name="Maven: com.miglayout:miglayout-core:4.2" level="project" />
+    <orderEntry type="library" name="Maven: log4j:log4j:1.2.16" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: org.apache.felix:org.osgi.core:1.4.0" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: org.eclipse.equinox:org.eclipse.equinox.common:3.6.0.v20100503" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: org.eclipse.osgi:org.eclipse.osgi:3.6.0.v20100517" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: org.eclipse.ecf:org.eclipse.ecf:3.1.200.v20101029-1626" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: org.eclipse.ecf:org.eclipse.ecf.identity:3.1.100.v20101029-1626" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: org.eclipse.ecf:org.eclipse.ecf.osgi.services.distribution:2.0.100.v20120319-0616" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: org.eclipse.ecf:org.eclipse.ecf.discovery:4.0.0.v20101029-1626" level="project" />
+  </component>
+</module>
+

@@ -57,9 +57,9 @@ public class CxfConfCreator {
 	public static String convertHostToLocalhost(String address) throws MalformedURLException {
 		URL url = new URL(address);
 		if (url.getPort() > 0) {
-			return url.getProtocol() + "://localhost:" + url.getPort() + url.getFile();
+			return url.getProtocol() + "://0.0.0.0:" + (url.getPort()+1) + url.getFile();
 		} else {
-			return url.getProtocol() + "://localhost" + url.getFile();
+			return url.getProtocol() + "://0.0.0.0" + url.getFile();
 		}
 	}
 
