@@ -41,6 +41,11 @@ public class ProxyCreatorServlet extends HttpServlet {
 
 		MultipartRequest mR = new MultipartRequest(request, tempDir.getAbsolutePath(), 500000);
 		String wsdl_location = mR.getParameter("wsdl_location");
+		String portToUse = mR.getParameter("port");
+		
+		if (portToUse == null || "".equals(portToUse)) {
+			throw new ServletException("You must provide port");
+		}
 
 		if (wsdl_location == null || "".equals(wsdl_location)) {
 			throw new ServletException("wsdl_location form parameter missing");
@@ -54,7 +59,7 @@ public class ProxyCreatorServlet extends HttpServlet {
 		}
 
 		ProxyCreator proxyCreator = new ProxyCreator();
-		String bundleJarLocation = createProxyBundleFromForm(proxyCreator, uniqueDir, wsdlFile);
+		String bundleJarLocation = createProxyBundleFromForm(proxyCreator, uniqueDir, wsdlFile, portToUse);
 		
 		File bundleFile = new File(bundleJarLocation);
 		File deployDir = new File(Activator.getKarafBase() + "/deploy");
@@ -81,9 +86,10 @@ public class ProxyCreatorServlet extends HttpServlet {
 		return file;
 	}
 
-	private String createProxyBundleFromForm(ProxyCreator proxyCreator, File uniqueDir, File wsdlFile) throws IOException, ServletException {
+	private String createProxyBundleFromForm(ProxyCreator proxyCreator, File uniqueDir, File wsdlFile, String portToUse) throws IOException, ServletException {
 		proxyCreator.setWsdlLocation(wsdlFile.getAbsolutePath());
 		proxyCreator.setOutputLocation(uniqueDir.getAbsolutePath());
+		proxyCreator.setPortToUse(portToUse);
 
 		String bundleJarLocation = null;
 		try {

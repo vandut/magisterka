@@ -15,7 +15,7 @@ public class CxfConfCreator {
 	private static final Logger logger = Logger
 			.getLogger(CxfConfCreator.class);
 	
-	public static void configureFile(WSDLAnalyzer analyzer, String wsdlFilePath, String outputPath) throws Exception {
+	public static void configureFile(WSDLAnalyzer analyzer, String wsdlFilePath, String outputPath, String portToUse) throws Exception {
 		String header = FileUtils.stringFromClasspathFile("/beans_parts/header.txt");
 		String footer = FileUtils.stringFromClasspathFile("/beans_parts/footer.txt");
 		
@@ -32,7 +32,7 @@ public class CxfConfCreator {
 			Service service = serviceList.get(serviceIdx);
 			String wsdlFileName = (new File(wsdlFilePath)).getName();
 			String proxyBeanName = "proxy"+serviceIdx;
-			String localAddress = convertHostToLocalhost(service.httpAddress);
+			String localAddress = convertHostToLocalhost(service.httpAddress, portToUse);
 			String type = analyzer.getTargetPackage()+"."+service.type;
 			
 			String consumerEndpoint = service.name + "Consumer" + serviceIdx;
@@ -54,10 +54,10 @@ public class CxfConfCreator {
 		FileUtils.writeFile(outputPath, document);
 	}
 	
-	public static String convertHostToLocalhost(String address) throws MalformedURLException {
+	public static String convertHostToLocalhost(String address, String portToUse) throws MalformedURLException {
 		URL url = new URL(address);
-		if (url.getPort() > 0) {
-			return url.getProtocol() + "://0.0.0.0:" + (url.getPort()+1) + url.getFile();
+		if (portToUse != null || url.getPort() > 0) {
+			return url.getProtocol() + "://0.0.0.0:" + portToUse + url.getFile();
 		} else {
 			return url.getProtocol() + "://0.0.0.0" + url.getFile();
 		}

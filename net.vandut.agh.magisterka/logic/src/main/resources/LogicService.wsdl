@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="LogicService" targetNamespace="http://service.logic.magisterka.agh.vandut.net/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://service.logic.magisterka.agh.vandut.net/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+  <wsdl:types>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://service.logic.magisterka.agh.vandut.net/" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://service.logic.magisterka.agh.vandut.net/">
+  <xsd:element name="stopLogic" type="tns:stopLogic"/>
+  <xsd:complexType name="stopLogic">
+    <xsd:sequence/>
+  </xsd:complexType>
+  <xsd:element name="stopLogicResponse" type="tns:stopLogicResponse"/>
+  <xsd:complexType name="stopLogicResponse">
+    <xsd:sequence/>
+  </xsd:complexType>
+  <xsd:element name="statusLogic" type="tns:statusLogic"/>
+  <xsd:complexType name="statusLogic">
+    <xsd:sequence/>
+  </xsd:complexType>
+  <xsd:element name="statusLogicResponse" type="tns:statusLogicResponse"/>
+  <xsd:complexType name="statusLogicResponse">
+    <xsd:sequence>
+      <xsd:element name="return" type="xsd:boolean"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="startLogic" type="tns:startLogic"/>
+  <xsd:complexType name="startLogic">
+    <xsd:sequence/>
+  </xsd:complexType>
+  <xsd:element name="startLogicResponse" type="tns:startLogicResponse"/>
+  <xsd:complexType name="startLogicResponse">
+    <xsd:sequence/>
+  </xsd:complexType>
+</xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="stopLogicResponse">
+    <wsdl:part name="parameters" element="tns:stopLogicResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="startLogic">
+    <wsdl:part name="parameters" element="tns:startLogic">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="statusLogic">
+    <wsdl:part name="parameters" element="tns:statusLogic">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="statusLogicResponse">
+    <wsdl:part name="parameters" element="tns:statusLogicResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="startLogicResponse">
+    <wsdl:part name="parameters" element="tns:startLogicResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="stopLogic">
+    <wsdl:part name="parameters" element="tns:stopLogic">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="LogicServicePortType">
+    <wsdl:operation name="stopLogic">
+      <wsdl:input name="stopLogic" message="tns:stopLogic">
+    </wsdl:input>
+      <wsdl:output name="stopLogicResponse" message="tns:stopLogicResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="statusLogic">
+      <wsdl:input name="statusLogic" message="tns:statusLogic">
+    </wsdl:input>
+      <wsdl:output name="statusLogicResponse" message="tns:statusLogicResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="startLogic">
+      <wsdl:input name="startLogic" message="tns:startLogic">
+    </wsdl:input>
+      <wsdl:output name="startLogicResponse" message="tns:startLogicResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="LogicServiceSoapBinding" type="tns:LogicServicePortType">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="stopLogic">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="stopLogic">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="stopLogicResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="statusLogic">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="statusLogic">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="statusLogicResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="startLogic">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="startLogic">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="startLogicResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="LogicService">
+    <wsdl:port name="LogicServicePort" binding="tns:LogicServiceSoapBinding">
+      <soap:address location="http://localhost:9090/LogicServicePort"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -25,6 +25,7 @@ public class ProxyCreator implements IDistributionConstants {
 
 	private String wsdlLocation;
 	private String outputLocation;
+	private String portToUse;
 
 	private WSDLAnalyzer analyzer;
 
@@ -53,6 +54,10 @@ public class ProxyCreator implements IDistributionConstants {
 	
 	public String getClientZipFile() {
 		return outputLocation + CLIENT_FILE;
+	}
+	
+	public void setPortToUse(String portToUse) {
+		this.portToUse = portToUse;
 	}
 
 	public String generateProxyBundle(CreationProgress creationProgress) throws Exception {
@@ -96,7 +101,7 @@ public class ProxyCreator implements IDistributionConstants {
 
 		creationProgress.filesCopied();
 
-		CxfConfCreator.configureFile(analyzer, wsdlLocation, beansLocation);
+		CxfConfCreator.configureFile(analyzer, wsdlLocation, beansLocation, portToUse);
 		creationProgress.cxfConfCreated();
 		ManifestMfCreator.configureFile(analyzer, manifestMfLocation);
 		creationProgress.manifestCreated();
