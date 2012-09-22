@@ -84,10 +84,39 @@
 			<version>4.0.0.v20101029-1626</version>
 			<scope>provided</scope>
 		</dependency>
+        <dependency>
+            <groupId>org.apache.cxf</groupId>
+            <artifactId>cxf-rt-frontend-jaxws</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.geronimo.specs</groupId>
+            <artifactId>geronimo-ws-metadata_2.0_spec</artifactId>
+        </dependency>
 	</dependencies>
 
     <build>
 	<plugins>
+		<plugin>
+			<groupId>org.apache.cxf</groupId>
+			<artifactId>cxf-java2ws-plugin</artifactId>
+			<version>2.5.0.fuse-70-084</version>
+			<executions>
+				<execution>
+					<id>process-classes</id>
+					<configuration>
+						<className>net.vandut.agh.magisterka.logic.service.LogicService</className>
+						<genWsdl>true</genWsdl>
+						<verbose>true</verbose>
+						<outputFile>${project.build.directory}/../src/main/resources/LogicService.wsdl</outputFile>
+					</configuration>
+					<phase>process-classes</phase>
+					<goals>
+						<goal>java2ws</goal>
+					</goals>
+				</execution>
+			</executions>
+		</plugin>
 		<plugin>
 			<groupId>org.apache.felix</groupId>
 			<artifactId>maven-bundle-plugin</artifactId>
@@ -103,9 +132,23 @@
 						org.eclipse.ecf.core;version="3.0.0",
 						org.osgi.framework,
 						org.osgi.util.tracker;version="1.4.0",
-						javax.jws,
-						javax.xml.bind.annotation,
-						javax.xml.namespace,
+                            javax.jws,
+                            javax.wsdl,
+                            javax.xml.bind,
+                            javax.xml.bind.annotation,
+                            javax.xml.namespace,
+                            javax.xml.soap,
+                            javax.xml.ws,
+                            META-INF.cxf,
+                            org.apache.cxf.bus,
+                            org.apache.cxf.bus.spring,
+                            org.apache.cxf.bus.resource,
+                            org.apache.cxf.configuration.spring,
+                            org.apache.cxf.resource,
+                            org.apache.servicemix.cxfse,
+                            org.apache.servicemix.cxfbc,
+                            org.springframework.beans.factory.config,
+                            org.apache.servicemix.common.osgi,
 						org.apache.log4j,
 						*
 					</Import-Package>

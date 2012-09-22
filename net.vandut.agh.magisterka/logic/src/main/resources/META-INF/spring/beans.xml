@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:osgi="http://www.springframework.org/schema/osgi"
+       xmlns:cxfbc="http://servicemix.apache.org/cxfbc/1.0"
+       xmlns:cxfse="http://servicemix.apache.org/cxfse/1.0"
+       xmlns:logic="http://service.logic.magisterka.agh.vandut.net/"
+       xsi:schemaLocation="
+                http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+                http://www.springframework.org/schema/osgi http://www.springframework.org/schema/osgi/spring-osgi.xsd
+                http://servicemix.apache.org/cxfbc/1.0 http://servicemix.apache.org/cxfbc/1.0/servicemix-cxf-bc.xsd
+                http://servicemix.apache.org/cxfse/1.0 http://servicemix.apache.org/cxfse/1.0/servicemix-cxf-se.xsd">
+
+
+  <cxfbc:consumer wsdl="classpath:LogicService.wsdl"
+		locationURI="http://0.0.0.0:9090/LogicService/"
+		targetService="logic:LogicService"
+		targetInterface="logic:LogicServicePortType"
+		targetEndpoint="LogicServiceEndpoint"/>
+	
+    <cxfse:endpoint
+    	endpoint="LogicServiceEndpoint"
+    	service="logic:LogicService"
+    	>
+        <cxfse:pojo>
+          <bean class="net.vandut.agh.magisterka.logic.Activator" />
+        </cxfse:pojo>
+    </cxfse:endpoint>
+
+    <bean class="org.apache.servicemix.common.osgi.EndpointExporter" />
+
+</beans>
