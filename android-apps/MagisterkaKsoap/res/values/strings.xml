@@ -1,0 +1,23 @@
+<resources>
+
+    <string name="app_name">MagisterkaKsoap</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="menu_settings">Settings</string>
+    <string name="title_activity_main">Magisterka</string>
+    <string name="new_host">New Host</string>
+    <string name="name">Name</string>
+    <string name="ip_address">IP Address</string>
+    <string name="add_service">Add Service</string>
+    <string name="service">Service</string>
+    <string name="path">Path</string>
+    <string name="namespace">Namespace</string>
+    <string name="add_method">Add Method</string>
+    <string name="remove_service">Remove Service</string>
+    <string name="cancel">Cancel</string>
+    <string name="ok">OK</string>
+    <string name="method_name">Method Name</string>
+    <string name="port">Port</string>
+    <string name="method_arg1">Argument 1 (opt.)</string>
+    <string name="method_arg2">Argument 2 (opt.)</string>
+
+</resources>
