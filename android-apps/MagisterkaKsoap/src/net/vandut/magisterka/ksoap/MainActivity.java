@@ -20,6 +20,7 @@ import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
@@ -190,11 +191,12 @@ public class MainActivity extends Activity implements OnItemClickListener {
 		final SoapMethod soapMethod = getSoapMethodFromModel(hostModel, method, args);
 		final ProgressDialog dialog = ProgressDialog.show(MainActivity.this, method.getName()
 				+ "()", "Sending SOAP. Please wait...", true);
+		dialog.setCancelable(true);
 		dialog.show();
 		final Handler handler = new Handler();
-		(new Thread(new Runnable() {
+		final AsyncTask<Object, Object, Object> asyncTask = new AsyncTask<Object, Object, Object>() {
 			@Override
-			public void run() {
+			protected Object doInBackground(Object... params) {
 				try {
 					SoapPrimitive result = soapMethod.call();
 					showToast(handler, "Result: "+result.toString(), Toast.LENGTH_LONG);
@@ -204,8 +206,18 @@ public class MainActivity extends Activity implements OnItemClickListener {
 				} finally {
 					dialog.dismiss();
 				}
+				return null;
 			}
-		})).start();
+			
+		};
+		dialog.setOnCancelListener(new DialogInterface.OnCancelListener() {
+			@Override
+			public void onCancel(DialogInterface dialog) {
+				dialog.cancel();
+				asyncTask.cancel(true);
+			}
+		});
+		asyncTask.execute();
 	}
 	
 	private void showToast(Handler handler, final String message, final int length) {
