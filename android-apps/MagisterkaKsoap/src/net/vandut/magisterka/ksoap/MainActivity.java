@@ -99,11 +99,12 @@ public class MainActivity extends Activity implements OnItemClickListener {
 		SharedPreferences hostsPref = getSharedPreferences(PREFS_HOSTMODELS_FILE, 0);
 		String marshalledHost = hostsPref.getString("host", null);
 		if(marshalledHost == null) {
-			return HostModel.unmarshall("Hathor|192.168.1.3|4|"
-		                               +"Door|10001|DoorService|HSOA_2|1|door_status|0|"
-					                   +"Power|10002|PowerSwitch|HSOA_3|0|"
-		                               +"Sensors|10003|SebsorsService|HSOA_1|0|"
-					                   +"Camera|10004||cam|0");
+			return HostModel.unmarshall("Hathor|192.168.1.3|5|"
+		                               +"Door|10001|DoorService|HSOA_2|3|door_status|0|door_open|0|door_close|0|"
+					                   +"Power|10002|PowerSwitch|HSOA_3|3|switch_status|0|switch_on1|0|switch_off1|0|"
+		                               +"Sensors|10003|SensorsService|HSOA_1|3|get_temperature|0|get_humidity|0|get_pressure|0|"
+					                   +"Camera|10004||cam|2|StartClassifier|0|GetLast|0|"
+		                               +"Logic|9090|LogicService|http://service.logic.magisterka.agh.vandut.net|3|startLogic|0|stopLogic|0|statusLogic|0");
 		}
 		return HostModel.unmarshall(marshalledHost);
 	}
@@ -208,7 +209,6 @@ public class MainActivity extends Activity implements OnItemClickListener {
 				}
 				return null;
 			}
-			
 		};
 		dialog.setOnCancelListener(new DialogInterface.OnCancelListener() {
 			@Override
