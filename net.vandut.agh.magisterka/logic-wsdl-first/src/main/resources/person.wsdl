@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tns="http://service.logic.magisterka.agh.vandut.net/" xmlns:typens="http://service.logic.magisterka.agh.vandut.net/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" name="wsdl-first" targetNamespace="http://service.logic.magisterka.agh.vandut.net/">
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tns="http://service.logic.magisterka.agh.vandut.net/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" name="wsdl-first" targetNamespace="http://service.logic.magisterka.agh.vandut.net/">
 	<wsdl:types>
 		<xsd:schema targetNamespace="http://service.logic.magisterka.agh.vandut.net/" elementFormDefault="qualified">
 			<xsd:element name="GetLogic">
@@ -18,29 +18,18 @@
 					</xsd:sequence>
 				</xsd:complexType>
 			</xsd:element>
-			<xsd:element name="UnknownLogicFaultPayload">
-				<xsd:complexType>
-					<xsd:sequence>
-						<xsd:element name="personId" type="xsd:string"/>
-					</xsd:sequence>
-				</xsd:complexType>
-			</xsd:element>
 		</xsd:schema>
 	</wsdl:types>
 	<wsdl:message name="GetLogicRequest">
-		<wsdl:part name="payload" element="typens:GetLogic"/>
+		<wsdl:part name="payload" element="tns:GetLogic"/>
 	</wsdl:message>
 	<wsdl:message name="GetLogicResponse">
-		<wsdl:part name="payload" element="typens:GetLogicResponse"/>
-	</wsdl:message>
-	<wsdl:message name="UnknownLogicFault">
-		<wsdl:part name="payload" element="typens:UnknownLogicFaultPayload"/>
+		<wsdl:part name="payload" element="tns:GetLogicResponse"/>
 	</wsdl:message>
 	<wsdl:portType name="Logic">
 		<wsdl:operation name="GetLogic">
 			<wsdl:input message="tns:GetLogicRequest"/>
 			<wsdl:output message="tns:GetLogicResponse"/>
-			<wsdl:fault name="UnknownLogic" message="tns:UnknownLogicFault"/>
 		</wsdl:operation>
 	</wsdl:portType>
 	<wsdl:binding name="LogicSOAPBinding" type="tns:Logic">
@@ -52,9 +41,6 @@
 			<wsdl:output>
 				<soap:body use="literal"/>
 			</wsdl:output>
-			<wsdl:fault name="UnknownLogic">
-				<soap:fault name="UnknownLogic" use="literal"/>
-			</wsdl:fault>
 		</wsdl:operation>
 	</wsdl:binding>
 	<wsdl:service name="LogicService">

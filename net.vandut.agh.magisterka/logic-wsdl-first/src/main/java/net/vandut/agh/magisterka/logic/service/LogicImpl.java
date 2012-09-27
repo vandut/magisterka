@@ -25,13 +25,8 @@ import javax.xml.ws.Holder;
 public class LogicImpl implements Logic {
 
     public void getLogic(Holder<String> personId, Holder<String> ssn, Holder<String> name)
-        throws UnknownLogicFault
     {
-        if (personId.value == null || personId.value.length() == 0) {
-        	net.vandut.agh.magisterka.logic.service.UnknownLogicFaultPayload fault = new net.vandut.agh.magisterka.logic.service.UnknownLogicFaultPayload();
-            fault.setPersonId(personId.value);
-            throw new UnknownLogicFault(null, fault);
-        }
+    	personId.value = "[mod] personId.value";
         name.value = "Guillaume";
         ssn.value = "000-000-0000";
     }
