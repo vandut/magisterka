@@ -11,9 +11,11 @@
                 http://servicemix.apache.org/cxfbc/1.0 http://servicemix.apache.org/cxfbc/1.0/servicemix-cxf-bc.xsd
                 http://servicemix.apache.org/cxfse/1.0 http://servicemix.apache.org/cxfse/1.0/servicemix-cxf-se.xsd">
 
+    <bean id="service" class="net.vandut.agh.magisterka.logic.service.LogicImpl" />
+    
     <cxfse:endpoint>
         <cxfse:pojo>
-          <bean class="net.vandut.agh.magisterka.logic.service.LogicImpl" />
+          <ref bean="service" />
         </cxfse:pojo>
     </cxfse:endpoint>
     
@@ -21,6 +23,11 @@
 					  locationURI="http://0.0.0.0:9090/LogicService/"
                       targetService="logic:LogicService"
                       targetInterface="logic:Logic"/>
+  
+  	<bean class="net.vandut.agh.magisterka.logic.Activator"
+			factory-method="setService" scope="singleton">
+	 	<constructor-arg ref="service" />
+	</bean>
   
   <bean class="org.apache.servicemix.common.osgi.EndpointExporter" />
 

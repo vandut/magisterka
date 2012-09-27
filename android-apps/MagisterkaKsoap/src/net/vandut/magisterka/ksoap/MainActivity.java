@@ -105,7 +105,7 @@ public class MainActivity extends Activity implements OnItemClickListener {
 					                   +"Power|10002|PowerSwitch|HSOA_3|9|switch_status|0|switch_on1|0|switch_off1|0|switch_on2|0|switch_off2|0|switch_on3|0|switch_off3|0|switch_on4|0|switch_off4|0|"
 		                               +"Sensors|10003|SensorsService|HSOA_1|3|get_temperature|0|get_humidity|0|get_pressure|0|"
 					                   +"Camera|10004||cam|2|StartClassifier|0|GetLast|0|"
-		                               +"Logic|9090|LogicService|http://service.logic.magisterka.agh.vandut.net|3|startLogic|0|stopLogic|0|statusLogic|0");
+		                               +"Logic|9090|LogicService|http://service.logic.magisterka.agh.vandut.net/|3|startLogic|0|stopLogic|0|statusLogic|0");
 		}
 		return HostModel.unmarshall(marshalledHost);
 	}

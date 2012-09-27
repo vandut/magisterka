@@ -111,6 +111,8 @@
 				<instructions>
 					<Bundle-SymbolicName>${project.groupId}.${project.artifactId}</Bundle-SymbolicName>
 					
+					<Bundle-Activator>net.vandut.agh.magisterka.logic.Activator</Bundle-Activator>
+					
 					<Import-Package>
 						org.eclipse.ecf.core;version="3.0.0",
 						org.osgi.framework,
@@ -135,6 +137,9 @@
 						org.apache.log4j,
 						*
 					</Import-Package>
+                    <Private-Package>
+						net.vandut.agh.magisterka.logic
+                    </Private-Package>
                     <Export-Package>
 						net.vandut.agh.magisterka.logic.service
                     </Export-Package>
