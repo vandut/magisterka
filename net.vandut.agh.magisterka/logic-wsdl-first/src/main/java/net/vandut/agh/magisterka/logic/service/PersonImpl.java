@@ -14,24 +14,26 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.apache.servicemix.samples.wsdl_first;
+package net.vandut.agh.magisterka.logic.service;
 
 import javax.jws.WebService;
 import javax.xml.ws.Holder;
 
-import org.apache.servicemix.samples.wsdl_first.types.GetPerson;
-import org.apache.servicemix.samples.wsdl_first.types.GetPersonResponse;
+import net.vandut.agh.magisterka.logic.service.GetPerson;
+import net.vandut.agh.magisterka.logic.service.GetPersonResponse;
 
-@WebService(serviceName = "PersonService", targetNamespace = "http://servicemix.apache.org/samples/wsdl-first", endpointInterface = "org.apache.servicemix.samples.wsdl_first.Person")
+@WebService(serviceName = "PersonService",
+			targetNamespace = "http://service.logic.magisterka.agh.vandut.net/",
+			endpointInterface = "net.vandut.agh.magisterka.logic.service.Person")
 public class PersonImpl implements Person {
 
     public void getPerson(Holder<String> personId, Holder<String> ssn, Holder<String> name)
-        throws UnknownPersonFault
+        throws UnknownPersonFault_Exception
     {
         if (personId.value == null || personId.value.length() == 0) {
-            org.apache.servicemix.samples.wsdl_first.types.UnknownPersonFault fault = new org.apache.servicemix.samples.wsdl_first.types.UnknownPersonFault();
+        	net.vandut.agh.magisterka.logic.service.UnknownPersonFault fault = new net.vandut.agh.magisterka.logic.service.UnknownPersonFault();
             fault.setPersonId(personId.value);
-            throw new UnknownPersonFault(null, fault);
+            throw new UnknownPersonFault_Exception(null, fault);
         }
         name.value = "Guillaume";
         ssn.value = "000-000-0000";

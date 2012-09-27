@@ -136,8 +136,7 @@
 						*
 					</Import-Package>
                     <Export-Package>
-						org.apache.servicemix.samples.wsdl_first,
-						org.apache.servicemix.samples.wsdl_first.types
+						net.vandut.agh.magisterka.logic.service
                     </Export-Package>
 					<Require-Bundle>org.eclipse.equinox.common,org.apache.cxf.bundle</Require-Bundle>
 				</instructions>
