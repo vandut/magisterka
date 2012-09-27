@@ -33,7 +33,6 @@
 	<module>temperature-sensor-dependency</module>
 	<module>temperature-sensor-remotecaller</module>
 	<module>logic</module>
-	<module>logic-wsdl-first</module>
 	<module>logic-client</module>
 	<module>missing-packages</module>
 	<module>sensors-java-client</module>

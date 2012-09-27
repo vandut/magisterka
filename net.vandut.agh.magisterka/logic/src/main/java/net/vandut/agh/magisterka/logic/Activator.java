@@ -1,6 +1,7 @@
 package net.vandut.agh.magisterka.logic;
 
-import net.vandut.agh.magisterka.logic.service.LogicService;
+import net.vandut.agh.magisterka.logic.service.Logic;
+import net.vandut.agh.magisterka.logic.service.LogicImpl;
 
 import org.apache.log4j.Logger;
 import org.osgi.framework.BundleActivator;
@@ -17,23 +18,39 @@ public class Activator implements BundleActivator {
 	
 	private Logic logic;
 	
-	public Activator() {
-		logic = new Logic(this);
+	private static Activator _INSTANCE;
+
+	public static Logic setService(Logic logic) throws Exception {
+		if (_INSTANCE == null) {
+			throw new IllegalStateException("Excpected Activator instance to be not null");
+		}
+		_INSTANCE.logic = logic;
+		((LogicImpl)logic).setActivator(_INSTANCE);
+		_INSTANCE.initLogic();
+		return logic;
 	}
 
 	public void start(BundleContext context) throws Exception {
+		_INSTANCE = this;
 		this.context = context;
-		ecfServer = new EcfServer(context);
-		ecfServer.registerService(LogicService.class, logic);
-		logic.startLogic();
-		logger.info("Logic activator started");
 	}
 
 	public void stop(BundleContext context) throws Exception {
-		ecfServer.unregisterAll();
-		logic.stopLogic();
+		cleanupLogic();
 		context = null;
 		logger.info("Logic activator stopped");
+	}
+	
+	private void initLogic() throws Exception {
+		ecfServer = new EcfServer(context);
+		ecfServer.registerService(Logic.class, logic);
+//		logic.logicStart();
+		logger.info("Logic activator started");
+	}
+	
+	private void cleanupLogic() {
+		ecfServer.unregisterAll();
+		logic.logicStop();
 	}
 
 	@SuppressWarnings("unchecked")

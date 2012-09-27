@@ -10,13 +10,8 @@ import net.vandut.agh.magisterka.logic.Activator;
 
 import org.apache.log4j.Logger;
 
-import cam.SmartCameraPortType;
-
-@WebService(serviceName = "LogicServiceClient",
-            targetNamespace = "http://service.logic.magisterka.agh.vandut.net/",
-            endpointInterface = "net.vandut.agh.magisterka.logic.service.LogicService"
-            )
-public class Logic implements LogicService {
+@WebService(serviceName = "LogicService", targetNamespace = "http://service.logic.magisterka.agh.vandut.net/", endpointInterface = "net.vandut.agh.magisterka.logic.service.Logic")
+public class LogicImpl implements Logic {
 
 	private static final Logger logger = Logger.getLogger(Logic.class);
 
@@ -29,23 +24,25 @@ public class Logic implements LogicService {
 
 	private AtomicBoolean status = new AtomicBoolean(false);
 	
-	public Logic(Activator activator) {
+	public void setActivator(Activator activator) {
 		this.activator = activator;
 	}
 
-	public void startLogic() {
+	public String logicStart() {
 		logicTimer.scheduleAtFixedRate(new LogicTask(), NO_DELAY, ONE_SECOND);
 		status.set(true);
+		return "Started";
 	}
 
-	public void stopLogic() {
+	public String logicStop() {
 		logicTimer.cancel();
 		logicTimer = new Timer();
 		status.set(false);
+		return "Stopped";
 	}
 
-	public boolean statusLogic() {
-		return status.get();
+	public String logicStatus() {
+		return status.get() ? "Logic is Running" : "Logic is Idle";
 	}
 
 	public class LogicTask extends TimerTask {
@@ -55,7 +52,7 @@ public class Logic implements LogicService {
 				hsoa_1.ServiceSoap temperatureService = activator.getService(hsoa_1.ServiceSoap.class);
 				hsoa_2.ServiceSoap doorService = activator.getService(hsoa_2.ServiceSoap.class);
 				hsoa_3.ServiceSoap powerSwitchService = activator.getService(hsoa_3.ServiceSoap.class);
-				SmartCameraPortType camService = activator.getService(SmartCameraPortType.class);
+				cam.SmartCameraPortType camService = activator.getService(cam.SmartCameraPortType.class);
 				
 				// powerSwitchService not yet used, but package is in OSGi manifest file
 
@@ -104,4 +101,5 @@ public class Logic implements LogicService {
 			}
 		}
 	}
+
 }
