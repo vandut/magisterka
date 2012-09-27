@@ -2,6 +2,6 @@
 <env:Envelope xmlns:env="http://schemas.xmlsoap.org/soap/envelope/"
               xmlns:tns="http://service.logic.magisterka.agh.vandut.net/">
   <env:Body>
-    <tns:GetLogic/>
+    <tns:logic_status/>
   </env:Body>
 </env:Envelope>

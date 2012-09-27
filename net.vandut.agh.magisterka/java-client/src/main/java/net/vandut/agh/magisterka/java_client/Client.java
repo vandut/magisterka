@@ -41,7 +41,7 @@ public class Client {
 		connection.setDoOutput(true);
 		OutputStream os = connection.getOutputStream();
 		// Post the request file.
-		InputStream fis = getClass().getClassLoader().getResourceAsStream("org/apache/servicemix/samples/wsdl_first/request.xml");
+		InputStream fis = getClass().getClassLoader().getResourceAsStream("net/vandut/agh/magisterka/logic/service/request.xml");
 		FileUtil.copyInputStream(fis, os);
 		// Read the response.
 		InputStream is = connection.getInputStream();

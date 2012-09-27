@@ -2,34 +2,92 @@
 <wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tns="http://service.logic.magisterka.agh.vandut.net/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" name="wsdl-first" targetNamespace="http://service.logic.magisterka.agh.vandut.net/">
 	<wsdl:types>
 		<xsd:schema targetNamespace="http://service.logic.magisterka.agh.vandut.net/" elementFormDefault="qualified">
-			<xsd:element name="GetLogic">
+			<xsd:element name="logic_status">
 				<xsd:complexType/>
 			</xsd:element>
-			<xsd:element name="GetLogicRS">
+			<xsd:element name="logic_statusRS">
 				<xsd:complexType>
 					<xsd:sequence>
-						<xsd:element minOccurs="0" maxOccurs="1" name="GetLogicResult" type="xsd:string"/>
+						<xsd:element minOccurs="0" maxOccurs="1" name="logic_statusResult" type="xsd:string"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="logic_start">
+				<xsd:complexType/>
+			</xsd:element>
+			<xsd:element name="logic_startRS">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element minOccurs="0" maxOccurs="1" name="logic_startResult" type="xsd:string"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="logic_stop">
+				<xsd:complexType/>
+			</xsd:element>
+			<xsd:element name="logic_stopRS">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element minOccurs="0" maxOccurs="1" name="logic_stopResult" type="xsd:string"/>
 					</xsd:sequence>
 				</xsd:complexType>
 			</xsd:element>
 		</xsd:schema>
 	</wsdl:types>
-	<wsdl:message name="GetLogicRequest">
-		<wsdl:part name="payload" element="tns:GetLogic"/>
+	<wsdl:message name="logic_statusRequest">
+		<wsdl:part name="payload" element="tns:logic_status"/>
 	</wsdl:message>
-	<wsdl:message name="GetLogicResponse">
-		<wsdl:part name="payload" element="tns:GetLogicRS"/>
+	<wsdl:message name="logic_statusResponse">
+		<wsdl:part name="payload" element="tns:logic_statusRS"/>
+	</wsdl:message>
+	<wsdl:message name="logic_startRequest">
+		<wsdl:part name="parameter" element="tns:logic_start"/>
+	</wsdl:message>
+	<wsdl:message name="logic_startResponse">
+		<wsdl:part name="parameter" element="tns:logic_startRS"/>
+	</wsdl:message>
+	<wsdl:message name="logic_stopRequest">
+		<wsdl:part name="parameter" element="tns:logic_stop"/>
+	</wsdl:message>
+	<wsdl:message name="logic_stopResponse">
+		<wsdl:part name="parameter" element="tns:logic_stopRS"/>
 	</wsdl:message>
 	<wsdl:portType name="Logic">
-		<wsdl:operation name="GetLogic">
-			<wsdl:input message="tns:GetLogicRequest"/>
-			<wsdl:output message="tns:GetLogicResponse"/>
+		<wsdl:operation name="logic_status">
+			<wsdl:input message="tns:logic_statusRequest"/>
+			<wsdl:output message="tns:logic_statusResponse"/>
+		</wsdl:operation>
+		<wsdl:operation name="logic_start">
+			<wsdl:input message="tns:logic_startRequest"/>
+			<wsdl:output message="tns:logic_startResponse"/>
+		</wsdl:operation>
+		<wsdl:operation name="logic_stop">
+			<wsdl:input message="tns:logic_stopRequest"/>
+			<wsdl:output message="tns:logic_stopResponse"/>
 		</wsdl:operation>
 	</wsdl:portType>
 	<wsdl:binding name="LogicSOAPBinding" type="tns:Logic">
 		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
-		<wsdl:operation name="GetLogic">
-			<soap:operation soapAction="tns:GetLogic" style="document"/>
+		<wsdl:operation name="logic_status">
+			<soap:operation soapAction="tns:logic_status" style="document"/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="logic_start">
+			<soap:operation soapAction="urn:#NewOperation"/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="logic_stop">
+			<soap:operation soapAction="urn:#NewOperation"/>
 			<wsdl:input>
 				<soap:body use="literal"/>
 			</wsdl:input>
