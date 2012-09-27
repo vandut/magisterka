@@ -17,7 +17,7 @@
         </cxfse:pojo>
     </cxfse:endpoint>
     
-  <cxfbc:consumer wsdl="classpath:person.wsdl"
+  <cxfbc:consumer wsdl="classpath:LogicService.wsdl"
 					  locationURI="http://0.0.0.0:9090/LogicService/"
                       targetService="logic:LogicService"
                       targetInterface="logic:Logic"/>

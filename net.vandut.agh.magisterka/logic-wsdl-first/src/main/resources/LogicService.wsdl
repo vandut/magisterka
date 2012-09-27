@@ -3,18 +3,12 @@
 	<wsdl:types>
 		<xsd:schema targetNamespace="http://service.logic.magisterka.agh.vandut.net/" elementFormDefault="qualified">
 			<xsd:element name="GetLogic">
-				<xsd:complexType>
-					<xsd:sequence>
-						<xsd:element name="personId" type="xsd:string"/>
-					</xsd:sequence>
-				</xsd:complexType>
+				<xsd:complexType />
 			</xsd:element>
 			<xsd:element name="GetLogicResponse">
 				<xsd:complexType>
 					<xsd:sequence>
-						<xsd:element name="personId" type="xsd:string"/>
-						<xsd:element name="ssn" type="xsd:string"/>
-						<xsd:element name="name" type="xsd:string"/>
+						<xsd:element minOccurs="0" maxOccurs="1" name="GetLogicResult" type="xsd:string"/>
 					</xsd:sequence>
 				</xsd:complexType>
 			</xsd:element>

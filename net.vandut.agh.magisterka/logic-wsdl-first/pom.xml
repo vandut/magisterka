@@ -89,7 +89,7 @@
 						<sourceRoot>${basedir}/target/jaxws</sourceRoot>
 						<wsdlOptions>
 							<wsdlOption>
-								<wsdl>${basedir}/src/main/resources/person.wsdl</wsdl>
+								<wsdl>${basedir}/src/main/resources/LogicService.wsdl</wsdl>
 								<extraargs>
 									<extraarg>-verbose</extraarg>
 								</extraargs>
