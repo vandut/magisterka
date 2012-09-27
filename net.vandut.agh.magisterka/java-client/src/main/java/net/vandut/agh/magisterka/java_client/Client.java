@@ -27,7 +27,6 @@ import org.apache.servicemix.util.FileUtil;
 public class Client {
 	public static void main(String[] args) {
 		try {
-			new Client().sendRequest("http://192.168.1.3:8092/PersonService/");
 			new Client().sendRequest("http://localhost:8092/PersonService/");
 		} catch (Exception e) {
 			e.printStackTrace();
