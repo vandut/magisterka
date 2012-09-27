@@ -1,6 +1,7 @@
 package net.vandut.magisterka.ksoap;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -101,7 +102,7 @@ public class MainActivity extends Activity implements OnItemClickListener {
 		if(marshalledHost == null) {
 			return HostModel.unmarshall("Hathor|192.168.1.3|5|"
 		                               +"Door|10001|DoorService|HSOA_2|3|door_status|0|door_open|0|door_close|0|"
-					                   +"Power|10002|PowerSwitch|HSOA_3|3|switch_status|0|switch_on1|0|switch_off1|0|"
+					                   +"Power|10002|PowerSwitch|HSOA_3|9|switch_status|0|switch_on1|0|switch_off1|0|switch_on2|0|switch_off2|0|switch_on3|0|switch_off3|0|switch_on4|0|switch_off4|0|"
 		                               +"Sensors|10003|SensorsService|HSOA_1|3|get_temperature|0|get_humidity|0|get_pressure|0|"
 					                   +"Camera|10004||cam|2|StartClassifier|0|GetLast|0|"
 		                               +"Logic|9090|LogicService|http://service.logic.magisterka.agh.vandut.net|3|startLogic|0|stopLogic|0|statusLogic|0");
@@ -140,7 +141,10 @@ public class MainActivity extends Activity implements OnItemClickListener {
 	public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 		HostModel hostModel = getHostModelFromPreferences();
 		MethodModel method = getModelFromPosition(hostModel, position);
-		getMethodSendDialog(hostModel, method).show();
+		AlertDialog dialog = getMethodSendDialog(hostModel, method);
+		if(dialog != null) {
+			dialog.show();
+		}
 	}
 
 	private View inflateLayout(int laoutId) {
@@ -148,6 +152,10 @@ public class MainActivity extends Activity implements OnItemClickListener {
 	}
 	
 	private AlertDialog getMethodSendDialog(final HostModel hostModel, final MethodModel method) {
+		if (method.getArgumentCount() == 0) {
+			sentSoapMethod(hostModel, method, Collections.<String, String>emptyMap());
+			return null;
+		}
 		final View view = inflateLayout(R.layout.alert_dialog_method_args);
 		EditText editTextArgName1 = (EditText) view.findViewById(R.id.editTextArgName1);
 		EditText editTextArgName2 = (EditText) view.findViewById(R.id.editTextArgName2);
