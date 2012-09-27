@@ -78,7 +78,7 @@
 			</wsdl:output>
 		</wsdl:operation>
 		<wsdl:operation name="logic_start">
-			<soap:operation soapAction="urn:#NewOperation"/>
+			<soap:operation soapAction="tns:logic_start" style="document"/>
 			<wsdl:input>
 				<soap:body use="literal"/>
 			</wsdl:input>
@@ -87,7 +87,7 @@
 			</wsdl:output>
 		</wsdl:operation>
 		<wsdl:operation name="logic_stop">
-			<soap:operation soapAction="urn:#NewOperation"/>
+			<soap:operation soapAction="tns:logic_stop" style="document"/>
 			<wsdl:input>
 				<soap:body use="literal"/>
 			</wsdl:input>
