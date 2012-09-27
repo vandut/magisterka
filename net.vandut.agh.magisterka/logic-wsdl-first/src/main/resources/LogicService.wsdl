@@ -3,9 +3,9 @@
 	<wsdl:types>
 		<xsd:schema targetNamespace="http://service.logic.magisterka.agh.vandut.net/" elementFormDefault="qualified">
 			<xsd:element name="GetLogic">
-				<xsd:complexType />
+				<xsd:complexType/>
 			</xsd:element>
-			<xsd:element name="GetLogicResponse">
+			<xsd:element name="GetLogicRS">
 				<xsd:complexType>
 					<xsd:sequence>
 						<xsd:element minOccurs="0" maxOccurs="1" name="GetLogicResult" type="xsd:string"/>
@@ -18,7 +18,7 @@
 		<wsdl:part name="payload" element="tns:GetLogic"/>
 	</wsdl:message>
 	<wsdl:message name="GetLogicResponse">
-		<wsdl:part name="payload" element="tns:GetLogicResponse"/>
+		<wsdl:part name="payload" element="tns:GetLogicRS"/>
 	</wsdl:message>
 	<wsdl:portType name="Logic">
 		<wsdl:operation name="GetLogic">
@@ -29,6 +29,7 @@
 	<wsdl:binding name="LogicSOAPBinding" type="tns:Logic">
 		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
 		<wsdl:operation name="GetLogic">
+			<soap:operation soapAction="tns:GetLogic" style="document"/>
 			<wsdl:input>
 				<soap:body use="literal"/>
 			</wsdl:input>
