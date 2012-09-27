@@ -2,8 +2,8 @@
 <env:Envelope xmlns:env="http://schemas.xmlsoap.org/soap/envelope/"
               xmlns:tns="http://service.logic.magisterka.agh.vandut.net/">
   <env:Body>
-    <tns:GetPerson>
+    <tns:GetLogic>
       <tns:personId>world</tns:personId>
-    </tns:GetPerson>
+    </tns:GetLogic>
   </env:Body>
 </env:Envelope>

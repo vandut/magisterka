@@ -4,7 +4,7 @@
        xmlns:osgi="http://www.springframework.org/schema/osgi"
        xmlns:cxfbc="http://servicemix.apache.org/cxfbc/1.0"
        xmlns:cxfse="http://servicemix.apache.org/cxfse/1.0"
-       xmlns:person="http://service.logic.magisterka.agh.vandut.net/"
+       xmlns:logic="http://service.logic.magisterka.agh.vandut.net/"
        xsi:schemaLocation="
                 http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
                 http://www.springframework.org/schema/osgi http://www.springframework.org/schema/osgi/spring-osgi.xsd
@@ -13,14 +13,14 @@
 
     <cxfse:endpoint>
         <cxfse:pojo>
-          <bean class="net.vandut.agh.magisterka.logic.service.PersonImpl" />
+          <bean class="net.vandut.agh.magisterka.logic.service.LogicImpl" />
         </cxfse:pojo>
     </cxfse:endpoint>
     
   <cxfbc:consumer wsdl="classpath:person.wsdl"
-					  locationURI="http://0.0.0.0:8092/PersonService/"
-                      targetService="person:PersonService"
-                      targetInterface="person:Person"/>
+					  locationURI="http://0.0.0.0:9090/LogicService/"
+                      targetService="logic:LogicService"
+                      targetInterface="logic:Logic"/>
   
   <bean class="org.apache.servicemix.common.osgi.EndpointExporter" />
 

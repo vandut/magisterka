@@ -19,21 +19,18 @@ package net.vandut.agh.magisterka.logic.service;
 import javax.jws.WebService;
 import javax.xml.ws.Holder;
 
-import net.vandut.agh.magisterka.logic.service.GetPerson;
-import net.vandut.agh.magisterka.logic.service.GetPersonResponse;
-
-@WebService(serviceName = "PersonService",
+@WebService(serviceName = "LogicService",
 			targetNamespace = "http://service.logic.magisterka.agh.vandut.net/",
-			endpointInterface = "net.vandut.agh.magisterka.logic.service.Person")
-public class PersonImpl implements Person {
+			endpointInterface = "net.vandut.agh.magisterka.logic.service.Logic")
+public class LogicImpl implements Logic {
 
-    public void getPerson(Holder<String> personId, Holder<String> ssn, Holder<String> name)
-        throws UnknownPersonFault_Exception
+    public void getLogic(Holder<String> personId, Holder<String> ssn, Holder<String> name)
+        throws UnknownLogicFault
     {
         if (personId.value == null || personId.value.length() == 0) {
-        	net.vandut.agh.magisterka.logic.service.UnknownPersonFault fault = new net.vandut.agh.magisterka.logic.service.UnknownPersonFault();
+        	net.vandut.agh.magisterka.logic.service.UnknownLogicFaultPayload fault = new net.vandut.agh.magisterka.logic.service.UnknownLogicFaultPayload();
             fault.setPersonId(personId.value);
-            throw new UnknownPersonFault_Exception(null, fault);
+            throw new UnknownLogicFault(null, fault);
         }
         name.value = "Guillaume";
         ssn.value = "000-000-0000";
