@@ -12,7 +12,7 @@ import javax.swing.JTextField;
 import javax.swing.UIManager;
 
 import net.miginfocom.swing.MigLayout;
-import net.vandut.agh.magisterka.logic.service.LogicService;
+import net.vandut.agh.magisterka.logic.service.Logic;
 import net.vandut.agh.magisterka.logicclient.handlers.CamServiceHandler;
 import net.vandut.agh.magisterka.logicclient.handlers.DoorServiceHandler;
 import net.vandut.agh.magisterka.logicclient.handlers.LogicServiceHandler;
@@ -195,7 +195,7 @@ public class Gui extends JFrame {
 				hsoa_3.ServiceSoap.class, statusLabelPowerSwitchService,
 				actionBtnPowerSwitchOn1);
 		serviceHandlerLogic = new LogicServiceHandler("Logic Service",
-				LogicService.class, statusLabelLogicService,
+				Logic.class, statusLabelLogicService,
 				actionBtnLogicStatus, actionBtnLogicStart, actionBtnLogicStop);
 
 		serviceHandlerDoor.register(ecfClient);
