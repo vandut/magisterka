@@ -18,6 +18,7 @@ import net.vandut.agh.magisterka.logicclient.handlers.DoorServiceHandler;
 import net.vandut.agh.magisterka.logicclient.handlers.LogicServiceHandler;
 import net.vandut.agh.magisterka.logicclient.handlers.PowerSwitchServiceHandler;
 import net.vandut.agh.magisterka.logicclient.handlers.SensorsServiceHandler;
+import net.vandut.agh.magisterka.logicclient.handlers.TemperatureServiceHandler;
 
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.InvalidSyntaxException;
@@ -40,6 +41,7 @@ public class Gui extends JFrame {
 	private JLabel statusLabelCamService;
 	private JLabel statusLabelPowerSwitchService;
 	private JLabel statusLabelLogicService;
+	private JLabel statusLabelTemperatureService;
 
 	private JButton actionBtnDoorStatus;
 	private JButton actionBtnDoorOpen;
@@ -58,11 +60,14 @@ public class Gui extends JFrame {
 	private JButton actionBtnLogicStart;
 	private JButton actionBtnLogicStop;
 
+	private JButton actionBtnTemperatureGetTemp;
+
 	DoorServiceHandler serviceHandlerDoor;
 	SensorsServiceHandler serviceHandlerSensors;
 	CamServiceHandler serviceHandlerCam;
 	PowerSwitchServiceHandler serviceHandlerPowerSwitch;
 	LogicServiceHandler serviceHandlerLogic;
+	TemperatureServiceHandler serviceHandlerTemperature;
 
 	private final ActionListener actionListenerBtnConnection = new ActionListener() {
 		public void actionPerformed(ActionEvent action) {
@@ -116,6 +121,7 @@ public class Gui extends JFrame {
 		statusLabelCamService = new JLabel("Pending...");
 		statusLabelPowerSwitchService = new JLabel("Pending...");
 		statusLabelLogicService = new JLabel("Pending...");
+		statusLabelTemperatureService = new JLabel("Pending...");
 
 		actionBtnDoorStatus = new JButton("Status");
 		actionBtnDoorOpen = new JButton("Open");
@@ -133,6 +139,8 @@ public class Gui extends JFrame {
 		actionBtnLogicStatus = new JButton("Status");
 		actionBtnLogicStart = new JButton("Start");
 		actionBtnLogicStop = new JButton("Stop");
+		
+		actionBtnTemperatureGetTemp = new JButton("Get Temp");
 
 		btnConnection.addActionListener(actionListenerBtnConnection);
 	}
@@ -154,6 +162,7 @@ public class Gui extends JFrame {
 		panel.add(statusLabelCamService, "growx, wrap");
 		panel.add(statusLabelPowerSwitchService, "growx, wrap");
 		panel.add(statusLabelLogicService, "growx, wrap");
+		panel.add(statusLabelTemperatureService, "growx, wrap");
 
 		GuiUtils.addSeparator(panel, "Door Service");
 		panel.add(actionBtnDoorStatus, "split 3");
@@ -174,6 +183,9 @@ public class Gui extends JFrame {
 		panel.add(actionBtnLogicStatus, "split 3");
 		panel.add(actionBtnLogicStart, "");
 		panel.add(actionBtnLogicStop, "wrap");
+
+		GuiUtils.addSeparator(panel, "Temperature Service");
+		panel.add(actionBtnTemperatureGetTemp, "wrap");
 
 		pack();
 		setResizable(false);
@@ -197,12 +209,16 @@ public class Gui extends JFrame {
 		serviceHandlerLogic = new LogicServiceHandler("Logic Service",
 				Logic.class, statusLabelLogicService,
 				actionBtnLogicStatus, actionBtnLogicStart, actionBtnLogicStop);
+		serviceHandlerTemperature = new TemperatureServiceHandler("Temperature Service",
+				pyro.TemperatureService.class, statusLabelTemperatureService,
+				actionBtnTemperatureGetTemp);
 
 		serviceHandlerDoor.register(ecfClient);
 		serviceHandlerSensors.register(ecfClient);
 		serviceHandlerCam.register(ecfClient);
 		serviceHandlerPowerSwitch.register(ecfClient);
 		serviceHandlerLogic.register(ecfClient);
+		serviceHandlerTemperature.register(ecfClient);
 	}
 
 	public void close() {

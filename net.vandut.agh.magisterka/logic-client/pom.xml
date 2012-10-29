@@ -108,7 +108,8 @@
                         hsoa_2,
                         hsoa_3,
                         cam,
-                        net.vandut.agh.magisterka.logic.service
+                        net.vandut.agh.magisterka.logic.service,
+                        pyro
                     </Export-Package>
 					<Require-Bundle>org.eclipse.equinox.common</Require-Bundle>
 					
