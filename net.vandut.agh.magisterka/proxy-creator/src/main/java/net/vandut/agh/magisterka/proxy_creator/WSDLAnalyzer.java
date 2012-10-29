@@ -41,6 +41,10 @@ public class WSDLAnalyzer {
 		return targetNamespace;
 	}
 
+	public String getConvertedToPackageTargetNamespace() throws MalformedURLException {
+		return convertNamespaceToPackage(targetNamespace);
+	}
+
 	public String getTargetPackage() {
 		return targetPackage;
 	}

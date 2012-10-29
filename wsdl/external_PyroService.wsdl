@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="TemperatureServiceService" targetNamespace="http://pyro/" xmlns:tns="http://pyro/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:SOAP="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:SOAP11="http://schemas.xmlsoap.org/wsdl/soap/">
+  <wsdl:types>
+    <xs:schema attributeFormDefault="qualified" elementFormDefault="unqualified" targetNamespace="http://pyro/" xmlns:xs="http://www.w3.org/2001/XMLSchema"><xs:element name="getEndpointURIResponse"><xs:complexType><xs:sequence><xs:element minOccurs="0" name="return" nillable="true" type="xs:string"/></xs:sequence></xs:complexType></xs:element><xs:element name="getTempResponse"><xs:complexType><xs:sequence><xs:element minOccurs="0" name="return" type="xs:int"/></xs:sequence></xs:complexType></xs:element><xs:element name="getSpecificationURI"><xs:complexType/></xs:element><xs:element name="isActive"><xs:complexType/></xs:element><xs:element name="getVersion"><xs:complexType/></xs:element><xs:element name="getConfigurationAssistURI"><xs:complexType/></xs:element><xs:element name="isActiveResponse"><xs:complexType><xs:sequence><xs:element minOccurs="0" name="return" type="xs:boolean"/></xs:sequence></xs:complexType></xs:element><xs:element name="getConfigurationAssistURIResponse"><xs:complexType><xs:sequence><xs:element minOccurs="0" name="return" nillable="true" type="xs:string"/></xs:sequence></xs:complexType></xs:element><xs:element name="getDescriptionResponse"><xs:complexType><xs:sequence><xs:element minOccurs="0" name="return" nillable="true" type="xs:string"/></xs:sequence></xs:complexType></xs:element><xs:element name="getCommonName"><xs:complexType/></xs:element><xs:element name="getEndpointURI"><xs:complexType/></xs:element><xs:element name="getUuidResponse"><xs:complexType><xs:sequence><xs:element minOccurs="0" name="return" nillable="true" type="xs:string"/></xs:sequence></xs:complexType></xs:element><xs:element name="getVersionResponse"><xs:complexType><xs:sequence><xs:element minOccurs="0" name="return" nillable="true" type="xs:string"/></xs:sequence></xs:complexType></xs:element><xs:element name="getSpecificationURIResponse"><xs:complexType><xs:sequence><xs:element minOccurs="0" name="return" nillable="true" type="xs:string"/></xs:sequence></xs:complexType></xs:element><xs:element name="getStatus"><xs:complexType/></xs:element><xs:element name="getStatusResponse"><xs:complexType><xs:sequence><xs:element minOccurs="0" name="return" nillable="true" type="xs:string"/></xs:sequence></xs:complexType></xs:element><xs:element name="getTemp"><xs:complexType/></xs:element><xs:element name="getUuid"><xs:complexType/></xs:element><xs:element name="getDescription"><xs:complexType/></xs:element><xs:element name="getCommonNameResponse"><xs:complexType><xs:sequence><xs:element minOccurs="0" name="return" nillable="true" type="xs:string"/></xs:sequence></xs:complexType></xs:element></xs:schema>
+  </wsdl:types>
+  <wsdl:message name="getEndpointURIResponse">
+    <wsdl:part name="getEndpointURIResponse" element="tns:getEndpointURIResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getTempResponse">
+    <wsdl:part name="getTempResponse" element="tns:getTempResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getSpecificationURI">
+    <wsdl:part name="getSpecificationURI" element="tns:getSpecificationURI">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="isActive">
+    <wsdl:part name="isActive" element="tns:isActive">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getVersion">
+    <wsdl:part name="getVersion" element="tns:getVersion">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getConfigurationAssistURI">
+    <wsdl:part name="getConfigurationAssistURI" element="tns:getConfigurationAssistURI">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="isActiveResponse">
+    <wsdl:part name="isActiveResponse" element="tns:isActiveResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getConfigurationAssistURIResponse">
+    <wsdl:part name="getConfigurationAssistURIResponse" element="tns:getConfigurationAssistURIResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getDescriptionResponse">
+    <wsdl:part name="getDescriptionResponse" element="tns:getDescriptionResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getCommonName">
+    <wsdl:part name="getCommonName" element="tns:getCommonName">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getEndpointURI">
+    <wsdl:part name="getEndpointURI" element="tns:getEndpointURI">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getUuidResponse">
+    <wsdl:part name="getUuidResponse" element="tns:getUuidResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getVersionResponse">
+    <wsdl:part name="getVersionResponse" element="tns:getVersionResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getSpecificationURIResponse">
+    <wsdl:part name="getSpecificationURIResponse" element="tns:getSpecificationURIResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getStatus">
+    <wsdl:part name="getStatus" element="tns:getStatus">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getStatusResponse">
+    <wsdl:part name="getStatusResponse" element="tns:getStatusResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getTemp">
+    <wsdl:part name="getTemp" element="tns:getTemp">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getUuid">
+    <wsdl:part name="getUuid" element="tns:getUuid">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getDescription">
+    <wsdl:part name="getDescription" element="tns:getDescription">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getCommonNameResponse">
+    <wsdl:part name="getCommonNameResponse" element="tns:getCommonNameResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="TemperatureService">
+    <wsdl:operation name="getTemp">
+      <wsdl:input message="tns:getTemp">
+    </wsdl:input>
+      <wsdl:output message="tns:getTempResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getConfigurationAssistURI">
+      <wsdl:input message="tns:getConfigurationAssistURI">
+    </wsdl:input>
+      <wsdl:output message="tns:getConfigurationAssistURIResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getSpecificationURI">
+      <wsdl:input message="tns:getSpecificationURI">
+    </wsdl:input>
+      <wsdl:output message="tns:getSpecificationURIResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getEndpointURI">
+      <wsdl:input message="tns:getEndpointURI">
+    </wsdl:input>
+      <wsdl:output message="tns:getEndpointURIResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCommonName">
+      <wsdl:input message="tns:getCommonName">
+    </wsdl:input>
+      <wsdl:output message="tns:getCommonNameResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getUuid">
+      <wsdl:input message="tns:getUuid">
+    </wsdl:input>
+      <wsdl:output message="tns:getUuidResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="isActive">
+      <wsdl:input message="tns:isActive">
+    </wsdl:input>
+      <wsdl:output message="tns:isActiveResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getVersion">
+      <wsdl:input message="tns:getVersion">
+    </wsdl:input>
+      <wsdl:output message="tns:getVersionResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDescription">
+      <wsdl:input message="tns:getDescription">
+    </wsdl:input>
+      <wsdl:output message="tns:getDescriptionResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getStatus">
+      <wsdl:input message="tns:getStatus">
+    </wsdl:input>
+      <wsdl:output message="tns:getStatusResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="TemperatureServiceBinding" type="tns:TemperatureService">
+    <SOAP:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="getTemp">
+      <SOAP:operation/>
+      <wsdl:input>
+        <SOAP:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <SOAP:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getConfigurationAssistURI">
+      <SOAP:operation/>
+      <wsdl:input>
+        <SOAP:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <SOAP:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getSpecificationURI">
+      <SOAP:operation/>
+      <wsdl:input>
+        <SOAP:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <SOAP:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getEndpointURI">
+      <SOAP:operation/>
+      <wsdl:input>
+        <SOAP:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <SOAP:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCommonName">
+      <SOAP:operation/>
+      <wsdl:input>
+        <SOAP:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <SOAP:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getUuid">
+      <SOAP:operation/>
+      <wsdl:input>
+        <SOAP:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <SOAP:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="isActive">
+      <SOAP:operation/>
+      <wsdl:input>
+        <SOAP:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <SOAP:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getVersion">
+      <SOAP:operation/>
+      <wsdl:input>
+        <SOAP:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <SOAP:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDescription">
+      <SOAP:operation/>
+      <wsdl:input>
+        <SOAP:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <SOAP:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getStatus">
+      <SOAP:operation/>
+      <wsdl:input>
+        <SOAP:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <SOAP:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="TemperatureServiceService">
+    <wsdl:port name="TemperatureServicePort" binding="tns:TemperatureServiceBinding">
+      <SOAP:address location="http://149.156.97.223:29186/PyroService"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

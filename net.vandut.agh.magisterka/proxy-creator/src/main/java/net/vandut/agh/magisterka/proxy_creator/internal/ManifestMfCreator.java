@@ -34,7 +34,7 @@ public class ManifestMfCreator {
 		String javaVersion = System.getProperty("java.version");
 		String lastModified = Long.toString(Calendar.getInstance().getTimeInMillis());
 
-		String symbolicName = analyzer.getServiceList().get(0).name + "-Proxy-" + namespace;
+		String symbolicName = analyzer.getServiceList().get(0).name + "-Proxy-" + pckg;
 		// symbolicName += "-" + UUID.randomUUID();
 
 		String document;
