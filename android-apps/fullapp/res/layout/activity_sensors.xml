@@ -1,0 +1,39 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".DoorActivity"
+    android:layout_margin="10dp" >
+
+    <Button
+        android:id="@+id/button_sensors_temperature"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:text="@string/button_sensors_temperature" />
+    <Button
+        android:id="@+id/button_sensors_humidity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/button_sensors_temperature"
+        android:text="@string/button_sensors_humidity" />
+    <Button
+        android:id="@+id/button_sensors_pressure"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/button_sensors_humidity"
+        android:text="@string/button_sensors_pressure" />
+
+    <fragment
+        android:id="@+id/fragmentKsoap"
+        android:name="net.vandut.magisterka.fullapp.KsoapFragment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        tools:layout="@layout/ksoap_fragment_layout" />
+
+</RelativeLayout>

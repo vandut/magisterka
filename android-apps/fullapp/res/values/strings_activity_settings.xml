@@ -1,0 +1,63 @@
+<resources>
+
+    <string name="title_activity_settings">Settings</string>
+
+    <!-- Strings related to Settings -->
+
+
+    <!-- General settings -->
+    <string name="pref_header_general">General</string>
+    <string name="pref_title_custom_ips">Enable Custom Service IP</string>
+    <string name="pref_description_custom_ips">Each service will use different IP</string>
+    <string name="pref_title_general_ip_address">General IP Address</string>
+    <string name="pref_default_general_ip_address">192.168.1.7</string>
+
+    
+    <!-- Door Service settings -->
+    <string name="pref_header_door">Door Service</string>
+    <string name="pref_title_door_port">Port</string>
+    <string name="pref_default_door_port">80</string>
+    <string name="pref_title_door_ip_address">IP Address</string>
+    <string name="pref_default_door_ip_address">149.156.97.216</string>
+
+    
+    <!-- Power Service settings -->
+    <string name="pref_header_power">Power Service</string>
+    <string name="pref_title_power_port">Port</string>
+    <string name="pref_default_power_port">80</string>
+    <string name="pref_title_power_ip_address">IP Address</string>
+    <string name="pref_default_power_ip_address">149.156.97.218</string>
+
+    
+    <!-- Sensors Service settings -->
+    <string name="pref_header_sensors">Sensors Service</string>
+    <string name="pref_title_sensors_port">Port</string>
+    <string name="pref_default_sensors_port">80</string>
+    <string name="pref_title_sensors_ip_address">IP Address</string>
+    <string name="pref_default_sensors_ip_address">149.156.97.217</string>
+
+    
+    <!-- Camera Service settings -->
+    <string name="pref_header_camera">Camera Service</string>
+    <string name="pref_title_camera_port">Port</string>
+    <string name="pref_default_camera_port">80</string>
+    <string name="pref_title_camera_ip_address">IP Address</string>
+    <string name="pref_default_camera_ip_address">149.156.97.221</string>
+
+    
+    <!-- Pyro Service settings -->
+    <string name="pref_header_pyro">Pyro Service</string>
+    <string name="pref_title_pyro_port">Port</string>
+    <string name="pref_default_pyro_port">29186</string>
+    <string name="pref_title_pyro_ip_address">IP Address</string>
+    <string name="pref_default_pyro_ip_address">149.156.97.223</string>
+
+    
+    <!-- Logic Service settings -->
+    <string name="pref_header_logic">Logic Service</string>
+    <string name="pref_title_logic_port">Port</string>
+    <string name="pref_default_logic_port">8090</string>
+    <string name="pref_title_logic_ip_address">IP Address</string>
+    <string name="pref_default_logic_ip_address">192.168.1.7</string>
+
+</resources>

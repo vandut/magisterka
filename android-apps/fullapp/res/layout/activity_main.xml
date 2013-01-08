@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:layout_margin="10dp" >
+
+    <Button
+        android:id="@+id/doorService"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:text="@string/title_activity_door" />
+
+    <Button
+        android:id="@+id/powerService"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/doorService"
+        android:text="@string/title_activity_power" />
+
+    <Button
+        android:id="@+id/sensorsService"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/powerService"
+        android:text="@string/title_activity_sensors" />
+
+    <Button
+        android:id="@+id/cameraService"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/sensorsService"
+        android:text="@string/title_activity_camera" />
+
+    <Button
+        android:id="@+id/pyroService"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/cameraService"
+        android:text="@string/title_activity_pyro" />
+
+    <Button
+        android:id="@+id/logicService"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/pyroService"
+        android:text="@string/title_activity_logic" />
+
+    <fragment
+        android:id="@+id/fragmentKsoap"
+        android:name="net.vandut.magisterka.fullapp.KsoapFragment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        tools:layout="@layout/ksoap_fragment_layout" />
+
+</RelativeLayout>

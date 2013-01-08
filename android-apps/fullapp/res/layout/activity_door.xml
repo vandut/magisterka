@@ -1,0 +1,41 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".DoorActivity"
+    android:layout_margin="10dp" >
+
+    <Button
+        android:id="@+id/button_door_status"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:text="@string/door_button_status" />
+
+    <Button
+        android:id="@+id/button_door_open"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/button_door_status"
+        android:text="@string/door_button_open" />
+
+    <Button
+        android:id="@+id/button_door_close"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/button_door_open"
+        android:text="@string/door_button_close" />
+
+    <fragment
+        android:id="@+id/fragmentKsoap"
+        android:name="net.vandut.magisterka.fullapp.KsoapFragment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        tools:layout="@layout/ksoap_fragment_layout" />
+
+</RelativeLayout>
