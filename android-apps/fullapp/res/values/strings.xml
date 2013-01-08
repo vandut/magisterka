@@ -3,6 +3,8 @@
 
     <!-- Application -->
     <string name="app_name">Web SOA</string>
+    <string name="hsoa_logo">HSOA Logo</string>
+    <string name="it_soa_logo">IT SOA Logo</string>
     
     <!-- Preferences -->
     <string name="menu_settings">Settings</string>

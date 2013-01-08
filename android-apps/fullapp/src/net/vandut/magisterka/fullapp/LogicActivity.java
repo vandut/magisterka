@@ -5,6 +5,7 @@ import net.vandut.magisterka.ksoap.soap.SoapService.SoapMethod;
 import roboguice.inject.ContentView;
 import roboguice.inject.InjectResource;
 import roboguice.inject.InjectView;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
@@ -75,6 +76,9 @@ public class LogicActivity extends RoboSherlockFragmentActivity implements Ksoap
 		switch (item.getItemId()) {
 		case android.R.id.home:
 			NavUtils.navigateUpFromSameTask(this);
+			return true;
+		case R.id.menu_settings:
+			startActivity(new Intent(LogicActivity.this, SettingsActivity.class));
 			return true;
 		}
 		return super.onOptionsItemSelected(item);

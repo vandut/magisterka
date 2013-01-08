@@ -918,6 +918,8 @@ containing a value of this type.
         public static final int abs__textfield_searchview_right_holo_dark=0x7f02006d;
         public static final int abs__textfield_searchview_right_holo_light=0x7f02006e;
         public static final int ic_launcher=0x7f02006f;
+        public static final int logo_hsoa=0x7f020070;
+        public static final int logo_soa=0x7f020071;
     }
     public static final class id {
         public static final int abs__action_bar=0x7f050022;
@@ -968,43 +970,46 @@ containing a value of this type.
         public static final int button_logic_start=0x7f05003a;
         public static final int button_logic_status=0x7f050039;
         public static final int button_logic_stop=0x7f05003b;
-        public static final int button_power_off1=0x7f050045;
-        public static final int button_power_off2=0x7f050048;
-        public static final int button_power_off3=0x7f05004b;
-        public static final int button_power_off4=0x7f05004e;
-        public static final int button_power_on1=0x7f050044;
-        public static final int button_power_on2=0x7f050047;
-        public static final int button_power_on3=0x7f05004a;
-        public static final int button_power_on4=0x7f05004d;
-        public static final int button_power_status=0x7f050042;
-        public static final int button_pyro_get_temp=0x7f05004f;
-        public static final int button_sensors_humidity=0x7f050051;
-        public static final int button_sensors_pressure=0x7f050052;
-        public static final int button_sensors_temperature=0x7f050050;
-        public static final int cameraService=0x7f05003f;
+        public static final int button_power_off1=0x7f050048;
+        public static final int button_power_off2=0x7f05004b;
+        public static final int button_power_off3=0x7f05004e;
+        public static final int button_power_off4=0x7f050051;
+        public static final int button_power_on1=0x7f050047;
+        public static final int button_power_on2=0x7f05004a;
+        public static final int button_power_on3=0x7f05004d;
+        public static final int button_power_on4=0x7f050050;
+        public static final int button_power_status=0x7f050045;
+        public static final int button_pyro_get_temp=0x7f050052;
+        public static final int button_sensors_humidity=0x7f050054;
+        public static final int button_sensors_pressure=0x7f050055;
+        public static final int button_sensors_temperature=0x7f050053;
+        public static final int cameraService=0x7f050042;
         public static final int disableHome=0x7f050009;
-        public static final int doorService=0x7f05003c;
+        public static final int doorService=0x7f05003f;
         public static final int edit_query=0x7f050027;
         public static final int fragmentKsoap=0x7f050035;
         public static final int homeAsUp=0x7f050006;
+        public static final int imageView1=0x7f05003d;
+        public static final int imageView2=0x7f05003e;
         public static final int listMode=0x7f050002;
-        public static final int logicService=0x7f050041;
-        public static final int menu_settings=0x7f050056;
+        public static final int logicService=0x7f050044;
+        public static final int logos=0x7f05003c;
+        public static final int menu_settings=0x7f050059;
         public static final int normal=0x7f050001;
-        public static final int powerService=0x7f05003d;
-        public static final int power_row_1=0x7f050043;
-        public static final int power_row_2=0x7f050046;
-        public static final int power_row_3=0x7f050049;
-        public static final int power_row_4=0x7f05004c;
-        public static final int progressBarKsoapStatus=0x7f050055;
-        public static final int pyroService=0x7f050040;
-        public static final int sensorsService=0x7f05003e;
+        public static final int powerService=0x7f050040;
+        public static final int power_row_1=0x7f050046;
+        public static final int power_row_2=0x7f050049;
+        public static final int power_row_3=0x7f05004c;
+        public static final int power_row_4=0x7f05004f;
+        public static final int progressBarKsoapStatus=0x7f050058;
+        public static final int pyroService=0x7f050043;
+        public static final int sensorsService=0x7f050041;
         public static final int showCustom=0x7f050008;
         public static final int showHome=0x7f050005;
         public static final int showTitle=0x7f050007;
         public static final int tabMode=0x7f050003;
-        public static final int textViewActionStatusLabel=0x7f050053;
-        public static final int textViewActionStatusValue=0x7f050054;
+        public static final int textViewActionStatusLabel=0x7f050056;
+        public static final int textViewActionStatusValue=0x7f050057;
         public static final int useLogo=0x7f050004;
         public static final int wrap_content=0x7f050000;
     }
@@ -1099,104 +1104,106 @@ containing a value of this type.
         /**  Application 
          */
         public static final int app_name=0x7f0a000f;
-        public static final int button_camera_get_last=0x7f0a0028;
-        public static final int button_camera_start_classifier=0x7f0a0027;
-        public static final int button_logic_start=0x7f0a002d;
-        public static final int button_logic_status=0x7f0a002c;
-        public static final int button_logic_stop=0x7f0a002e;
-        public static final int button_power_off1=0x7f0a001b;
-        public static final int button_power_off2=0x7f0a001d;
-        public static final int button_power_off3=0x7f0a001f;
-        public static final int button_power_off4=0x7f0a0021;
-        public static final int button_power_on1=0x7f0a001a;
-        public static final int button_power_on2=0x7f0a001c;
-        public static final int button_power_on3=0x7f0a001e;
-        public static final int button_power_on4=0x7f0a0020;
-        public static final int button_power_status=0x7f0a0019;
-        public static final int button_pyro_get_temp=0x7f0a002a;
-        public static final int button_sensors_humidity=0x7f0a0024;
-        public static final int button_sensors_pressure=0x7f0a0025;
-        public static final int button_sensors_temperature=0x7f0a0023;
-        public static final int door_button_close=0x7f0a0017;
-        public static final int door_button_open=0x7f0a0016;
-        public static final int door_button_status=0x7f0a0015;
+        public static final int button_camera_get_last=0x7f0a002a;
+        public static final int button_camera_start_classifier=0x7f0a0029;
+        public static final int button_logic_start=0x7f0a002f;
+        public static final int button_logic_status=0x7f0a002e;
+        public static final int button_logic_stop=0x7f0a0030;
+        public static final int button_power_off1=0x7f0a001d;
+        public static final int button_power_off2=0x7f0a001f;
+        public static final int button_power_off3=0x7f0a0021;
+        public static final int button_power_off4=0x7f0a0023;
+        public static final int button_power_on1=0x7f0a001c;
+        public static final int button_power_on2=0x7f0a001e;
+        public static final int button_power_on3=0x7f0a0020;
+        public static final int button_power_on4=0x7f0a0022;
+        public static final int button_power_status=0x7f0a001b;
+        public static final int button_pyro_get_temp=0x7f0a002c;
+        public static final int button_sensors_humidity=0x7f0a0026;
+        public static final int button_sensors_pressure=0x7f0a0027;
+        public static final int button_sensors_temperature=0x7f0a0025;
+        public static final int door_button_close=0x7f0a0019;
+        public static final int door_button_open=0x7f0a0018;
+        public static final int door_button_status=0x7f0a0017;
+        public static final int hsoa_logo=0x7f0a0010;
+        public static final int it_soa_logo=0x7f0a0011;
         /**  Ksoap Fragment 
          */
-        public static final int ksoap_action_status=0x7f0a0011;
-        public static final int ksoap_action_value_idle=0x7f0a0012;
-        public static final int ksoap_action_value_running=0x7f0a0013;
+        public static final int ksoap_action_status=0x7f0a0013;
+        public static final int ksoap_action_value_idle=0x7f0a0014;
+        public static final int ksoap_action_value_running=0x7f0a0015;
         /**  Preferences 
          */
-        public static final int menu_settings=0x7f0a0010;
-        public static final int pref_default_camera_ip_address=0x7f0a0048;
-        public static final int pref_default_camera_port=0x7f0a0046;
-        public static final int pref_default_door_ip_address=0x7f0a0039;
-        public static final int pref_default_door_port=0x7f0a0037;
-        public static final int pref_default_general_ip_address=0x7f0a0034;
-        public static final int pref_default_logic_ip_address=0x7f0a0052;
-        public static final int pref_default_logic_port=0x7f0a0050;
-        public static final int pref_default_power_ip_address=0x7f0a003e;
-        public static final int pref_default_power_port=0x7f0a003c;
-        public static final int pref_default_pyro_ip_address=0x7f0a004d;
-        public static final int pref_default_pyro_port=0x7f0a004b;
-        public static final int pref_default_sensors_ip_address=0x7f0a0043;
-        public static final int pref_default_sensors_port=0x7f0a0041;
-        public static final int pref_description_custom_ips=0x7f0a0032;
+        public static final int menu_settings=0x7f0a0012;
+        public static final int pref_default_camera_ip_address=0x7f0a004a;
+        public static final int pref_default_camera_port=0x7f0a0048;
+        public static final int pref_default_door_ip_address=0x7f0a003b;
+        public static final int pref_default_door_port=0x7f0a0039;
+        public static final int pref_default_general_ip_address=0x7f0a0036;
+        public static final int pref_default_logic_ip_address=0x7f0a0054;
+        public static final int pref_default_logic_port=0x7f0a0052;
+        public static final int pref_default_power_ip_address=0x7f0a0040;
+        public static final int pref_default_power_port=0x7f0a003e;
+        public static final int pref_default_pyro_ip_address=0x7f0a004f;
+        public static final int pref_default_pyro_port=0x7f0a004d;
+        public static final int pref_default_sensors_ip_address=0x7f0a0045;
+        public static final int pref_default_sensors_port=0x7f0a0043;
+        public static final int pref_description_custom_ips=0x7f0a0034;
         /**  Camera Service settings 
          */
-        public static final int pref_header_camera=0x7f0a0044;
+        public static final int pref_header_camera=0x7f0a0046;
         /**  Door Service settings 
          */
-        public static final int pref_header_door=0x7f0a0035;
+        public static final int pref_header_door=0x7f0a0037;
         /**  Strings related to Settings 
  General settings 
          */
-        public static final int pref_header_general=0x7f0a0030;
+        public static final int pref_header_general=0x7f0a0032;
         /**  Logic Service settings 
          */
-        public static final int pref_header_logic=0x7f0a004e;
+        public static final int pref_header_logic=0x7f0a0050;
         /**  Power Service settings 
          */
-        public static final int pref_header_power=0x7f0a003a;
+        public static final int pref_header_power=0x7f0a003c;
         /**  Pyro Service settings 
          */
-        public static final int pref_header_pyro=0x7f0a0049;
+        public static final int pref_header_pyro=0x7f0a004b;
         /**  Sensors Service settings 
          */
-        public static final int pref_header_sensors=0x7f0a003f;
-        public static final int pref_title_camera_ip_address=0x7f0a0047;
-        public static final int pref_title_camera_port=0x7f0a0045;
-        public static final int pref_title_custom_ips=0x7f0a0031;
-        public static final int pref_title_door_ip_address=0x7f0a0038;
-        public static final int pref_title_door_port=0x7f0a0036;
-        public static final int pref_title_general_ip_address=0x7f0a0033;
-        public static final int pref_title_logic_ip_address=0x7f0a0051;
-        public static final int pref_title_logic_port=0x7f0a004f;
-        public static final int pref_title_power_ip_address=0x7f0a003d;
-        public static final int pref_title_power_port=0x7f0a003b;
-        public static final int pref_title_pyro_ip_address=0x7f0a004c;
-        public static final int pref_title_pyro_port=0x7f0a004a;
-        public static final int pref_title_sensors_ip_address=0x7f0a0042;
-        public static final int pref_title_sensors_port=0x7f0a0040;
+        public static final int pref_header_sensors=0x7f0a0041;
+        public static final int pref_title_camera_ip_address=0x7f0a0049;
+        public static final int pref_title_camera_port=0x7f0a0047;
+        public static final int pref_title_custom_ips=0x7f0a0033;
+        public static final int pref_title_door_ip_address=0x7f0a003a;
+        public static final int pref_title_door_port=0x7f0a0038;
+        public static final int pref_title_general_ip_address=0x7f0a0035;
+        public static final int pref_title_logic_ip_address=0x7f0a0053;
+        public static final int pref_title_logic_port=0x7f0a0051;
+        public static final int pref_title_power_ip_address=0x7f0a003f;
+        public static final int pref_title_power_port=0x7f0a003d;
+        public static final int pref_title_pyro_ip_address=0x7f0a004e;
+        public static final int pref_title_pyro_port=0x7f0a004c;
+        public static final int pref_title_sensors_ip_address=0x7f0a0044;
+        public static final int pref_title_sensors_port=0x7f0a0042;
         /**  Camera Service 
          */
-        public static final int title_activity_camera=0x7f0a0026;
+        public static final int title_activity_camera=0x7f0a0028;
         /**  Door Service 
          */
-        public static final int title_activity_door=0x7f0a0014;
+        public static final int title_activity_door=0x7f0a0016;
         /**  Logic Service 
          */
-        public static final int title_activity_logic=0x7f0a002b;
+        public static final int title_activity_logic=0x7f0a002d;
         /**  Power Service 
          */
-        public static final int title_activity_power=0x7f0a0018;
+        public static final int title_activity_power=0x7f0a001a;
         /**  Pyro Service 
          */
-        public static final int title_activity_pyro=0x7f0a0029;
+        public static final int title_activity_pyro=0x7f0a002b;
         /**  Sensors Service 
          */
-        public static final int title_activity_sensors=0x7f0a0022;
-        public static final int title_activity_settings=0x7f0a002f;
+        public static final int title_activity_sensors=0x7f0a0024;
+        public static final int title_activity_settings=0x7f0a0031;
     }
     public static final class style {
         /** 
