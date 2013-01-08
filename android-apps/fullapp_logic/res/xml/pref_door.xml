@@ -1,0 +1,20 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+    
+    <EditTextPreference
+        android:key="door_port"
+        android:title="@string/pref_title_door_port"
+        android:defaultValue="@string/pref_default_door_port"
+        android:inputType="number"
+        android:maxLines="1"
+        android:selectAllOnFocus="true"
+        android:singleLine="true" />
+    <EditTextPreference
+        android:key="door_ip_address"
+        android:title="@string/pref_title_door_ip_address"
+        android:defaultValue="@string/pref_default_door_ip_address"
+        android:inputType="phone"
+        android:maxLines="1"
+        android:selectAllOnFocus="true"
+        android:singleLine="true" />
+
+</PreferenceScreen>

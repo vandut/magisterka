@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Application -->
+    <string name="app_name">Web SOA Logic</string>
+    <string name="hsoa_logo">HSOA Logo</string>
+    <string name="it_soa_logo">IT SOA Logo</string>
+    
+    <!-- Preferences -->
+    <string name="menu_settings">Settings</string>
+    
+    <!-- Ksoap Fragment -->
+    <string name="ksoap_action_status">"Action status: "</string>
+    <string name="ksoap_action_value_idle">idle&#8230;</string>
+    <string name="ksoap_action_value_running">running!</string>
+    
+    <!-- Door Service -->
+    <string name="title_activity_door">Door Service</string>
+    <string name="door_button_status">Status</string>
+    <string name="door_button_open">Open</string>
+    <string name="door_button_close">Close</string>
+    
+    <!-- Power Service -->
+    <string name="title_activity_power">Power Service</string>
+    <string name="button_power_status">Status</string>
+    <string name="button_power_on1">On 1</string>
+    <string name="button_power_off1">Off 1</string>
+    <string name="button_power_on2">On 2</string>
+    <string name="button_power_off2">Off 2</string>
+    <string name="button_power_on3">On 3</string>
+    <string name="button_power_off3">Off 3</string>
+    <string name="button_power_on4">On 4</string>
+    <string name="button_power_off4">Off 4</string>
+    
+    <!-- Sensors Service -->
+    <string name="title_activity_sensors">Sensors Service</string>
+    <string name="button_sensors_temperature">Temperature</string>
+    <string name="button_sensors_humidity">Humidity</string>
+    <string name="button_sensors_pressure">Pressure</string>
+    
+    <!-- Camera Service -->
+    <string name="title_activity_camera">Camera Service</string>
+    <string name="button_camera_start_classifier">Start Classifier</string>
+    <string name="button_camera_get_last">Get Last</string>
+    
+    <!-- Pyro Service -->
+    <string name="title_activity_pyro">Pyro Service</string>
+    <string name="button_pyro_get_temp">Get Temp</string>
+    
+    <!-- Logic Service -->
+    <string name="title_activity_logic">Logic Service</string>
+    <string name="button_logic_status">Status</string>
+    <string name="button_logic_start">Start</string>
+    <string name="button_logic_stop">Stop</string>
+
+</resources>
