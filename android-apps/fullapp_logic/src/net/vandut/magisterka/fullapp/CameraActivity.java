@@ -84,7 +84,7 @@ public class CameraActivity extends RoboSherlockFragmentActivity implements Ksoa
 	}
 
 	@Override
-	public void onKsoapServiceChanged(boolean running) {
+	public void onKsoapServiceChanged(boolean running, SoapMethod method) {
 		buttonCameraStartClassifier.setEnabled(!running);
 		buttonCameraGetLast.setEnabled(!running);
 	}
@@ -97,14 +97,14 @@ public class CameraActivity extends RoboSherlockFragmentActivity implements Ksoa
 		@Override
 		public void onClick(View v) {
 			SoapMethod method = soapService.getSoapMethod("StartClassifier");
-			getKsoapFragment().deliverKsoapInstruction(method);
+			getKsoapFragment().deliverKsoapInstruction(method, false);
 		}
 	};
 	private View.OnClickListener buttonCameraGetLastListener = new View.OnClickListener() {
 		@Override
 		public void onClick(View v) {
 			SoapMethod method = soapService.getSoapMethod("GetLast");
-			getKsoapFragment().deliverKsoapInstruction(method);
+			getKsoapFragment().deliverKsoapInstruction(method, false);
 		}
 	};
 

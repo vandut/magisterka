@@ -72,7 +72,7 @@ public class KsoapFragment extends RoboFragment implements KsoapService.ChangeLi
 			mService = binder.getService();
 			bound = true;
 			mService.registerChangeListener(KsoapFragment.this);
-			onKsoapServiceChanged(mService.isServiceRunning());
+			onKsoapServiceChanged(mService.isServiceRunning(), null);
 		}
 
 		@Override
@@ -84,7 +84,7 @@ public class KsoapFragment extends RoboFragment implements KsoapService.ChangeLi
 	};
 
 	@Override
-	public void onKsoapServiceChanged(boolean running) {
+	public void onKsoapServiceChanged(boolean running, SoapMethod method) {
 		if(running) {
 			textViewActionStatusValue.setText(R.string.ksoap_action_value_running);
 			progressBarKsoapStatus.setVisibility(View.VISIBLE);
@@ -93,12 +93,12 @@ public class KsoapFragment extends RoboFragment implements KsoapService.ChangeLi
 			progressBarKsoapStatus.setVisibility(View.INVISIBLE);
 		}
 		if(activityChangeListener != null) {
-			activityChangeListener.onKsoapServiceChanged(running);
+			activityChangeListener.onKsoapServiceChanged(running, method);
 		}
 	}
 	
-	public void deliverKsoapInstruction(SoapMethod method) {
-		mService.callKsoap(method);
+	public void deliverKsoapInstruction(SoapMethod method, boolean silent) {
+		mService.callKsoap(method, silent);
 	}
 
 }

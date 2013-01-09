@@ -86,7 +86,7 @@ public class SensorsActivity extends RoboSherlockFragmentActivity implements Kso
 	}
 
 	@Override
-	public void onKsoapServiceChanged(boolean running) {
+	public void onKsoapServiceChanged(boolean running, SoapMethod method) {
 		buttonSensorsTemperature.setEnabled(!running);
 		buttonSensorsHumidity.setEnabled(!running);
 		buttonSensorsPressure.setEnabled(!running);
@@ -100,7 +100,7 @@ public class SensorsActivity extends RoboSherlockFragmentActivity implements Kso
 		@Override
 		public void onClick(View v) {
 			SoapMethod method = soapService.getSoapMethod("get_temperature");
-			getKsoapFragment().deliverKsoapInstruction(method);
+			getKsoapFragment().deliverKsoapInstruction(method, false);
 		}
 	};
 
@@ -108,7 +108,7 @@ public class SensorsActivity extends RoboSherlockFragmentActivity implements Kso
 		@Override
 		public void onClick(View v) {
 			SoapMethod method = soapService.getSoapMethod("get_humidity");
-			getKsoapFragment().deliverKsoapInstruction(method);
+			getKsoapFragment().deliverKsoapInstruction(method, false);
 		}
 	};
 
@@ -116,7 +116,7 @@ public class SensorsActivity extends RoboSherlockFragmentActivity implements Kso
 		@Override
 		public void onClick(View v) {
 			SoapMethod method = soapService.getSoapMethod("get_pressure");
-			getKsoapFragment().deliverKsoapInstruction(method);
+			getKsoapFragment().deliverKsoapInstruction(method, false);
 		}
 	};
 

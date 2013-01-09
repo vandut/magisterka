@@ -84,6 +84,7 @@
         </activity>
         
         <service android:name="net.vandut.magisterka.fullapp.KsoapService"></service>
+        <service android:name="net.vandut.magisterka.fullapp.LogicService" android:enabled="true"></service>
     </application>
 
 </manifest>

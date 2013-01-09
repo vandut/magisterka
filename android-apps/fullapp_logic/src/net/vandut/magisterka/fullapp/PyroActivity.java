@@ -82,7 +82,7 @@ public class PyroActivity extends RoboSherlockFragmentActivity implements KsoapS
 	}
 
 	@Override
-	public void onKsoapServiceChanged(boolean running) {
+	public void onKsoapServiceChanged(boolean running, SoapMethod method) {
 		buttonPowerGetTemp.setEnabled(!running);
 	}
 	
@@ -94,7 +94,7 @@ public class PyroActivity extends RoboSherlockFragmentActivity implements KsoapS
 		@Override
 		public void onClick(View v) {
 			SoapMethod method = soapService.getSoapMethod("getTemp");
-			getKsoapFragment().deliverKsoapInstruction(method);
+			getKsoapFragment().deliverKsoapInstruction(method, false);
 		}
 	};
 

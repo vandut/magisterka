@@ -50,7 +50,7 @@
     <!-- Logic Service -->
     <string name="title_activity_logic">Logic Service</string>
     <string name="button_logic_status">Status</string>
-    <string name="button_logic_start">Start</string>
-    <string name="button_logic_stop">Stop</string>
+    <string name="button_logic_start">Start cycle</string>
+    <string name="button_logic_stop">Stop next cycle</string>
 
 </resources>

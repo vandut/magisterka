@@ -3,6 +3,7 @@ package net.vandut.magisterka.ksoap.soap;
 import java.io.IOException;
 
 import org.ksoap2.SoapEnvelope;
+import org.ksoap2.SoapFault;
 import org.ksoap2.serialization.PropertyInfo;
 import org.ksoap2.serialization.SoapObject;
 import org.ksoap2.serialization.SoapPrimitive;
@@ -62,6 +63,10 @@ public class SoapService {
 			AndroidHttpTransport transp = new AndroidHttpTransport(url);
 			transp.call(getSoapAction(), envelope);
 			return (SoapPrimitive) envelope.getResponse();
+		}
+		
+		public String getStringResponse() throws SoapFault {
+			return ((SoapPrimitive) envelope.getResponse()).toString();
 		}
 		
 	}

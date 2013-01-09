@@ -86,7 +86,7 @@ public class DoorActivity extends RoboSherlockFragmentActivity implements KsoapS
 	}
 
 	@Override
-	public void onKsoapServiceChanged(boolean running) {
+	public void onKsoapServiceChanged(boolean running, SoapMethod method) {
 		buttonDoorStatus.setEnabled(!running);
 		buttonDoorOpen.setEnabled(!running);
 		buttonDoorClose.setEnabled(!running);
@@ -100,7 +100,7 @@ public class DoorActivity extends RoboSherlockFragmentActivity implements KsoapS
 		@Override
 		public void onClick(View v) {
 			SoapMethod method = soapService.getSoapMethod("door_status");
-			getKsoapFragment().deliverKsoapInstruction(method);
+			getKsoapFragment().deliverKsoapInstruction(method, false);
 		}
 	};
 	
@@ -108,7 +108,7 @@ public class DoorActivity extends RoboSherlockFragmentActivity implements KsoapS
 		@Override
 		public void onClick(View v) {
 			SoapMethod method = soapService.getSoapMethod("door_open");
-			getKsoapFragment().deliverKsoapInstruction(method);
+			getKsoapFragment().deliverKsoapInstruction(method, false);
 		}
 	};
 	
@@ -116,7 +116,7 @@ public class DoorActivity extends RoboSherlockFragmentActivity implements KsoapS
 		@Override
 		public void onClick(View v) {
 			SoapMethod method = soapService.getSoapMethod("door_close");
-			getKsoapFragment().deliverKsoapInstruction(method);
+			getKsoapFragment().deliverKsoapInstruction(method, false);
 		}
 	};
 

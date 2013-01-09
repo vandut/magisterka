@@ -98,7 +98,7 @@ public class PowerActivity extends RoboSherlockFragmentActivity implements Ksoap
 	}
 
 	@Override
-	public void onKsoapServiceChanged(boolean running) {
+	public void onKsoapServiceChanged(boolean running, SoapMethod method) {
 		buttonPowerStatus.setEnabled(!running);
 		buttonPowerOn1.setEnabled(!running);
 		buttonPowerOff1.setEnabled(!running);
@@ -118,7 +118,7 @@ public class PowerActivity extends RoboSherlockFragmentActivity implements Ksoap
 		@Override
 		public void onClick(View v) {
 			SoapMethod method = soapService.getSoapMethod("switch_status");
-			getKsoapFragment().deliverKsoapInstruction(method);
+			getKsoapFragment().deliverKsoapInstruction(method, false);
 		}
 	};
 
@@ -126,56 +126,56 @@ public class PowerActivity extends RoboSherlockFragmentActivity implements Ksoap
 		@Override
 		public void onClick(View v) {
 			SoapMethod method = soapService.getSoapMethod("switch_on1");
-			getKsoapFragment().deliverKsoapInstruction(method);
+			getKsoapFragment().deliverKsoapInstruction(method, false);
 		}
 	};
 	private View.OnClickListener buttonPowerOff1Listener = new View.OnClickListener() {
 		@Override
 		public void onClick(View v) {
 			SoapMethod method = soapService.getSoapMethod("switch_off1");
-			getKsoapFragment().deliverKsoapInstruction(method);
+			getKsoapFragment().deliverKsoapInstruction(method, false);
 		}
 	};
 	private View.OnClickListener buttonPowerOn2Listener = new View.OnClickListener() {
 		@Override
 		public void onClick(View v) {
 			SoapMethod method = soapService.getSoapMethod("switch_on2");
-			getKsoapFragment().deliverKsoapInstruction(method);
+			getKsoapFragment().deliverKsoapInstruction(method, false);
 		}
 	};
 	private View.OnClickListener buttonPowerOff2Listener = new View.OnClickListener() {
 		@Override
 		public void onClick(View v) {
 			SoapMethod method = soapService.getSoapMethod("switch_off2");
-			getKsoapFragment().deliverKsoapInstruction(method);
+			getKsoapFragment().deliverKsoapInstruction(method, false);
 		}
 	};
 	private View.OnClickListener buttonPowerOn3Listener = new View.OnClickListener() {
 		@Override
 		public void onClick(View v) {
 			SoapMethod method = soapService.getSoapMethod("switch_on3");
-			getKsoapFragment().deliverKsoapInstruction(method);
+			getKsoapFragment().deliverKsoapInstruction(method, false);
 		}
 	};
 	private View.OnClickListener buttonPowerOff3Listener = new View.OnClickListener() {
 		@Override
 		public void onClick(View v) {
 			SoapMethod method = soapService.getSoapMethod("switch_off3");
-			getKsoapFragment().deliverKsoapInstruction(method);
+			getKsoapFragment().deliverKsoapInstruction(method, false);
 		}
 	};
 	private View.OnClickListener buttonPowerOn4Listener = new View.OnClickListener() {
 		@Override
 		public void onClick(View v) {
 			SoapMethod method = soapService.getSoapMethod("switch_on4");
-			getKsoapFragment().deliverKsoapInstruction(method);
+			getKsoapFragment().deliverKsoapInstruction(method, false);
 		}
 	};
 	private View.OnClickListener buttonPowerOff4Listener = new View.OnClickListener() {
 		@Override
 		public void onClick(View v) {
 			SoapMethod method = soapService.getSoapMethod("switch_on4");
-			getKsoapFragment().deliverKsoapInstruction(method);
+			getKsoapFragment().deliverKsoapInstruction(method, false);
 		}
 	};
 
