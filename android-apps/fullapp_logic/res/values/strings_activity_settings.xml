@@ -55,9 +55,39 @@
     
     <!-- Logic Service settings -->
     <string name="pref_header_logic">Logic Service</string>
-    <string name="pref_title_logic_port">Port</string>
-    <string name="pref_default_logic_port">8090</string>
-    <string name="pref_title_logic_ip_address">IP Address</string>
-    <string name="pref_default_logic_ip_address">192.168.1.7</string>
+    <string name="pref_title_logic_interval">Interval in seconds</string>
+    <string name="pref_default_logic_interval">60</string>
+    <string name="pref_title_logic_open">Logic open status</string>
+    <string name="pref_default_logic_open">s1</string>
+    <string name="pref_title_logic_close">Logic close status</string>
+    <string name="pref_default_logic_close">s2</string>
+    <string-array name="pref_title_logic_open">
+        <item name="s1">s1</item>
+        <item name="s2">s2</item>
+        <item name="s3">s3</item>
+        <item name="s4">s4</item>
+        <item name="s5">s5</item>
+        <item name="s6">s6</item>
+        <item name="s7">s7</item>
+        <item name="s8">s8</item>
+        <item name="s9">s9</item>
+        <item name="s10">s10</item>
+        <item name="s11">s11</item>
+        <item name="s12">s12</item>
+    </string-array>
+    <string-array name="pref_title_logic_close">
+        <item name="s1">s1</item>
+        <item name="s2">s2</item>
+        <item name="s3">s3</item>
+        <item name="s4">s4</item>
+        <item name="s5">s5</item>
+        <item name="s6">s6</item>
+        <item name="s7">s7</item>
+        <item name="s8">s8</item>
+        <item name="s9">s9</item>
+        <item name="s10">s10</item>
+        <item name="s11">s11</item>
+        <item name="s12">s12</item>
+    </string-array>
 
 </resources>

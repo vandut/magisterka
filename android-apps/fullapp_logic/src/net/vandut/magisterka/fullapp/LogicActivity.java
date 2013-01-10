@@ -5,6 +5,7 @@ import java.util.Calendar;
 import net.vandut.magisterka.fullapp_logic.R;
 import net.vandut.magisterka.ksoap.soap.SoapService.SoapMethod;
 import roboguice.inject.ContentView;
+import roboguice.inject.InjectResource;
 import roboguice.inject.InjectView;
 import android.app.AlarmManager;
 import android.app.PendingIntent;
@@ -31,6 +32,12 @@ public class LogicActivity extends RoboSherlockFragmentActivity implements Ksoap
 	
 	@Inject SharedPreferences sharedPreferences;
 
+	@InjectResource(R.string.pref_default_logic_interval)
+	String logicServiceInterval;
+
+	int logicInterval;
+	String logicIntervalString;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -44,6 +51,15 @@ public class LogicActivity extends RoboSherlockFragmentActivity implements Ksoap
 	@Override
 	public void onStart() {
 		super.onStart();
+
+		logicIntervalString
+			= sharedPreferences.getString("logic_interval", logicServiceInterval);
+		
+		try {
+			logicInterval = Integer.parseInt(logicIntervalString);
+		} catch(NumberFormatException e) {
+			logicInterval = 60;			
+		}
 	}
 
 	@Override
@@ -76,7 +92,7 @@ public class LogicActivity extends RoboSherlockFragmentActivity implements Ksoap
 		PendingIntent pintent = PendingIntent.getService(LogicActivity.this, 0,
 				new Intent(LogicActivity.this, LogicService.class), 0);
 		long currentTime = Calendar.getInstance().getTimeInMillis();
-		long intervalsInMils = 60 * 1000;
+		long intervalsInMils = logicInterval * 1000;
 		AlarmManager alarm = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
 		alarm.setRepeating(AlarmManager.RTC_WAKEUP, currentTime, intervalsInMils, pintent);
 	}

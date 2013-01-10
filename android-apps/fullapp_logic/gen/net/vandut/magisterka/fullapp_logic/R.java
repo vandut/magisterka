@@ -8,6 +8,10 @@
 package net.vandut.magisterka.fullapp_logic;
 
 public final class R {
+    public static final class array {
+        public static final int pref_title_logic_close=0x7f0c0001;
+        public static final int pref_title_logic_open=0x7f0c0000;
+    }
     public static final class attr {
         /**  Custom divider drawable to use for elements in the action bar. 
          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
@@ -1052,8 +1056,8 @@ containing a value of this type.
         public static final int sherlock_spinner_item=0x7f030020;
     }
     public static final class menu {
-        public static final int activity_service_menu=0x7f0c0000;
-        public static final int main=0x7f0c0001;
+        public static final int activity_service_menu=0x7f0d0000;
+        public static final int main=0x7f0d0001;
     }
     public static final class string {
         /**  Content description for the action bar "home" affordance. [CHAR LIMIT=NONE] 
@@ -1140,8 +1144,9 @@ containing a value of this type.
         public static final int pref_default_door_ip_address=0x7f0a003b;
         public static final int pref_default_door_port=0x7f0a0039;
         public static final int pref_default_general_ip_address=0x7f0a0036;
-        public static final int pref_default_logic_ip_address=0x7f0a0054;
-        public static final int pref_default_logic_port=0x7f0a0052;
+        public static final int pref_default_logic_close=0x7f0a0056;
+        public static final int pref_default_logic_interval=0x7f0a0052;
+        public static final int pref_default_logic_open=0x7f0a0054;
         public static final int pref_default_power_ip_address=0x7f0a0040;
         public static final int pref_default_power_port=0x7f0a003e;
         public static final int pref_default_pyro_ip_address=0x7f0a004f;
@@ -1177,8 +1182,9 @@ containing a value of this type.
         public static final int pref_title_door_ip_address=0x7f0a003a;
         public static final int pref_title_door_port=0x7f0a0038;
         public static final int pref_title_general_ip_address=0x7f0a0035;
-        public static final int pref_title_logic_ip_address=0x7f0a0053;
-        public static final int pref_title_logic_port=0x7f0a0051;
+        public static final int pref_title_logic_close=0x7f0a0055;
+        public static final int pref_title_logic_interval=0x7f0a0051;
+        public static final int pref_title_logic_open=0x7f0a0053;
         public static final int pref_title_power_ip_address=0x7f0a003f;
         public static final int pref_title_power_port=0x7f0a003d;
         public static final int pref_title_pyro_ip_address=0x7f0a004e;

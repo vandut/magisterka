@@ -1,20 +1,28 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
     
     <EditTextPreference
-        android:key="logic_port"
-        android:title="@string/pref_title_logic_port"
-        android:defaultValue="@string/pref_default_logic_port"
+        android:key="logic_interval"
+        android:title="@string/pref_title_logic_interval"
+        android:defaultValue="@string/pref_default_logic_interval"
         android:inputType="number"
         android:maxLines="1"
         android:selectAllOnFocus="true"
         android:singleLine="true" />
-    <EditTextPreference
-        android:key="logic_ip_address"
-        android:title="@string/pref_title_logic_ip_address"
-        android:defaultValue="@string/pref_default_logic_ip_address"
-        android:inputType="phone"
-        android:maxLines="1"
-        android:selectAllOnFocus="true"
-        android:singleLine="true" />
+    
+        <ListPreference 
+            android:key="logic_open"
+            android:title="@string/pref_title_logic_open"
+            android:defaultValue="@string/pref_default_logic_open" 
+            android:entries="@array/pref_title_logic_open"
+            android:entryValues="@array/pref_title_logic_open"
+        /> 
+        
+        <ListPreference 
+            android:key="logic_close"
+            android:title="@string/pref_title_logic_close"
+            android:defaultValue="@string/pref_default_logic_close" 
+            android:entries="@array/pref_title_logic_close"
+            android:entryValues="@array/pref_title_logic_close"
+        /> 
 
 </PreferenceScreen>

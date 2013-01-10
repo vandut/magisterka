@@ -110,6 +110,11 @@ public class SettingsActivity extends SherlockPreferenceActivity {
 		fakePyroHeader.setTitle(R.string.pref_header_pyro);
 		getPreferenceScreen().addPreference(fakePyroHeader);
 		addPreferencesFromResource(R.xml.pref_pyro);
+		// Add corresponding header.
+		PreferenceCategory fakeLogicHeader = new PreferenceCategory(this);
+		fakeLogicHeader.setTitle(R.string.pref_header_logic);
+		getPreferenceScreen().addPreference(fakeLogicHeader);
+		addPreferencesFromResource(R.xml.pref_logic);
 
 		createIpTextWatcherForPreference("door_ip_address");
 		createIpTextWatcherForPreference("power_ip_address");
@@ -130,6 +135,9 @@ public class SettingsActivity extends SherlockPreferenceActivity {
 		bindPreferenceSummaryToValue(findPreference("camera_ip_address"));
 		bindPreferenceSummaryToValue(findPreference("pyro_port"));
 		bindPreferenceSummaryToValue(findPreference("pyro_ip_address"));
+		bindPreferenceSummaryToValue(findPreference("logic_interval"));
+		bindPreferenceSummaryToValue(findPreference("logic_open"));
+		bindPreferenceSummaryToValue(findPreference("logic_close"));
 	}
 
 	/**

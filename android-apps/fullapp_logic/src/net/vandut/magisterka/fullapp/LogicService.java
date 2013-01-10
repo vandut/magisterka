@@ -28,6 +28,13 @@ public class LogicService extends RoboService {
 	String doorServiceDefaultPort;
 	@InjectResource(R.string.pref_default_door_ip_address)
 	String doorServiceDefaultIP;
+	@InjectResource(R.string.pref_default_logic_open)
+	String logicServiceOpen;
+	@InjectResource(R.string.pref_default_logic_close)
+	String logicServiceClose;
+	
+	private String logicOpen;
+	private String logicClose;
 
 	private static boolean running = false;
 	
@@ -61,12 +68,14 @@ public class LogicService extends RoboService {
 
 	private void doWork() {
 		showToast("Logic Service started");
+		logicOpen = sharedPreferences.getString("logic_open", logicServiceOpen);
+		logicClose = sharedPreferences.getString("logic_close", logicServiceClose);
 		cameraStartClassifier();
 		String person = cameraGetLast();
-		if("s1".equals(person)) {
+		if(logicOpen.equals(person)) {
 			doorOpen();
 			showToast("Logic Service Opened Door");
-		} else if("s2".equals(person)) {
+		} else if(logicClose.equals(person)) {
 			doorClose();
 			showToast("Logic Service Closed Door");
 		} else {
